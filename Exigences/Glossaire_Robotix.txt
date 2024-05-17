@@ -1,0 +1,53 @@
+Glossaire Robotix
+
+
+(1) robots:
+	Dispositif mécatronique pouvant effectuer des 'tâches' sans intervention humaine en exécutant des programmes informatiques.
+	Chaque robot est identifié par un numéro de série unique émis par le fournisseur, possède un CPU et au minimum une autre 'composante'.
+	Peut-être assembler par un fournisseur ou un utilisateur. (45 mots)
+
+(2) composante:
+	Une pièce mécanique et électronique qui compose un robot permettant d'effectuer une ou des actions spécifiques.
+	Les composantes communiquent et sont interconnectées entre elles par l'intermédiaire de câbles.
+	Chaque composante possède au minimum un nom, un type, une description et un prix.
+	(CPU , Roues, Bras, Hélice, Caméra, Haut-parleur, Micro, Écran (50 mots)
+
+(3) capteur:
+	Composante permettant de traduire un phénomène physique sous forme d'un signal numérique. (12 mots)
+
+(4) fournisseur:
+	Compagnie qui produit ou vend des robots pré-assembler et des composantes individuelles (inclus le câblage).
+	Est responsable d'émettre un numéro de série unique à travers toutes les composantes.
+	Il est possible de s'inscrire en tant que fournisseur sur le système à condition de posséder une compagnie. (46 mots)
+
+
+(5) état:
+	L'état d'un robot est défini par sa position, sa vitesse, son niveau de batterie, sa consommation CPU et mémoire actuelle. (20 mots)
+
+(6) flotte:
+	Ensemble de robots que possède un utilisateur. Un utilisateur peut posséder un nombre illimité de robots. (16 mots)
+
+(7) actions:
+	Une action traduit une intention par un mouvement physique ou signal numérique d'une composante.
+	Dans le contexte d'une tâche, possède une propriété de transition déterminant si elle sera exécutée séquentiellement ou parallèlement de l'action précédente.
+	Les actions existent indépendamment des robots dans le système et sont ajoutés à une tâche. (50 mots)
+
+(8) tâche: Une série d'actions effectuées dans un ordre séquentiel ou parallèle visant à accomplir un 'objectif'.
+	   Une tâche est assignée à un 'robot' directement ou par intermédiaire d'activités selon sa disponibilité et les compétences de ce dernier.
+	   Également, un utilisateur peut planifier une série de tâches à exécuter selon un horaire. (50 mots)
+
+(9) activités:
+	Généralement une série de taches ludiques visant à enrichir l'expérience de l'utilisateur. Une activité peut
+	être engagée de façon individuelle ou collaborative. (un ou plusieurs utilisateurs et un ou plusieurs robots)
+	Une activité doit comporter une date de début et une date de fin. (45 mots)
+
+(10) opérations:
+	Opérations de base qu'un utilisateur peut exécuter dans l'interface générale de Robotix. Ceci inclus lister les actions disponibles, afficher l'utilisation de ressources,
+ 	participer ou organiser à des activités et obtenir des robots et des composantes mis à disposition par les fournisseurs. (41 mots)
+
+
+
+
+
+
+
