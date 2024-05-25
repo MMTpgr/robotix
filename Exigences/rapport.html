@@ -248,70 +248,100 @@
         Chaque membre de l'équipe doit être assigné à peu près le même nombre de cas d'utilisation à rédiger. Dans vos descriptions, vous devez avoir au minimum un cas d'utilisation par rôle (utilisateur et fournisseur).<br>
         Vous devez rédiger la description pour 10 cas d'utilisation qui figurent dans votre diagramme valant 5 points chacun.<br>
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> nom du CU en expression verbale.<br>
-            <span style="font-weight: bold;">But :</span> mise en contexte, description brève, préconditions
-            nécessaires.<br>
-            <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
-            d'entammer le scéanrio principal.<br>
+            <span style="font-weight: bold;">Cas d'utilisation :</span> S'inscrire comme utilisateur.<br>
+            <span style="font-weight: bold;">But :</span> Une personne souhaite s’inscrire en tant qu’utilisateur de robotix.<br>
+            <span style="font-weight: bold;">Préconditions :</span>  Le client fournit son nom, son prénom, son pseudo (qui doit être unique), son adresse courriel et son numéro de téléphone ainsi que le nom de la compagnie pour mieux le rediriger.
+<br>
             <span style="font-weight: bold;">Acteurs :</span> Acteur 1 (principal), Acteur 2
             (secondaire).<br>
+            
             <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
             ordonnée numériquement<br>
-            1. Étape 1<br>
-            &emsp;1.1. Étape 1.1<br>
-            2. Étape 2<br>
-            3. Étape 3<br>
-            <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
-            principal, alternatives possibles à certaines étapes<br>
-            1a.1. remplace étape 1 du scenario principal<br>
-            1b.1. autre remplacement de la même étape<br>
-            1b.2. suit 1b.1 indépendamment du scénario principal<br>
-            <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
-            principal achève avec succès.<br>
+            1. Le client se rend sur l’interface du logiciel pour s’inscrire<br>
+            2. l’Agent lui demande ses informations (nom,tel, etc…) <br>
+            3. Le client entre ses données dans le système.<br>
+            4. Le système valide les informations <br>
+            5. Le système exige que le client lise et signe les conditions d’utilisations <br>
+            6. Le système confirme la création du compte auprès du client <br>
+            &nbsp&nbsp 6.1 Le client peut entrer en tant qu’utilisateur. <br>
+
+            
+            <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
+            1a. Certaines informations sont jugées incorrectes.
+            &nbsp&nbsp 1a.1 .Le système envoie un message d’erreur
+            &nbsp&nbsp 1a.2. Le scénario reprend à l'étape 3.
+            
+            2a. Les informations sont correctes mais déjà utilisées par un autre utilisateur
+            &nbsp&nbsp 2.a.1 Le système envoie un message d’erreur
+            &nbsp&nbsp 2.a.2 Le scénario reprend à l'étape 3.
+            
+            3a. Le client refuse de signer les conditions d'utilisations
+            &nbsp&nbsp 3.a.1  Le scénario se termine.
+
+            
+            <span style="font-weight: bold;">Postconditions :</span> Le système traite les besoins de l’utilisateur tant qu’il respecte les conditions d’utilisations.<br>
         </p>
+
+        
+        <! -- CU Enregistrer un robot -->
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> nom du CU en expression verbale.<br>
+            <span style="font-weight: bold;">Cas d'utilisation :</span> Enregistrer un robot.<br>
             <span style="font-weight: bold;">But :</span> mise en contexte, description brève, préconditions
             nécessaires.<br>
-            <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
-            d'entammer le scéanrio principal.<br>
-            <span style="font-weight: bold;">Acteurs :</span> Acteur 1 (principal), Acteur 2
-            (secondaire).<br>
-            <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-            ordonnée numériquement<br>
-            1. Étape 1<br>
-            &emsp;1.1. Étape 1.1<br>
-            2. Étape 2<br>
-            3. Étape 3<br>
-            <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
-            principal, alternatives possibles à certaines étapes<br>
-            1a.1. remplace étape 1 du scenario principal<br>
-            1b.1. autre remplacement de la même étape<br>
-            1b.2. suit 1b.1 indépendamment du scénario principal<br>
-            <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
-            principal achève avec succès.<br>
+            
+            <span style="font-weight: bold;">Préconditions :</span>  Le client a un compte robotix, possède le numéro de série, le nom et le type du robot.<br>
+            <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Fournisseur (secondaire).<br>
+            
+            <span style="font-weight: bold;">Scénario principal :</span> 
+            1. Le client se connecte à son compte <br>
+            2. Le client demande le numéro de série auprès du fournisseur <br>
+            3. Le client entre ce numéro dans le système ainsi que le nom et le type du robot qui identifient le robot. <br>
+            4. Le système valide les informations <br>
+            5. Le système confirme l’enregistrement du robot auprès du client <br>
+            &nbsp&nbsp 5.1 Le client peut gérer son robot et accéder aux fonctionnalités affiliées. <br>
+
+            <span style="font-weight: bold;">Scénarios alternatifs :</span> 
+            1a. L’utilisateur se trompe dans l'entrée du numéro de série du robot.
+            &nbsp&nbsp 1a.1. Le système envoie un message d’erreur
+            &nbsp&nbsp 1a.2. Le scénario reprend à l'étape 3.
+            
+            2a. Le nom du robot et le type du robot (qui servent d’identifiant) sont déjà utilisés.
+            &nbsp&nbsp 2a.1. Le système envoie un message d’erreur
+            &nbsp&nbsp 2a.2. Le scénario reprend à l'étape 3.
+            
+            3a. Le client n’a pas de compte Robotix
+            &nbsp&nbsp 3a.a Le scénario se termine
+
+            <span style="font-weight: bold;">Postconditions :</span> Le système effectue toute les opérations demandées par l’utilisateur en lien avec le robot.<br>
         </p>
+
+    
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> nom du CU en expression verbale.<br>
-            <span style="font-weight: bold;">But :</span> mise en contexte, description brève, préconditions
-            nécessaires.<br>
-            <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
-            d'entammer le scéanrio principal.<br>
-            <span style="font-weight: bold;">Acteurs :</span> Acteur 1 (principal), Acteur 2
-            (secondaire).<br>
-            <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-            ordonnée numériquement<br>
-            1. Étape 1<br>
-            &emsp;1.1. Étape 1.1<br>
-            2. Étape 2<br>
-            3. Étape 3<br>
-            <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
-            principal, alternatives possibles à certaines étapes<br>
-            1a.1. remplace étape 1 du scenario principal<br>
-            1b.1. autre remplacement de la même étape<br>
-            1b.2. suit 1b.1 indépendamment du scénario principal<br>
-            <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
-            principal achève avec succès.<br>
+            <span style="font-weight: bold;">Cas d'utilisation :</span> Acheter des composantes.<br>
+            <span style="font-weight: bold;">But :</span> Un utilisateur souhaite acheter les composantes d’un robot .<br>
+            
+            <span style="font-weight: bold;">Préconditions :</span>  Le client doit avoir un compte, l’argent nécessaire pour acheter une composante et doit acheter au moins un CPU et une autre composante quelconque.<br>
+            <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), un ou plusieurs fournisseurs (secondaire).<br>
+            
+            <span style="font-weight: bold;">Scénario principal :</span>
+            1. Le client se connecte à son compte
+            2. Le client contacte le fournisseur 
+            &nbsp&nbsp 2.1 l’utilisateur accède aux offres de composantes
+            3. Le client achète les composantes qu’il a choisit .
+            4. Le système valide l’achat et envoie le reçu à l'utilisateur 
+            5. Le système sauvegarde les nouvelles composantes
+
+            <span style="font-weight: bold;">Scénarios alternatifs :</span> 
+            1a. L’utilisateur n’a pas assez d’argent pour acheter une composante.
+            &nbsp&nbsp 1a.1 .Le fournisseur envoie un message d’erreur
+            &nbsp&nbsp 1a.2. Le scénario reprend à l'étape 2.1.
+            
+            2a. Le choix des composantes de l’utilisateur est invalide
+            &nbsp&nbsp 2.a.1 CPU n’a pas été choisit ou le choix n’est pas assez varié 
+            &nbsp&nbsp 2.a.2 Le scénario reprend à l'étape 2.1.
+
+            
+            <span style="font-weight: bold;">Postconditions :</span>  Le système a sauvegardé les nouvelles composantes sur le compte de l’utilisateur.<br>
         </p>
         <p>
             <span style="font-weight: bold;">Cas d'utilisation :</span> nom du CU en expression verbale.<br>
@@ -474,12 +504,44 @@
         Identifiez 5 risques potentiels du projet et classez-les par ORDRE DE SEVERITE (voir la page 28 dans les diapositives des exigences (Chapitre 7) des notes de cours et page 90 du livre).
     </p>
     <ol>
-        <li>risques potentiel</li>
-        <li>risques potentiel</li>
-        <li>risques potentiel</li>
-        <li>risques potentiel</li>
-        <li>risques potentiel</li>
+        
+        <li>
+            <span style="font-weight: bold;">Ne pas répondre correctement aux exigences:</span>
+risque que le logiciel ne réponde pas à 100% aux exigences des clients à une estimation non précise de celles-ci.
+
+Par exemple, il se peut que la manière dont a été implémentée la gestion des tâches ne permet pas d’assigner directement les tâches aux robots.
+
+        </li>
+        
+        <li>
+            <span style="font-weight: bold;">mauvaise structure générale:</span> La structure générale du logiciel peut ne pas être robuste ce qui entraîne 
+            immédiatement beaucoup de problèmes si jamais on souhaite ajouter de nouvelles fonctionnalités au logiciel.
+
+            Par exemple, si nous avons codé toutes les tâches de Robotix (mais suivant une faible architecture) et qu’on souhaite ajouter la gestion des tâches, 
+            il faudra redésigner toute la structure du logiciel ce qui peut être très indésirable.
+
+        </li>
+        
+        <li>
+            <span style="font-weight: bold;">risques techniques:</span> isque en lien avec la présence de code de moindre qualité qui comporte des erreurs de logique ou qui est souvent sujet à des bugs.
+
+            Par exemple, le logiciel peut planter lors de gestion de robot en raison d’un bug/erreur de logique. 
+            Le logiciel peut aussi prendre beaucoup trop de temps pour réaliser une tâche dû à un code de mauvaise qualité ou encore montrer les mauvaises informations concernant le fournisseur ou les composantes.
+
+        </li>
+        
+        <li>
+            <span style="font-weight: bold;">problèmes d'organisation:</span> - problèmes de budget, problèmes en lien avec le respect des deadlines ou encore des problèmes 
+            de communication entre les développeurs qui peuvent retarder le projet et éventuellement mener à un mauvais respect des exigences et a du code de moindre qualité.
+
+        </li>
+        
+        <li>
+            <span style="font-weight: bold;">Risques externes:</span> risques peu probables d'événements externes tels que des  phénomènes physiques qui peuvent retarder le développement. 
+            par exemple des catastrophes naturelles ou des affaires personnelles de certains développeurs qui ralentissaient. 
+        </li>
       </ol>
+    
     <h2>
         <u>5. Exigences non-fonctionnelles (5%)</u></h2>
     <p>
