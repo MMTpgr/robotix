@@ -61,11 +61,11 @@
         <span style="font-weight: bold;">Temps mis: </span>x heures
     </p>
     <p>
-        <span style="font-weight: bold;">Nom: </span>Mehdi Mekrouz
+        <span style="font-weight: bold;">Nom: </span>Mohamed Mehdi Tagmouti
         <br />
         <span style="font-weight: bold;">Matricule: </span>#20..
         <br />
-        <span style="font-weight: bold;">Courriel: </span>mehdi.mekrouz@umontreal.ca
+        <span style="font-weight: bold;">Courriel: </span>mohammed.mehdi.tagmouti@umontreal.ca
         <br />
         <span style="font-weight: bold;">Temps mis: </span>x heures
     </p>
@@ -188,7 +188,7 @@
                     description (%)
                 </td>
                 <td>
-                    description (%)
+                    description (100%)
                 </td>
                 <td>
                     description (%)
@@ -268,8 +268,7 @@
 <br>
             <span style="font-weight: bold;">Acteurs :</span> Client (principal), Système (secondaire).<br>
             
-            <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-            ordonnée numériquement<br>
+            <span style="font-weight: bold;">Scénario principal :</span><br>
             1. Le client se rend sur l’interface du logiciel pour s’inscrire<br>
             2. l’Agent lui demande ses informations (nom,tel, etc…) <br>
             3. Le client entre ses données dans le système.<br>
@@ -299,11 +298,9 @@
         <! -- CU Enregistrer un robot -->
         <p>
             <span style="font-weight: bold;">Cas d'utilisation :</span> Enregistrer un robot.<br>
-            <span style="font-weight: bold;">But :</span> mise en contexte, description brève, préconditions
-            nécessaires.<br>
-            
+            <span style="font-weight: bold;">But :</span> L'utilisateur souhaite ajouter un robot à sa flotte. <br>
             <span style="font-weight: bold;">Préconditions :</span>  Le client a un compte robotix, possède le numéro de série, le nom et le type du robot.<br>
-            <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Fournisseur (secondaire).<br>
+            <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Fournisseur (secondaire) POURQUOI PAS SYSTÈME?.<br>
             
             <span style="font-weight: bold;">Scénario principal :</span> 
             1. Le client se connecte à son compte <br>
@@ -332,7 +329,6 @@
         <p>
             <span style="font-weight: bold;">Cas d'utilisation :</span> Acheter des composantes.<br>
             <span style="font-weight: bold;">But :</span> Un utilisateur souhaite acheter les composantes d’un robot .<br>
-            
             <span style="font-weight: bold;">Préconditions :</span>  Le client doit avoir un compte, l’argent nécessaire pour acheter une composante et doit acheter au moins un CPU et une autre composante quelconque.<br>
             <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), un ou plusieurs fournisseurs (secondaire).<br>
             
@@ -353,11 +349,37 @@
             &nbsp&nbsp 2.a.1 CPU n’a pas été choisit ou le choix n’est pas assez varié 
             &nbsp&nbsp 2.a.2 Le scénario reprend à l'étape 2.1.
 
-            
             <span style="font-weight: bold;">Postconditions :</span>  Le système a sauvegardé les nouvelles composantes sur le compte de l’utilisateur.<br>
         </p>
+
+
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> nom du CU en expression verbale.<br>
+            <span style="font-weight: bold;">Cas d'utilisation :</span> Création des actions<br>
+            <span style="font-weight: bold;">But :</span> Créer une action à ajouter à une tâche.<br>
+            <span style="font-weight: bold;">Préconditions :</span> Le client a un compte robotix et est en création/modification de tâche.<br>
+            <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Système (secondaire).<br>
+            <br>
+            <span style="font-weight: bold;">Scénario principal :</span><br>
+            1. Le client se connecte à son compte.<br>
+            2. Il accède au menu principal.<br>
+            3. Via le menu des activités, il modifie une activité.<br>
+            4. Le client choisit de modifier une tâche.<br>
+            4. Il ajoute une action à une tâche.<br>
+            4.1 Assigne un robot à la tâche.<br>
+            <br>
+            <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+            1.a L'utilisateur n'a aucune activité.<br>
+            1.a.1. L'utilisateur accède au menu principal.<br>
+            1.a.2. Via le menu des activités il doit créer une nouvelle activité.<br>
+            1.a.3. Le client ajoute une tâche à l’activité.<br>
+            1.a.4. Il ajoute une action à la tâche.<br>
+            <br>
+            <span style="font-weight: bold;">Postconditions :</span> Une action est ajoutée à la tâche sélectionnée.<br>
+        </p>
+
+
+        <p>
+            <span style="font-weight: bold;">Cas d'utilisation :</span> Participer à diverses activités (À COMPLÉTER!!!)<br>
             <span style="font-weight: bold;">But :</span> mise en contexte, description brève, préconditions
             nécessaires.<br>
             <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
@@ -378,137 +400,177 @@
             <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
             principal achève avec succès.<br>
         </p>
+
+
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> nom du CU en expression verbale.<br>
-            <span style="font-weight: bold;">But :</span> mise en contexte, description brève, préconditions
-            nécessaires.<br>
-            <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
-            d'entammer le scéanrio principal.<br>
-            <span style="font-weight: bold;">Acteurs :</span> Acteur 1 (principal), Acteur 2
-            (secondaire).<br>
-            <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-            ordonnée numériquement<br>
-            1. Étape 1<br>
-            &emsp;1.1. Étape 1.1<br>
-            2. Étape 2<br>
-            3. Étape 3<br>
-            <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
-            principal, alternatives possibles à certaines étapes<br>
-            1a.1. remplace étape 1 du scenario principal<br>
-            1b.1. autre remplacement de la même étape<br>
-            1b.2. suit 1b.1 indépendamment du scénario principal<br>
-            <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
-            principal achève avec succès.<br>
+            <span style="font-weight: bold;">Cas d'utilisation :</span> Gestion des tâches <br>
+            <span style="font-weight: bold;">But :</span> L'utilisateur souhaite créer des tâches et les assigner à des robots spécifiques en fonction de leur disponibilité et de leurs compétences.<br>
+            <span style="font-weight: bold;">Préconditions :</span> L'utilisateur est enregistré chez Robotix et possède au moins un robot dans sa flotte.<br>
+            <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Système (secondaire).<br>
+            <br>
+            <span style="font-weight: bold;">Scénario principal :</span><br>
+            1. L'utilisateur se connecte à son compte Robotix.<br>
+            2. L'utilisateur accède au menu principal du logiciel (automatique).<br>
+            3. L'utilisateur accède sa flotte par l'option 'Gêrer ma flotte' dans le menu principal.<br>
+            4. L'utilisateur sélectionne 'Mes tâches'.<br>
+            5. L'utilisateur sélectionne 'Créer une tâche'.<br>
+            6. L'utilisateur rempli les champs requis suivants :<br>
+            6.1 Il donne un nom à la tâche ;<br>
+            6.2 Il détermine la séquence d'actions (e.g., se déplacer, diffuser des sons, parler, écouter, afficher du texte ou des graphiques).<br>
+            7. L'utilisateur sauvegarde sa nouvelle tâche et obtient la confirmation 'Tâche sauvegardée'.<br>
+            8. L'utilisateur sélectionne 'Assigner une tâche'.<br>
+            9. L'utilisateur sélectionne un ou des robots qui exécuteront la tâche.<br>
+            10. L'utilisateur sélectionne les modalités d'excution (exécution à un temps précis ou une situation précise (action déclancheur)).<br>
+            11. L'utilisateur sauvegarde l'assignation de la tâche.<br>
+            <br>
+            <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+            1.a L'utilisateur n'a pas de compte Robotix :<br>
+            1.a.1 Il doit s'enregistrer comme utilisateur (voir cas d'utilisation 'Enregistrer un utilisateur').<br>
+            <br>
+            5.a L'utilisateur souhaite plutôt modifier une tâche :<br>
+            5.a.1 Il sélectionne 'Modifier une tâche' ;<br>
+            5.a.2 Il sélectione la tâche qu'il souhaite modifier dans le tableau qui lui est présenté ;<br>
+            5.a.3 Il modifie les champs remplis ;<br>
+            5.a.4 Il sauvegarde les modifications par le bouton 'Sauvegarder'.<br>
+            <br>
+            9.a L'utilisateur n'a pas de robot :<br>
+            9.a.1 Il doit enregistrer un robot (voir cas d'utilisation 'Enregistrer un robot') ;<br>
+            9.a.2 Il peut ensuite procéder à l'ajout d'une tâche.<br>
+            <br>
+            9.b L'utilisateur n'a pas de robot disponnible présentement :<br>
+            9.b.1 Il doit modifier sa tâche afin qu'elle respecte l'horaire de son robot (voir ci-dessus 'Modifier une tâche').<br>
+            <br>
+            9.c L'utilisateur n'a pas de robot avec les compétences nécéssaires pour exécuter la tâche :<br>
+            9.c.1 Il doit modifier sa tâche afin qu'elle soit compatible (voir ci-dessus 'Modifier une tâche').<br>
+            <br>
+            <span style="font-weight: bold;">Postconditions :</span> Le système sauvegarde la tâche à la liste de tâches de l'utilisateur.<br>
+
         </p>
+
+
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> nom du CU en expression verbale.<br>
-            <span style="font-weight: bold;">But :</span> mise en contexte, description brève, préconditions
-            nécessaires.<br>
-            <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
-            d'entammer le scéanrio principal.<br>
-            <span style="font-weight: bold;">Acteurs :</span> Acteur 1 (principal), Acteur 2
-            (secondaire).<br>
-            <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-            ordonnée numériquement<br>
-            1. Étape 1<br>
-            &emsp;1.1. Étape 1.1<br>
-            2. Étape 2<br>
-            3. Étape 3<br>
-            <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
-            principal, alternatives possibles à certaines étapes<br>
-            1a.1. remplace étape 1 du scenario principal<br>
-            1b.1. autre remplacement de la même étape<br>
-            1b.2. suit 1b.1 indépendamment du scénario principal<br>
-            <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
-            principal achève avec succès.<br>
+            <span style="font-weight: bold;">Cas d'utilisation :</span> Afficher l'état de mes robots <br>
+            <span style="font-weight: bold;">But :</span> L'utilisateur souhaite connaitre l'état de ses robots (vitesse, niveau de batterie, consommation CPU et mémoire et son usage).<br>
+            <span style="font-weight: bold;">Préconditions :</span> L'utilisateur est enregistré chez Robotix et possède au moins un robot dans sa flotte.<br>
+            <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Système (secondaire).<br>
+            <br>
+            <span style="font-weight: bold;">Scénario principal :</span><br>
+            1. L'utilisateur se connecte à son compte Robotix.<br>
+            2. L'utilisateur accède au menu principal du logiciel (automatique).<br>
+            3. L'utilisateur accède à sa flotte avec l'option 'Gêrer ma flotte' dans le menu principal.<br>
+            4. L'utilisateur sélectionne 'Consulter l'état de mes robots'.<br>
+            5. L'utilisateur consulte l'état général de ses robots sous la forme d'un tableau détaillé.<br>
+            <br>
+            <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+            1.a L'utilisateur n'a pas de compte Robotix :<br>
+            1.a.1 Il doit s'enregistrer comme utilisateur (voir cas d'utilisation 'Enregistrer un utilisateur').<br>
+            <br>
+            4.a L'utilisateur n'a pas de robot :<br>
+            4.a.1 Il doit enregistrer un robot (voir cas d'utilisation 'Enregistrer un robot') ;<br>
+            4.a.2 Il peut ensuite consulter l'état de ses robots.<br>
+            <br>
+            5 L'utilisateur souhaite consulter l'état d'un robot en particulier :<br>
+            5.a.1 Il ouvre le menu déroulant 'Choisir un robot' ;<br>
+            5.a.2 Il sélectionne le robot qui l'intéresse parmi la liste ;<br>
+            5.a.3 L'état du robot s'affiche.<br>
+            <br>
+            <span style="font-weight: bold;">Postconditions :</span> L'utilisateur a consulté l'état de ses robots, rien n'est changé dans le système.<br>
         </p>
+
+
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> nom du CU en expression verbale.<br>
-            <span style="font-weight: bold;">But :</span> mise en contexte, description brève, préconditions
-            nécessaires.<br>
-            <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
-            d'entammer le scéanrio principal.<br>
-            <span style="font-weight: bold;">Acteurs :</span> Acteur 1 (principal), Acteur 2
-            (secondaire).<br>
-            <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-            ordonnée numériquement<br>
-            1. Étape 1<br>
-            &emsp;1.1. Étape 1.1<br>
-            2. Étape 2<br>
-            3. Étape 3<br>
-            <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
-            principal, alternatives possibles à certaines étapes<br>
-            1a.1. remplace étape 1 du scenario principal<br>
-            1b.1. autre remplacement de la même étape<br>
-            1b.2. suit 1b.1 indépendamment du scénario principal<br>
-            <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
-            principal achève avec succès.<br>
+            <span style="font-weight: bold;">Cas d'utilisation :</span> Afficher les métriques de ma flotte <br>
+            <span style="font-weight: bold;">But :</span> L'utilisateur souhaite consulter les métriques de sa flotte (nombre de robots disponibles, état général, utilisation globale).<br>
+            <span style="font-weight: bold;">Préconditions :</span> L'utilisateur est enregistré chez Robotix et possède au moins un robot dans sa flotte.<br>
+            <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Système (secondaire).<br>
+            <br>
+            <span style="font-weight: bold;">Scénario principal :</span><br>
+            1. L'utilisateur se connecte à son compte Robotix.<br>
+            2. L'utilisateur accède au menu principal du logiciel (automatique).<br>
+            3. L'utilisateur accède à sa flotte avec l'option 'Gêrer ma flotte' dans le menu principal.<br>
+            4. L'utilisateur sélectionne l'onglet 'Métriques'.<br>
+            5. L'utilisateur consulte les métriques de sa flotte sous la forme de tableau détaillé.<br>
+            <br>
+            <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+            1.a L'utilisateur n'a pas de compte Robotix :<br>
+            1.a.1 Il doit s'enregistrer comme utilisateur (voir cas d'utilisation 'Enregistrer un utilisateur').<br>
+            <br>
+            4.a L'utilisateur n'a pas de robot :<br>
+            4.a.1 Il doit enregistrer un robot (voir cas d'utilisation 'Enregistrer un robot') ;<br>
+            4.a.2 Il peut ensuite consulter les métriques de sa flotte.<br>
+            <br>
+            5.a L'utilisateur souhaite consulter les métriques d'un robot en particulier :<br>
+            5.a.1 Il ouvre le menu déroulant 'Choisir un robot' ;<br>
+            5.a.2 Il sélectionne le robot qui l'intéresse parmi la liste. ;<br>
+            5.a.3 Les métriques de son robot s'affiche.<br>
+            <br>
+            <span style="font-weight: bold;">Postconditions :</span> L'utilisateur a consulté les métriques de sa flotte, rien n'est changé dans le système.<br>
         </p>
+
+
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> nom du CU en expression verbale.<br>
-            <span style="font-weight: bold;">But :</span> mise en contexte, description brève, préconditions
-            nécessaires.<br>
-            <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
-            d'entammer le scéanrio principal.<br>
-            <span style="font-weight: bold;">Acteurs :</span> Acteur 1 (principal), Acteur 2
-            (secondaire).<br>
-            <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-            ordonnée numériquement<br>
-            1. Étape 1<br>
-            &emsp;1.1. Étape 1.1<br>
-            2. Étape 2<br>
-            3. Étape 3<br>
-            <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
-            principal, alternatives possibles à certaines étapes<br>
-            1a.1. remplace étape 1 du scenario principal<br>
-            1b.1. autre remplacement de la même étape<br>
-            1b.2. suit 1b.1 indépendamment du scénario principal<br>
-            <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
-            principal achève avec succès.<br>
+            <span style="font-weight: bold;">Cas d'utilisation :</span> Voir les activités que je maintiens <br>
+            <span style="font-weight: bold;">But :</span> L'utilisateur souhaite consulter les activités qu'il maintiens et assigner des robots à certaines activités.<br>
+            <span style="font-weight: bold;">Préconditions :</span> L'utilisateur est enregistré chez Robotix, possède au moins un robot dans sa flotte et a déjà créer des tâches.<br>
+            <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Système (secondaire).<br>
+            <br>
+            <span style="font-weight: bold;">Scénario principal :</span><br>
+            1. L'utilisateur se connecte à son compte Robotix.<br>
+            2. L'utilisateur accède au menu principal du logiciel (automatique).<br>
+            3. L'utilisateur sélectionne 'Consulter mes activités'.<br>
+            4. L'utilisateur consulte les activités qu'il maintiens sous la forme d'une liste détaillée.<br>
+            5. L'utilisateur sélectionne une activité.<br>
+            6. L'utilisateur sélectionne 'Assigner cette activité'.<br>
+            7. L'utilisateur assigne l'activité aux robot compatibles (robots qui possèdent les caractéristiques nécéssaires à l'exécution des tâches demandées) :<br>
+            7.2 Il sélectionne la date de début et de fin de l'activité.<br>
+            8. L'utilisateur clique 'Démarrer l'activité'.<br>
+            9. Le système démarre l'activité.<br>
+            <br>
+            <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+            1.a L'utilisateur n'a pas de compte Robotix :<br>
+            1.a.1 Il doit s'enregistrer comme utilisateur (voir cas d'utilisation 'Enregistrer un utilisateur').<br>
+            <br>
+            4.a L'utilisateur souhaite ajouter une activité :<br>
+            4.a.1 Il sélectionne 'Démarrer une activité'.<br>
+            4.a.2 Il rempli les champs requis suivants :<br>
+            4.a.3 Il donne un nom à l'activité ;<br>
+            4.a.4 Il détermine la séquence de tâches à exécuter ;<br>
+            4.a.5 Il détermine la date de début et de fin de l'activité.<br>
+            4.a.6 Il sauvegarde sa nouvelle activité.<br>
+            <br>
+            4.b L'utilisateur souhaite modifier une activité existante :<br>
+            4.b.1 Il doit sélectionner 'Modifier une activité' ;<br>
+            4.b.2 Il sélectione l'activité qu'il souhaite modifier ;<br>
+            4.b.3 Il apporte des modifications aux champs remplis ;<br>
+            4.b.4 Il sélectione 'Enregister les changements à mon activité'.<br>
+            <br>
+            <span style="font-weight: bold;">Postconditions :</span> Le système a ajouté une activité aux activités en cours de l'utilisateur.<br>
         </p>
+
+
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> nom du CU en expression verbale.<br>
-            <span style="font-weight: bold;">But :</span> mise en contexte, description brève, préconditions
-            nécessaires.<br>
-            <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
-            d'entammer le scéanrio principal.<br>
-            <span style="font-weight: bold;">Acteurs :</span> Acteur 1 (principal), Acteur 2
-            (secondaire).<br>
-            <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-            ordonnée numériquement<br>
-            1. Étape 1<br>
-            &emsp;1.1. Étape 1.1<br>
-            2. Étape 2<br>
-            3. Étape 3<br>
-            <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
-            principal, alternatives possibles à certaines étapes<br>
-            1a.1. remplace étape 1 du scenario principal<br>
-            1b.1. autre remplacement de la même étape<br>
-            1b.2. suit 1b.1 indépendamment du scénario principal<br>
-            <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
-            principal achève avec succès.<br>
-        </p>
-        <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> nom du CU en expression verbale.<br>
-            <span style="font-weight: bold;">But :</span> mise en contexte, description brève, préconditions
-            nécessaires.<br>
-            <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
-            d'entammer le scéanrio principal.<br>
-            <span style="font-weight: bold;">Acteurs :</span> Acteur 1 (principal), Acteur 2
-            (secondaire).<br>
-            <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-            ordonnée numériquement<br>
-            1. Étape 1<br>
-            &emsp;1.1. Étape 1.1<br>
-            2. Étape 2<br>
-            3. Étape 3<br>
-            <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
-            principal, alternatives possibles à certaines étapes<br>
-            1a.1. remplace étape 1 du scenario principal<br>
-            1b.1. autre remplacement de la même étape<br>
-            1b.2. suit 1b.1 indépendamment du scénario principal<br>
-            <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
-            principal achève avec succès.<br>
+            <span style="font-weight: bold;">Cas d'utilisation :</span>Trouver un fournisseur<br>
+            <span style="font-weight: bold;">But :</span> L'utilisateur souhaite faire l'achat de pièces et recherche un fournisseur sur le marché Robotix grâce à un mécanisme de recherche.<br>
+            <span style="font-weight: bold;">Préconditions :</span> L'utilisateur est enregistré chez Robotix.<br>
+            <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Système (secondaire).<br>
+            <br>
+            <span style="font-weight: bold;">Scénario principal :</span><br>
+            Scénario principal : description étape par étape, ordonnée numériquement :<br>
+            1. L'utilisateur se connecte à son compte Robotix.<br>
+            2. L'utilisateur accède au menu principal du logiciel (automatique).<br>
+            3. L'utilisateur accède au marché interne par l'icône 'Marché Robotix'.<br>
+            4. L'utilisateur sélectionne 'Trouver un fournisseur'.<br>
+            5. L'utilisateur consulte la liste de fournisseurs.<br>
+            6. L'utilisateur sélectionne le profil du fournisseur qu'il cherchait.<br>
+
+            <span style="font-weight: bold;">Scénarios alternatifs :</span>
+            1.a L'utilisateur n'a pas de compte Robotix :<br>
+            1.a.1 Il doit s'enregistrer comme utilisateur (voir cas d'utilisation 'Enregistrer un utilisateur').<br>
+            <br>
+            6.a L'utilisateur ne trouve pas le fournisseur qu'il cherchait<br>
+            6.a.1 Il utilise des filtres.<br>
+
+            <span style="font-weight: bold;">Postconditions :</span> L'utilisateur a trouvé un fournisseur, le système est inchangé.<br>
         </p>
     </p>
     <h2>
