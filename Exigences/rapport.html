@@ -77,6 +77,15 @@
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             text-align: center;
+        }.cas-utilisation {
+            flex: 1 1 220px;
+            background-color: #e7fdff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            gap: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 20px;
         }
         .Graffiti {
         font-family: 'Permanent Marker', cursive;
@@ -341,6 +350,7 @@
         Chaque membre de l'équipe doit être assigné à peu près le même nombre de cas d'utilisation à rédiger. Dans vos descriptions, vous devez avoir au minimum un cas d'utilisation par rôle (utilisateur et fournisseur).<br>
         Vous devez rédiger la description pour 10 cas d'utilisation qui figurent dans votre diagramme valant 5 points chacun.<br>
     <p>
+    <div class="cas-utilisation">
         <span style="font-weight: bold;">Cas d'utilisation :</span> S'inscrire comme utilisateur.<br>
         <span style="font-weight: bold;">But :</span> Une personne souhaite s’inscrire en tant qu’utilisateur de robotix.<br>
         <span style="font-weight: bold;">Préconditions :</span>  Le client fournit son nom, son prénom, son pseudo (qui doit être unique), son adresse courriel et son numéro de téléphone ainsi que le nom de la compagnie pour mieux le rediriger.
@@ -372,8 +382,8 @@
 
         <span style="font-weight: bold;">Postconditions :</span> Le système traite les besoins de l’utilisateur tant qu’il respecte les conditions d’utilisations.<br>
     </p>
-
-
+    </div>
+    <div class="cas-utilisation">
     <! -- CU Enregistrer un robot -->
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Enregistrer un robot.<br>
@@ -403,8 +413,8 @@
 
         <span style="font-weight: bold;">Postconditions :</span> Le système effectue toute les opérations demandées par l’utilisateur en lien avec le robot.<br>
     </p>
-
-
+    </div>
+    <div class="cas-utilisation">
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Acheter des composantes.<br>
         <span style="font-weight: bold;">But :</span> Un utilisateur souhaite acheter les composantes d’un robot .<br>
@@ -430,8 +440,8 @@
 
         <span style="font-weight: bold;">Postconditions :</span>  Le système a sauvegardé les nouvelles composantes sur le compte de l’utilisateur.<br>
     </p>
-
-
+    </div>
+    <div class="cas-utilisation">
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Création des actions<br>
         <span style="font-weight: bold;">But :</span> Créer une action à ajouter à une tâche.<br>
@@ -455,7 +465,8 @@
         <br>
         <span style="font-weight: bold;">Postconditions :</span> Une action est ajoutée à la tâche sélectionnée.<br>
     </p>
-
+    </div>
+    <div class="cas-utilisation">
 
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Participer à diverses activités (À COMPLÉTER!!!)<br>
@@ -479,7 +490,8 @@
         <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
         principal achève avec succès.<br>
     </p>
-
+    </div>
+    <div class="cas-utilisation">
 
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Gestion des tâches <br>
@@ -525,8 +537,8 @@
         <span style="font-weight: bold;">Postconditions :</span> Le système sauvegarde la tâche à la liste de tâches de l'utilisateur.<br>
 
     </p>
-
-
+    </div>
+    <div class="cas-utilisation">
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Afficher l'état de mes robots <br>
         <span style="font-weight: bold;">But :</span> L'utilisateur souhaite connaitre l'état de ses robots (vitesse, niveau de batterie, consommation CPU et mémoire et son usage).<br>
@@ -555,8 +567,8 @@
         <br>
         <span style="font-weight: bold;">Postconditions :</span> L'utilisateur a consulté l'état de ses robots, rien n'est changé dans le système.<br>
     </p>
-
-
+    </div>
+    <div class="cas-utilisation">
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Afficher les métriques de ma flotte <br>
         <span style="font-weight: bold;">But :</span> L'utilisateur souhaite consulter les métriques de sa flotte (nombre de robots disponibles, état général, utilisation globale).<br>
@@ -585,7 +597,8 @@
         <br>
         <span style="font-weight: bold;">Postconditions :</span> L'utilisateur a consulté les métriques de sa flotte, rien n'est changé dans le système.<br>
     </p>
-
+    </div>
+    <div class="cas-utilisation">
 
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Voir les activités que je maintiens <br>
@@ -625,7 +638,8 @@
         <br>
         <span style="font-weight: bold;">Postconditions :</span> Le système a ajouté une activité aux activités en cours de l'utilisateur.<br>
     </p>
-
+    </div>
+    <div class="cas-utilisation">
 
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span>Trouver un fournisseur<br>
@@ -651,6 +665,7 @@
 
         <span style="font-weight: bold;">Postconditions :</span> L'utilisateur a trouvé un fournisseur, le système est inchangé.<br>
     </p>
+    </div>
     </p>
 </div>
 
