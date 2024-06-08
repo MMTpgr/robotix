@@ -371,7 +371,7 @@
         Vous devez rédiger la description pour 10 cas d'utilisation qui figurent dans votre diagramme valant 5 points chacun.<br>
     <p>
     <div class="vertical-box">
-        <span style="font-weight: bold;">Cas d'utilisation :</span> S'inscrire comme utilisateur.<br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> S'inscrire comme utilisateur/fournisseur.<br>
         <span style="font-weight: bold;">But :</span> Une personne souhaite s’inscrire en tant qu’utilisateur de robotix.<br>
         <span style="font-weight: bold;">Préconditions :</span>  Le client fournit son nom, son prénom, son pseudo (qui doit être unique), son adresse courriel et son numéro de téléphone ainsi que le nom de la compagnie pour mieux le rediriger.
         <br>
@@ -379,7 +379,7 @@
 
         <span style="font-weight: bold;">Scénario principal :</span><br>
         1. Le client se rend sur l’interface du logiciel pour s’inscrire<br>
-        2. l’Agent lui demande ses informations (nom,tel, etc…) <br>
+        2. l’Agent lui demande ses informations (nom,tel, etc…) selon s'il est un fournisseur ou client<br>
         3. Le client entre ses données dans le système.<br>
         4. Le système valide les informations <br>
         5. Le système exige que le client lise et signe les conditions d’utilisations <br>
@@ -413,10 +413,12 @@
 
         <span style="font-weight: bold;">Scénario principal :</span>
         1. Le client se connecte à son compte <br>
-        2. Le client demande le numéro de série auprès du fournisseur <br>
-        3. Le client entre ce numéro dans le système ainsi que le nom et le type du robot qui identifient le robot. <br>
-        4. Le système valide les informations <br>
-        5. Le système confirme l’enregistrement du robot auprès du client <br>
+        2. Le client accède à la consultation de sa flotte et sélectionne l'option de créer un nouveau robot <br>
+        3. Le client demande le numéro de série auprès du fournisseur <br>
+        4. Le client entre ce numéro dans le système ainsi que le nom et le type du robot qui identifient le robot. <br>
+        5. Le client selectionne les composantes qu'il souhaite pour son nouveau robot. <br>
+        6. Le système valide les informations <br>
+        7. Le système confirme l’enregistrement du robot auprès du client <br>
         &nbsp&nbsp 5.1 Le client peut gérer son robot et accéder aux fonctionnalités affiliées. <br>
 
         <span style="font-weight: bold;">Scénarios alternatifs :</span>
@@ -442,12 +444,13 @@
         <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), un ou plusieurs fournisseurs (secondaire).<br>
 
         <span style="font-weight: bold;">Scénario principal :</span>
-        1. Le client se connecte à son compte
-        2. Le client contacte le fournisseur
-        &nbsp&nbsp 2.1 l’utilisateur accède aux offres de composantes
-        3. Le client achète les composantes qu’il a choisit .
-        4. Le système valide l’achat et envoie le reçu à l'utilisateur
-        5. Le système sauvegarde les nouvelles composantes
+        1. Le client se connecte à son compte<br>
+        2. Le client accède au Marketpllace et sélectionne l'option pour acheter des composantes<br>
+        3. Le client contacte le fournisseur<br>
+        &nbsp&nbsp 2.1 l’utilisateur accède aux offres de composantes<br>
+        4. Le client achète les composantes qu’il a choisit .<br>
+        5. Le système valide l’achat et envoie le reçu à l'utilisateur<br>
+        6. Le système sauvegarde les nouvelles composantes <br>
 
         <span style="font-weight: bold;">Scénarios alternatifs :</span>
         1a. L’utilisateur n’a pas assez d’argent pour acheter une composante.
