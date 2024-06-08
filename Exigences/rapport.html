@@ -77,7 +77,7 @@
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             text-align: center;
-        }.cas-utilisation {
+        }.vertical-box{
             flex: 1 1 220px;
             background-color: #e7fdff;
             border: 1px solid #ccc;
@@ -85,7 +85,7 @@
             gap: 10px;
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-top: 20px;
+            margin-top: 10px;
         }
         .Graffiti {
         font-family: 'Permanent Marker', cursive;
@@ -292,40 +292,60 @@
         Glossaire de minimum 10 termes CLÉS du domaine d'affaires de Robotix, 50 MOTS maximum par description.
     </p>
     <dl>
-        <dt>1. Robot</dt>
+        <div class="vertical-box">
+            <span style="font-weight: bold;">1. Robot</span>
         <dd>Dispositif mécatronique pouvant effectuer des 'tâches' sans intervention humaine en exécutant des programmes informatiques.
             Chaque robot est identifié par un numéro de série unique émis par le fournisseur, possède un CPU et au minimum une autre 'composante'.
             Peut-être assembler par un fournisseur ou un utilisateur.</dd>
-        <dt>2. Composante</dt>
+        </div>
+        <div class="vertical-box">
+        <span style="font-weight: bold;">2. Composante</span>
         <dd>Une pièce mécanique et électronique qui compose un robot permettant d'effectuer une ou des actions spécifiques.
             Les composantes communiquent et sont interconnectées entre elles par l'intermédiaire de câbles.
             Chaque composante possède au minimum un nom, un type, une description et un prix.
             (CPU , Roues, Bras, Hélice, Caméra, Haut-parleur, Micro, Écran)</dd>
-        <dt>3. Capteur</dt>
+                    </div>
+        <div class="vertical-box">
+        <span style="font-weight: bold;">3. Capteur</span>
         <dd>Composante permettant de traduire un phénomène physique sous forme d'un signal numérique.</dd>
-        <dt>4. Fournisseur</dt>
+                    </div>
+        <div class="vertical-box">
+        <span style="font-weight: bold;">4. Fournisseur</span>
         <dd>Compagnie qui produit ou vend des robots pré-assembler et des composantes individuelles (inclus le câblage).
             Est responsable d'émettre un numéro de série unique à travers toutes les composantes.
             Il est possible de s'inscrire en tant que fournisseur sur le système à condition de posséder une compagnie.</dd>
-        <dt>5. état</dt>
+                    </div>
+        <div class="vertical-box">
+        <span style="font-weight: bold;">5. État</span>
         <dd>L'état d'un robot est défini par sa position, sa vitesse, son niveau de batterie, sa consommation CPU et mémoire actuelle.</dd>
-        <dt>6. Flotte</dt>
+                    </div>
+        <div class="vertical-box">
+        <span style="font-weight: bold;">6. Flotte</span>
         <dd>Ensemble de robots que possède un utilisateur. Un utilisateur peut posséder un nombre illimité de robots.</dd>
-        <dt>7. Action</dt>
+                    </div>
+        <div class="vertical-box">
+        <span style="font-weight: bold;">7. Action</span>
         <dd>Une action traduit une intention par un mouvement physique ou signal numérique d'une composante.
             Dans le contexte d'une tâche, possède une propriété de transition déterminant si elle sera exécutée séquentiellement ou parallèlement de l'action précédente.
             Les actions existent indépendamment des robots dans le système et sont ajoutés à une tâche.</dd>
-        <dt>8. Tâche</dt>
+                    </div>
+        <div class="vertical-box">
+        <span style="font-weight: bold;">8. Tâche</span>
         <dd>Une série d'actions effectuées dans un ordre séquentiel ou parallèle visant à accomplir un 'objectif'.
             Une tâche est assignée à un 'robot' directement ou par intermédiaire d'activités selon sa disponibilité et les compétences de ce dernier.
             Également, un utilisateur peut planifier une série de tâches à exécuter selon un horaire.</dd>
-        <dt>9. Activités</dt>
+                    </div>
+        <div class="vertical-box">
+        <span style="font-weight: bold;">9. Activités</span>
         <dd>Généralement une série de taches ludiques visant à enrichir l'expérience de l'utilisateur. Une activité peut
             être engagée de façon individuelle ou collaborative. (un ou plusieurs utilisateurs et un ou plusieurs robots)
             Une activité doit comporter une date de début et une date de fin.</dd>
-        <dt>10. Opérations</dt>
+                    </div>
+        <div class="vertical-box">
+        <span style="font-weight: bold;">10. Opérations</span>
         <dd>Opérations de base qu'un utilisateur peut exécuter dans l'interface générale de Robotix. Ceci inclus lister les actions disponibles, afficher l'utilisation de ressources,
             participer ou organiser à des activités et obtenir des robots et des composantes mis à disposition par les fournisseurs.</dd>
+            </div>
     </dl>
 </div>
 
@@ -350,7 +370,7 @@
         Chaque membre de l'équipe doit être assigné à peu près le même nombre de cas d'utilisation à rédiger. Dans vos descriptions, vous devez avoir au minimum un cas d'utilisation par rôle (utilisateur et fournisseur).<br>
         Vous devez rédiger la description pour 10 cas d'utilisation qui figurent dans votre diagramme valant 5 points chacun.<br>
     <p>
-    <div class="cas-utilisation">
+    <div class="vertical-box">
         <span style="font-weight: bold;">Cas d'utilisation :</span> S'inscrire comme utilisateur.<br>
         <span style="font-weight: bold;">But :</span> Une personne souhaite s’inscrire en tant qu’utilisateur de robotix.<br>
         <span style="font-weight: bold;">Préconditions :</span>  Le client fournit son nom, son prénom, son pseudo (qui doit être unique), son adresse courriel et son numéro de téléphone ainsi que le nom de la compagnie pour mieux le rediriger.
@@ -383,7 +403,7 @@
         <span style="font-weight: bold;">Postconditions :</span> Le système traite les besoins de l’utilisateur tant qu’il respecte les conditions d’utilisations.<br>
     </p>
     </div>
-    <div class="cas-utilisation">
+    <div class="vertical-box">
     <! -- CU Enregistrer un robot -->
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Enregistrer un robot.<br>
@@ -414,7 +434,7 @@
         <span style="font-weight: bold;">Postconditions :</span> Le système effectue toute les opérations demandées par l’utilisateur en lien avec le robot.<br>
     </p>
     </div>
-    <div class="cas-utilisation">
+    <div class="vertical-box">
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Acheter des composantes.<br>
         <span style="font-weight: bold;">But :</span> Un utilisateur souhaite acheter les composantes d’un robot .<br>
@@ -441,57 +461,72 @@
         <span style="font-weight: bold;">Postconditions :</span>  Le système a sauvegardé les nouvelles composantes sur le compte de l’utilisateur.<br>
     </p>
     </div>
-    <div class="cas-utilisation">
+    <div class="vertical-box">
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Création des actions<br>
-        <span style="font-weight: bold;">But :</span> Créer une action à ajouter à une tâche.<br>
-        <span style="font-weight: bold;">Préconditions :</span> Le client a un compte robotix et est en création/modification de tâche.<br>
+        <span style="font-weight: bold;">But :</span> Créer une action pouvant être ajouté à une tâche.<br>
+        <span style="font-weight: bold;">Préconditions :</span>  Le client a un compte robotix.<br>
         <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Système (secondaire).<br>
         <br>
         <span style="font-weight: bold;">Scénario principal :</span><br>
         1. Le client se connecte à son compte.<br>
-        2. Il accède au menu principal.<br>
-        3. Via le menu des activités, il modifie une activité.<br>
-        4. Le client choisit de modifier une tâche.<br>
-        4. Il ajoute une action à une tâche.<br>
-        4.1 Assigne un robot à la tâche.<br>
+        2. Du menu principal, il accède au menu des actions.<br>
+        3. Il sélectionne l'option "Créer une action".<br>
+        4. Le menu de création d'action s'affiche.<br>
+        &emsp;4.1 Nommer l'action.<br>
+        &emsp;4.2 Spécifier type d'action.<br>
+        &emsp;4.3 Assigner robot à l'action.<br>
+        5. L'action est maintenant disponible dans la sélection des actions.<br>
         <br>
         <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
-        1.a L'utilisateur n'a aucune activité.<br>
+        1.a Création d'une action via la création ou modification d'une tâche.<br>
         1.a.1. L'utilisateur accède au menu principal.<br>
-        1.a.2. Via le menu des activités il doit créer une nouvelle activité.<br>
-        1.a.3. Le client ajoute une tâche à l’activité.<br>
-        1.a.4. Il ajoute une action à la tâche.<br>
+        1.a.2. Via le menu des taches, il crée une nouvelle tâche.<br>
+        1.a.3. Le client sélectionne "Ajouter une action".<br>
+        1.a.4. Le client sélectionne "Créer une action".<br>
+        1.a.5. Le menu de création d'action s'affiche.<br>
+        &emsp;1.a.5.1. Nommer l'action.<br>
+        &emsp;1.a.5.2. Spécifier type d'action.<br>
+        &emsp;1.a.5.3. Assigner robot à l'action.<br>
+        &emsp;1.a.5.4. Enregistrer action pour qu'elle soit disponible lors des sélections.<br>
+        1.a.6. L'action est ajoutée à la tâche sélectionnée.<br>
         <br>
-        <span style="font-weight: bold;">Postconditions :</span> Une action est ajoutée à la tâche sélectionnée.<br>
+        <span style="font-weight: bold;">Postconditions :</span> Une action est enregistrée dans les favoris et/ou ajoutée à la tâche sélectionnée.<br>
     </p>
     </div>
-    <div class="cas-utilisation">
+    <div class="vertical-box">
 
     <p>
-        <span style="font-weight: bold;">Cas d'utilisation :</span> Participer à diverses activités (À COMPLÉTER!!!)<br>
-        <span style="font-weight: bold;">But :</span> mise en contexte, description brève, préconditions
-        nécessaires.<br>
-        <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
-        d'entammer le scéanrio principal.<br>
-        <span style="font-weight: bold;">Acteurs :</span> Acteur 1 (principal), Acteur 2
-        (secondaire).<br>
-        <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-        ordonnée numériquement<br>
-        1. Étape 1<br>
-        &emsp;1.1. Étape 1.1<br>
-        2. Étape 2<br>
-        3. Étape 3<br>
-        <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
-        principal, alternatives possibles à certaines étapes<br>
-        1a.1. remplace étape 1 du scenario principal<br>
-        1b.1. autre remplacement de la même étape<br>
-        1b.2. suit 1b.1 indépendamment du scénario principal<br>
-        <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
-        principal achève avec succès.<br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> S’inscrire à une activité.<br>
+        <span style="font-weight: bold;">But :</span> Inscription à une activité.<br>
+        <span style="font-weight: bold;">Préconditions :</span> Le client a un compte robotix et un robot pouvant
+        effectuer les tâches/actions requises.<br>
+        <span style="font-weight: bold;">Acteurs :</span> Client (principal), Système (secondaire).<br>
+        <span style="font-weight: bold;">Scénario principal :</span>
+        1. Le client se connecte à son compte.<br>
+        2. Du menu principal, il accède au menu des activités.<br>
+        3. Du menu des activités, il sélectionne “Rechercher une activité”.<br>
+        4. Les activités disponibles s’affichent.<br>
+        &emsp;4.1 Filtrage par nom.<br>
+        &emsp;4.2 Filtrage par date.<br>
+        &emsp;4.3 Filtrage par popularité.<br>
+        &emsp;4.3 Filtrage par ”Avoir un robot conforme”.<br>
+        5. La fiche complète de l’activité sélectionnée est affichée.<br>
+        6. L'utilisateur sélectionne “S’inscrire”.<br>
+        7. L'utilisateur sélectionne son ou ses robots participants.<br>
+        <br>
+        <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+        1.a L’utilisateur ne possède pas un robot conforme à l’activité.<br>
+        1.a.1. Débute à l’étape 5 du scenario principal. <br>
+        1.a.2. L'utilisateur sélectionne “S’inscrire”.<br>
+        1.a.3. Un message d’erreur s’affiche avertissant qu’aucun robot conforme n’est disponible.<br>
+        1.a.4. Retour à l’étape 5 du scenario principal.<br>
+        <br>
+        <span style="font-weight: bold;">Postconditions :</span> L’utilisateur figure maintenant parmi les participants de la fiche complète de l’activité.<br>
+        L’activité est maintenant visible dans le menu “Activités” de l’utilisateur.<br>
     </p>
     </div>
-    <div class="cas-utilisation">
+    <div class="vertical-box">
 
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Gestion des tâches <br>
@@ -538,7 +573,7 @@
 
     </p>
     </div>
-    <div class="cas-utilisation">
+    <div class="vertical-box">
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Afficher l'état de mes robots <br>
         <span style="font-weight: bold;">But :</span> L'utilisateur souhaite connaitre l'état de ses robots (vitesse, niveau de batterie, consommation CPU et mémoire et son usage).<br>
@@ -568,7 +603,7 @@
         <span style="font-weight: bold;">Postconditions :</span> L'utilisateur a consulté l'état de ses robots, rien n'est changé dans le système.<br>
     </p>
     </div>
-    <div class="cas-utilisation">
+    <div class="vertical-box">
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Afficher les métriques de ma flotte <br>
         <span style="font-weight: bold;">But :</span> L'utilisateur souhaite consulter les métriques de sa flotte (nombre de robots disponibles, état général, utilisation globale).<br>
@@ -598,7 +633,7 @@
         <span style="font-weight: bold;">Postconditions :</span> L'utilisateur a consulté les métriques de sa flotte, rien n'est changé dans le système.<br>
     </p>
     </div>
-    <div class="cas-utilisation">
+    <div class="vertical-box">
 
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Voir les activités que je maintiens <br>
@@ -639,7 +674,7 @@
         <span style="font-weight: bold;">Postconditions :</span> Le système a ajouté une activité aux activités en cours de l'utilisateur.<br>
     </p>
     </div>
-    <div class="cas-utilisation">
+    <div class="vertical-box">
 
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span>Trouver un fournisseur<br>
@@ -676,42 +711,38 @@
         Identifiez 5 risques potentiels du projet et classez-les par ORDRE DE SEVERITE (voir la page 28 dans les diapositives des exigences (Chapitre 7) des notes de cours et page 90 du livre).
     </p>
     <ol>
-
-        <li>
-            <span style="font-weight: bold;">Ne pas répondre correctement aux exigences:</span>
+        <div class="vertical-box">
+            <span style="font-weight: bold;">1. Ne pas répondre correctement aux exigences:</span>
             risque que le logiciel ne réponde pas à 100% aux exigences des clients à une estimation non précise de celles-ci.
 
             Par exemple, il se peut que la manière dont a été implémentée la gestion des tâches ne permet pas d’assigner directement les tâches aux robots.
 
-        </li>
-
-        <li>
-            <span style="font-weight: bold;">mauvaise structure générale:</span> La structure générale du logiciel peut ne pas être robuste ce qui entraîne
+        </div>
+        <div class="vertical-box">
+            <span style="font-weight: bold;">2. mauvaise structure générale:</span> La structure générale du logiciel peut ne pas être robuste ce qui entraîne
             immédiatement beaucoup de problèmes si jamais on souhaite ajouter de nouvelles fonctionnalités au logiciel.
 
             Par exemple, si nous avons codé toutes les tâches de Robotix (mais suivant une faible architecture) et qu’on souhaite ajouter la gestion des tâches,
             il faudra redésigner toute la structure du logiciel ce qui peut être très indésirable.
 
-        </li>
-
-        <li>
-            <span style="font-weight: bold;">risques techniques:</span> isque en lien avec la présence de code de moindre qualité qui comporte des erreurs de logique ou qui est souvent sujet à des bugs.
+        </div>
+        <div class="vertical-box">
+            <span style="font-weight: bold;">3. risques techniques:</span> isque en lien avec la présence de code de moindre qualité qui comporte des erreurs de logique ou qui est souvent sujet à des bugs.
 
             Par exemple, le logiciel peut planter lors de gestion de robot en raison d’un bug/erreur de logique.
             Le logiciel peut aussi prendre beaucoup trop de temps pour réaliser une tâche dû à un code de mauvaise qualité ou encore montrer les mauvaises informations concernant le fournisseur ou les composantes.
 
-        </li>
-
-        <li>
-            <span style="font-weight: bold;">problèmes d'organisation:</span> - problèmes de budget, problèmes en lien avec le respect des deadlines ou encore des problèmes
+        </div>
+        <div class="vertical-box">
+            <span style="font-weight: bold;">4. problèmes d'organisation:</span> - problèmes de budget, problèmes en lien avec le respect des deadlines ou encore des problèmes
             de communication entre les développeurs qui peuvent retarder le projet et éventuellement mener à un mauvais respect des exigences et a du code de moindre qualité.
 
-        </li>
-
-        <li>
-            <span style="font-weight: bold;">Risques externes:</span> risques peu probables d'événements externes tels que des  phénomènes physiques qui peuvent retarder le développement.
+        </div>
+        <div class="vertical-box">
+            <span style="font-weight: bold;">5. Risques externes:</span> risques peu probables d'événements externes tels que des  phénomènes physiques qui peuvent retarder le développement.
             par exemple des catastrophes naturelles ou des affaires personnelles de certains développeurs qui ralentissaient.
-        </li>
+            </div>
+
     </ol>
 </div>
 
