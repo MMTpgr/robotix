@@ -112,8 +112,8 @@
     <h2>Information générale</h2>
     <p><span class="Graffiti">Codesniffers123</span></p>
     <p class="link-center">
-        <a href="https://www.github.com/username/project-name">Lien vers dépôt GitHub</a><br>
-        <a href="example.vpp">Lien vers fichiers Visual Paradigm</a>
+        <a href="https://github.com/JojoBoulais/Codesniffers123">Lien vers dépôt GitHub</a><br>
+        <a href="codesniffers_CUs.vpp">Lien vers fichier Visual Paradigm</a>
     </p>
 
     <div class="team-info">
@@ -137,7 +137,7 @@
         </div>
         <div class="team-member">
             <p><span class="bold">Nom:</span><br>Mohamed Mehdi Tagmouti</p>
-            <p><span class="bold">Matricule:</span><br>#20..</p>
+            <p><span class="bold">Matricule:</span><br>#20265289</p>
             <p><span class="bold">Courriel:</span><br>mohammed.mehdi.tagmouti@umontreal.ca</p>
             <p><span class="bold">Temps mis:</span><br>x heures</p>
         </div>
@@ -280,10 +280,12 @@
     <h2>
         Hypothèses (5%)</h2>
     <p>
-        Hypothèse de l'équipe sur la réalisation du travail : ???
+        Hypothèse de l'équipe sur la réalisation du travail :
     </p>
     <div class="vertical-box">
-        <dd>J'ai supposé que... À FAIRE!!!</dd>
+        <dd>Nous avons supposé qu'il serait plus simple se diviser les tâches équitablement, avancer individuellement chacune de nos parties assignées.<br>
+            Ensuite avoir une étape où chaque membre de l'équipe "review" et commente le travail global pour finalement adresser ces changements et uniformiser le tout dans une dernière étape.<br>
+</dd>
     </div>
 </div>
 
@@ -359,8 +361,7 @@
         Identification des différents cas d'utilisation du système à l'aide d'un diagramme de cas d'utilisations UML.
     </p>
     <ul>
-        <li>Voici un <a href="file1.txt">lien</a> vers le fichier.</li>
-        <li>(IMAGE) AFFICHER IMAGE DU GRAPH</li>
+        <img src="robotix_CUs.jpg">
     </ul>
 </div>
 
@@ -368,11 +369,13 @@
     <h2>
         3. Cas d'utilisation (50%)</h2>
     <p>
+        Pour les cas d'utilisions, nous avons d'abord établi un diagramme de classe (Menus uniquement) afin que ceux-ci presente une
+        cohérence pour la navigation des menus.<br><br>
+        <img src="robotix_menus.jpg"><br><br>
         Voici nos 10 cas d'utilisations : <br>
-        ATTENTION : Dans vos descriptions, vous devez avoir au minimum un cas d'utilisation par rôle (utilisateur et fournisseur).
     <p>
     <div class="vertical-box">
-        <span style="font-weight: bold;">Cas d'utilisation :</span> S'inscrire comme utilisateur/fournisseur.<br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> S'inscrire comme utilisateur.<br>
         <span style="font-weight: bold;">But :</span> Une personne souhaite s’inscrire en tant qu’utilisateur de robotix.<br>
         <span style="font-weight: bold;">Préconditions :</span>  Le client fournit son nom, son prénom, son pseudo (qui doit être unique), son adresse courriel et son numéro de téléphone ainsi que le nom de la compagnie pour mieux le rediriger.
         <br>
@@ -380,24 +383,47 @@
         <br>
         <span style="font-weight: bold;">Scénario principal :</span><br>
         1. Le client se rend sur l’interface du logiciel pour s’inscrire<br>
-        2. l’Agent lui demande ses informations (nom,tel, etc…) selon s'il est un fournisseur ou client<br>
-        3. Le client entre ses données dans le système.<br>
-        4. Le système valide les informations <br>
-        5. Le système exige que le client lise et signe les conditions d’utilisations <br>
-        6. Le système confirme la création du compte auprès du client <br>
-        &nbsp&nbsp 6.1 Le client peut entrer en tant qu’utilisateur. <br>
+        2. Le client selectionne "S'inscrire comme Utilisateur"<br>
+        3. l’interface lui demande ses informations.<br>
+        4. Le client entre ses données dans le système.<br>
+            &emsp;4.1 Utilisateur rentre son nom.<br>
+            &emsp;4.2 Utilisateur rentre son email.<br>
+            &emsp;4.3 Utilisateur rentre son numero de telephone.<br>
+        5. Le système valide les informations <br>
+        6. Le système exige que le client lise et signe les conditions d’utilisations <br>
+        7. L'utilisateur accepte les conditions d'utilisations. <br>
+        8. Le système confirme la création du compte auprès du client <br>
+        &nbsp&nbsp 8.1 Le client peut entrer en tant qu’utilisateur. <br>
         <br>
         <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
-        1a. Certaines informations sont jugées incorrectes.<br>
-        &nbsp&nbsp 1a.1 .Le système envoie un message d’erreur<br>
-        &nbsp&nbsp 1a.2. Le scénario reprend à l'étape 3.<br>
 
-        2a. Les informations sont correctes mais déjà utilisées par un autre utilisateur<br>
-        &nbsp&nbsp 2.a.1 Le système envoie un message d’erreur<br>
-        &nbsp&nbsp 2.a.2 Le scénario reprend à l'étape 3.<br>
+        2a. S'inscrire comme fournisseur.
+        &emsp;1. Le fournisseur selectionne "S'inscrire comme Fournisseur"<br>
+        &emsp;2. l’interface lui demande ses informations.<br>
+        &emsp;3. Le fournisseur entre ses données dans le système.<br>
+        &emsp;&emsp;4.1 Fournisseur rentre son nom.<br>
+        &emsp;&emsp;4.2 Fournisseur rentre son email.<br>
+        &emsp;&emsp;4.3 Fournisseur rentre le nom de la compagnie.<br>
+        &emsp;&emsp;4.4 Fournisseur rentre email de la compagnie.<br>
+        &emsp;&emsp;4.5 Fournisseur rentre son numero de telephone.<br>
+        &emsp;&emsp;4.6 Fournisseur rentre numero de telephone de la compagnie.<br>
+        &emsp;&emsp;4.7 Fournisseur rentre capacité de fabrication.<br>
+        &emsp;5. Le système valide les informations <br>
+        &emsp;6. Le système exige que le client lise et signe les conditions d’utilisations <br>
+        &emsp;7. L'utilisateur accepte les conditions d'utilisations. <br>
+        &emsp;8. Le système confirme la création du compte auprès du client <br>
+        &emsp;&emsp;8.1 Le client peut entrer en tant qu’utilisateur. <br>
 
-        3a. Le client refuse de signer les conditions d'utilisations<br>
-        &nbsp&nbsp 3.a.1  Le scénario se termine.<br>
+        4a. Certaines informations sont jugées incorrectes.<br>
+        &nbsp&nbsp 1 .Le système envoie un message d’erreur<br>
+        &nbsp&nbsp 2. Le scénario reprend à l'étape 3.<br>
+
+        4b. Les informations sont correctes mais déjà utilisées par un autre utilisateur<br>
+        &emsp;1. Le système envoie un message d’erreur<br>
+        &emsp;2. Le scénario reprend à l'étape 3.<br>
+
+        6a. Le client refuse de signer les conditions d'utilisations<br>
+        &emsp;1.  Le scénario se termine.<br>
         <br>
         <span style="font-weight: bold;">Postconditions :</span> Le système traite les besoins de l’utilisateur tant qu’il respecte les conditions d’utilisations.<br>
         </p>
@@ -406,8 +432,14 @@
         <p>
             <span style="font-weight: bold;">Cas d'utilisation :</span> Enregistrer un robot.<br>
             <span style="font-weight: bold;">But :</span> L'utilisateur souhaite ajouter un robot à sa flotte. <br>
-            <span style="font-weight: bold;">Préconditions :</span>  Le client a un compte robotix, possède le numéro de série, le nom et le type du robot.<br>
-            <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Fournisseur (secondaire) POURQUOI PAS SYSTÈME?.<br>
+            <span style="font-weight: bold;">Préconditions :
+                <ul>
+            <li>L'utilisateur est authentifié chez Robotix en utilisant son courriel et mot de passe.</li>
+            <li>Le compte de l'utilisateur ne peut être suspendu.</li>
+            <li>L'utilisateur possède le numéro de série, le nom et le type du robot.</li>
+                <li>L'utilisateur possède au moins un CPU.</li>
+        </ul>
+            <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Fournisseur, Système (secondaire).<br>
             <br>
             <span style="font-weight: bold;">Scénario principal :</span>
             1. Le client se connecte à son compte <br>
@@ -421,15 +453,15 @@
             <br>
             <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
             1a. L’utilisateur se trompe dans l'entrée du numéro de série du robot.<br>
-            &nbsp&nbsp 1a.1. Le système envoie un message d’erreur<br>
-            &nbsp&nbsp 1a.2. Le scénario reprend à l'étape 3.<br>
+            &nbsp&nbsp 1. Le système envoie un message d’erreur<br>
+            &nbsp&nbsp 2. Le scénario reprend à l'étape 3.<br>
 
             2a. Le nom du robot et le type du robot (qui servent d’identifiant) sont déjà utilisés.<br>
-            &nbsp&nbsp 2a.1. Le système envoie un message d’erreur<br>
-            &nbsp&nbsp 2a.2. Le scénario reprend à l'étape 3.<br>
+            &nbsp&nbsp 1. Le système envoie un message d’erreur<br>
+            &nbsp&nbsp 2. Le scénario reprend à l'étape 3.<br>
 
             3a. Le client n’a pas de compte Robotix<br>
-            &nbsp&nbsp 3a.a Le scénario se termine<br>
+            &nbsp&nbsp 1. Le scénario se termine<br>
             <br>
             <span style="font-weight: bold;">Postconditions :</span> Le système effectue toute les opérations demandées par l’utilisateur en lien avec le robot.<br>
         </p>
@@ -438,12 +470,17 @@
         <p>
             <span style="font-weight: bold;">Cas d'utilisation :</span> Acheter des composantes.<br>
             <span style="font-weight: bold;">But :</span> Un utilisateur souhaite acheter les composantes d’un robot .<br>
-            <span style="font-weight: bold;">Préconditions :</span>  Le client doit avoir un compte, l’argent nécessaire pour acheter une composante et doit acheter au moins un CPU et une autre composante quelconque.<br>
+            <span style="font-weight: bold;">Préconditions :
+                            <ul>
+            <li>L'utilisateur est authentifié chez Robotix en utilisant son courriel et mot de passe.</li>
+            <li>Le compte de l'utilisateur ne peut être suspendu.</li>
+            <li>L'utilisateur possède l’argent nécessaire pour acheter une composante.</li>
+        </ul>
             <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), un ou plusieurs fournisseurs (secondaire).<br>
             <br>
             <span style="font-weight: bold;">Scénario principal :</span>
             1. Le client se connecte à son compte<br>
-            2. Le client accède au Marketpllace et sélectionne l'option pour acheter des composantes<br>
+            2. Le client accède au Marketplace et sélectionne l'option pour acheter des composantes<br>
             3. Le client contacte le fournisseur<br>
             &nbsp&nbsp 2.1 l’utilisateur accède aux offres de composantes<br>
             4. Le client achète les composantes qu’il a choisit .<br>
@@ -451,15 +488,74 @@
             6. Le système sauvegarde les nouvelles composantes <br>
             <br>
             <span style="font-weight: bold;">Scénarios alternatifs :</span>
-            1a. L’utilisateur n’a pas assez d’argent pour acheter une composante.<br>
-            &nbsp&nbsp 1a.1 .Le fournisseur envoie un message d’erreur<br>
-            &nbsp&nbsp 1a.2. Le scénario reprend à l'étape 2.1.<br>
-            <br>
-            2a. Le choix des composantes de l’utilisateur est invalide<br>
-            &nbsp&nbsp 2.a.1 CPU n’a pas été choisit ou le choix n’est pas assez varié<br>
-            &nbsp&nbsp 2.a.2 Le scénario reprend à l'étape 2.1.<br>
+            6a. L’utilisateur n’a pas assez d’argent pour acheter une composante.<br>
+            &emsp;1. .Le fournisseur envoie un message d’erreur<br>
+            &emsp;2. Le scénario reprend à l'étape 2.1.<br>
             <br>
             <span style="font-weight: bold;">Postconditions :</span>  Le système a sauvegardé les nouvelles composantes sur le compte de l’utilisateur.<br>
+        </p>
+    </div>
+    <div class="vertical-box">
+        <p>
+            <span style="font-weight: bold;">Cas d'utilisation :</span> Vendre des composantes<br>
+            <span style="font-weight: bold;">But :</span> Ce cas d'utilisation permet à un fournisseur de vendre ses robots et ses pièces en affichant une annonce de vente sur le marché Robotix.<br>
+            <span style="font-weight: bold;">Préconditions :</span>
+            <ul>
+                <li>Le fournisseur est authentifié chez Robotix en utilisant son courriel, mot de passe et le nom de son entreprise.</li>
+                <li>Le compte du fournisseur ne peut être suspendu.</li>
+                <li>Le fournisseur doit avoir des robots ou des pièces en stock avant d'afficher une annonce.</li>
+            </ul>
+            <span style="font-weight: bold;">Acteurs :</span> Fournisseur sur le système Robotix (principal), Système Robotix permettant la vente (secondaire).<br>
+            <br>
+            <span style="font-weight: bold;">Scénario principal :</span><br>
+            1. Le fournisseur accède au système Robotix en utilisant son courriel, mot de passe et le nom de son entreprise.<br>
+            2. Le fournisseur sélectionne l'option "Afficher Marketplace" sur l'écran d'accueil.<br>
+            3. Le système affiche la page d'accueil Marketplace et le menu de l'extension Marketplace Robotix.<br>
+            4. Le fournisseur sélectionne l'option "Vendre" dans l'interface du système.<br>
+            5. Le système affiche le formulaire de création d'annonce sur le marché Robotix avec les champs suivants :<br>
+            &emsp;5.1 Nom du produit.<br>
+            &emsp;5.2 Catégorie.<br>
+            &emsp;5.3 Spécifications (type, couleur, année de fabrication, compatibilité, numéro de série, etc.).<br>
+            &emsp;5.4 Description du produit (500 char. maximum).<br>
+            &emsp;5.5 Quantité en stock.<br>
+            &emsp;5.6 Emplacement du produit.<br>
+            &emsp;5.7 Frais de livraison (si applicable).<br>
+            6. Le fournisseur saisit les informations requises et soumet le formulaire de création d'annonce.<br>
+            7. Le système vérifie les préconditions :<br>
+            &emsp;7.1 Authentification réussie.<br>
+            &emsp;7.2 Compte non suspendu.<br>
+            &emsp;7.3 Quantité en stock non-nulle.<br>
+            8. Si toutes les préconditions sont remplies, le système enregistre l'annonce avec les détails fournis.<br>
+            9. Le système affiche un message de confirmation de la création de l'annonce.<br>
+            <br>
+            <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+            4.a L'utilisateur souhaite plutôt modifier une annonce :<br>
+            &emsp;1. L'utilisateur sélectionne l'option "Modifier une annonce existante" dans l'interface du système.<br>
+            &emsp;2. Le système affiche le formulaire de modification d'annonce sur le marché Robotix avec les mêmes champs :<br>
+            &emsp;&emsp;2.1 Nom du produit.<br>
+            &emsp;&emsp;2.2 Catégorie.<br>
+            &emsp;&emsp;2.3 Spécifications (type, couleur, année de fabrication, compatibilité, numéro de série, etc.).<br>
+            &emsp;&emsp;2.4 Description du produit (500 char. maximum).<br>
+            &emsp;&emsp;2.5 Quantité en stock.<br>
+            &emsp;&emsp;2.6 Emplacement du produit.<br>
+            &emsp;&emsp;2.7 Frais de livraison (si applicable).<br>
+            &emsp;3. L'utilisateur saisit ses nouvelles informations et soumet le formulaire.<br>
+            &emsp;4. Le système vérifie les préconditions :<br>
+            &emsp;&emsp;4.1 Authentification réussie.<br>
+            &emsp;&emsp;4.2 Compte non suspendu.<br>
+            &emsp;&emsp;4.3 Quantité en stock non-nulle.<br>
+            &emsp;5. Si toutes les préconditions sont remplies, le système enregistre l'annonce avec les nouveaux détails fournis.<br>
+            &emsp;6. Le système affiche un message de confirmation de la modification de l'annonce.<br>
+            <br>
+            7.a Préconditions non respectées.<br>
+            &emsp;1. Le système informe le fournisseur.<br>
+            &emsp;2. Sortie du programme.<br>
+            <br>
+            <span style="font-weight: bold;">Postconditions :</span>
+            <ul>
+                <li>Le système a sauvegardé l'annonce du fournisseur.</li>
+                <li>Le système ajoute l'annonce du fournisseur sur la plateforme pour qu'elle soit visible aux utilisateurs.</li>
+            </ul>
         </p>
     </div>
     <div class="vertical-box">
@@ -471,26 +567,26 @@
             <br>
             <span style="font-weight: bold;">Scénario principal :</span><br>
             1. Le client se connecte à son compte.<br>
-            2. Du menu principal, il accède au menu des actions.<br>
+            2. Du menu principal, il accède selectionne "Afficher les actions".<br>
             3. Il sélectionne l'option "Créer une action".<br>
             4. Le menu de création d'action s'affiche.<br>
             &emsp;4.1 Nommer l'action.<br>
             &emsp;4.2 Spécifier type d'action.<br>
             &emsp;4.3 Assigner robot à l'action.<br>
-            5. L'action est maintenant disponible dans la sélection des actions.<br>
+            5. Retour au menu des actions.<br>
             <br>
             <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
-            1.a Création d'une action via la création ou modification d'une tâche.<br>
-            1.a.1. L'utilisateur accède au menu principal.<br>
-            1.a.2. Via le menu des taches, il crée une nouvelle tâche.<br>
-            1.a.3. Le client sélectionne "Ajouter une action".<br>
-            1.a.4. Le client sélectionne "Créer une action".<br>
-            1.a.5. Le menu de création d'action s'affiche.<br>
-            &emsp;1.a.5.1. Nommer l'action.<br>
-            &emsp;1.a.5.2. Spécifier type d'action.<br>
-            &emsp;1.a.5.3. Assigner robot à l'action.<br>
-            &emsp;1.a.5.4. Enregistrer action pour qu'elle soit disponible lors des sélections.<br>
-            1.a.6. L'action est ajoutée à la tâche sélectionnée.<br>
+            2.a Création d'une action via la création ou modification d'une tâche.<br>
+            &emsp;1. L'utilisateur selectionne "Afficher les taches".<br>
+            &emsp;2. L'utilisateur selectionne "Creer une tache".<br>
+            &emsp;3. Le client sélectionne "Ajouter une action".<br>
+            &emsp;4. Le client sélectionne "Créer une action".<br>
+            &emsp;5. Le menu de création d'action s'affiche.<br>
+            &emsp;&emsp;5.1. Nommer l'action.<br>
+            &emsp;&emsp;5.2. Spécifier type d'action.<br>
+            &emsp;&emsp;5.3. Assigner robot à l'action.<br>
+            &emsp;&emsp;5.4. Enregistrer action pour qu'elle soit disponible lors des sélections.<br>
+            &emsp;1.a.6. L'action est ajoutée à la tâche sélectionnée.<br>
             <br>
             <span style="font-weight: bold;">Postconditions :</span> Une action est enregistrée dans les favoris et/ou ajoutée à la tâche sélectionnée.<br>
         </p>
@@ -587,38 +683,6 @@
         </ul>
         </p>
     </div>
-
-    <div class="vertical-box">
-        <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> Afficher l'état de mes robots<br>
-            <span style="font-weight: bold;">But :</span> Ce cas d'utilisation permet à l'utilisateur de connaître l'état de ses robots (vitesse, niveau de batterie, consommation CPU et mémoire, et son usage).<br>
-            <span style="font-weight: bold;">Préconditions :</span>
-        <ul>
-            <li>L'utilisateur est authentifié chez Robotix en utilisant son courriel et mot de passe.</li>
-            <li>Le compte de l'utilisateur ne peut être suspendu.</li>
-            <li>L'utilisateur doit avoir au moins un robot dans sa flotte.</li>
-        </ul>
-        <span style="font-weight: bold;">Acteurs :</span> Utilisateur du système Robotix (principal), Système Robotix permettant la consultation (secondaire).<br>
-        <br>
-        <span style="font-weight: bold;">Scénario principal :</span><br>
-        1. L'utilisateur accède au système Robotix en utilisant son courriel et mot de passe.<br>
-        2. L'utilisateur sélectionne l'option "Afficher ma flotte" sur l'écran d'accueil.<br>
-        3. Le système affiche la liste des robots de l'utilisateur ainsi que le menu de la flotte.<br>
-        4. L'utilisateur sélectionne l'option "Afficher l'état de mes robots" sur le menu de la flotte.<br>
-        5. Le système affiche l'état des robots de l'utilisateur (vitesse, niveau de batterie, consommation CPU et mémoire, et son usage).<br>
-        <br>
-        <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
-        5.a L'utilisateur souhaite consulter l'état d'un robot en particulier :<br>
-        &emsp;1. L'utilisateur sélectionne le robot de son choix.<br>
-        &emsp;2. Le système affiche l'état du robot sélectionné.<br>
-        <br>
-        <span style="font-weight: bold;">Postconditions :</span>
-        <ul>
-            <li>Le système a affiché l'état des robots de l'utilisateur.</li>
-        </ul>
-        </p>
-    </div>
-
     <div class="vertical-box">
         <p>
             <span style="font-weight: bold;">Cas d'utilisation :</span> Afficher les métriques de ma flotte<br>
