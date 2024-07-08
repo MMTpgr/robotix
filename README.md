@@ -47,4 +47,5 @@ Fonctionnalités implémentées:
 - Enregistrer une composante
 
 
-* Instructions pour exécuter et/ou utiliser le prototype
+* Executer le .jar pour executer l'application
+"java -jar /prototype/Codesniffers123.jar"
