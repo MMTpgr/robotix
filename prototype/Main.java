@@ -117,11 +117,12 @@ public class Main {
                 "\t- Bonjour " + user.getUsername() + "!" +
                 "\n\t-\n\t- 1. Voir ma flotte\n\t- 2. Activités\n\t- 3. MarketPlace" +
                 "\n\t- 4. Trouver des intérêts\n\t- 5. Parcourir des utilisateurs" +
+                "\n\t- 6. Se déconnecter" +
                 "\t\n\t( Vos points: " + user.points + " - Votre classement: 1er )" +
                 "\n\t-------------------------");
 
         pick2 = scan2.nextLine();
-        while (Integer.parseInt(pick2) < 1 || Integer.parseInt(pick2) > 5) {
+        while (Integer.parseInt(pick2) < 1 || Integer.parseInt(pick2) > 6) {
             System.out.print("Veuillez entrer un choix valide: ");
             pick2 = scan2.nextLine();
         }
@@ -137,8 +138,12 @@ public class Main {
                 menuMarket(user);
             case 4:
                 menuInterets(user);
-            default:
+            case 5:
                 menuAbonnements(user);
+            case 6:
+            interets.clear();
+            users.clear();
+            main(null);
         }
 
     }
@@ -160,10 +165,12 @@ public class Main {
             System.out.println("\t- " + robot + ": Robot " + etat + "Batterie = " + robot.batterie + "%");
         }
         System.out.println("\t-\n\t-------------------------\n\t- 1. Enregistrer un robot" +
-                "\n\t- 2. Créer une action\n\t- 3. Créer une tâche pour un robot\n");
+                "\n\t- 2. Créer une action\n\t- 3. Créer une tâche pour un robot\n\n" + //
+                                        "\t- 4. Quitter\n");
 
         pick2 = scan2.nextLine();
-        while (!pick2.equals("1") && !pick2.equals("2") && !pick2.equals("3")) {
+        while (!pick2.equals("1") && !pick2.equals("2") && !pick2.equals("3")
+        && !pick2.equals("4")) {
             System.out.print("Veuillez entrer un choix valide: ");
             pick2 = scan2.nextLine();
         }
@@ -179,10 +186,12 @@ public class Main {
                 name = scan2.nextLine();
                 System.out.println("Nouvelle activité créée: " + name + "!!");
                 break;
-            default:
+            case 3:
                 System.out.print("Description de la nouvelle tâche: ");
                 name = scan2.nextLine();
                 System.out.println("Nouvelle tâche créée: " + name + "!!");
+            case 4: 
+                menuPrincipal(user);
         }
         menuPrincipal(user);
 
@@ -201,11 +210,11 @@ public class Main {
             }
             System.out.println();
         }
-        System.out.println("\t-\n\t-------------------------\n\t- 1. S'inscrire à une activité\n" +
-                "\n\t- 2. Organiser une activité\n");
+        System.out.println("\t-\n\t-------------------------\n\t- 1. S'inscrire à une activité" +
+                "\n\t- 2. Organiser une activité\n\t- 3. Quitter");
 
         pick2 = scan2.nextLine();
-        while (!pick2.equals("1") && !pick2.equals("2")) {
+        while (!pick2.equals("1") && !pick2.equals("2") && !pick2.equals("3")) {
             System.out.print("Veuillez entrer un choix valide: ");
             pick2 = scan2.nextLine();
         }
@@ -228,6 +237,8 @@ public class Main {
                 String desc = scan2.nextLine();
                 System.out.println("Nouvel événement créé: " + name + " - " + desc + "!!");
                 break;
+            case 3: 
+                menuPrincipal(user);
         }
         menuPrincipal(user);
 
@@ -244,10 +255,11 @@ public class Main {
 
         System.out.println("\t- 1. Acheter des pièces" +
                 "\n\t- 2. Vendre des pièces\n\t- 3. Voir la liste " +
-                "des fournisseurs\n\t-\n\t-------------------------\n\t");
+                "des fournisseurs\n\t- 4. Quitter\n\t-------------------------\n\t");
 
         pick2 = scan2.nextLine();
-        while (!pick2.equals("1") && !pick2.equals("2") && !pick2.equals("3")) {
+        while (!pick2.equals("1") && !pick2.equals("2") && !pick2.equals("3")
+        && !pick2.equals("4")) {
             System.out.print("Veuillez entrer un choix valide: ");
             pick2 = scan2.nextLine();
         }
@@ -270,7 +282,7 @@ public class Main {
                 String desc = scan2.nextLine();
                 System.out.println("Annonce créée: " + name + " - " + desc + "$ !!");
                 break;
-            default:
+            case 3:
                 String[] fourn = new String[] { "Camfil Coop - 514 872 9308",
                         "Napa Pièces auto - 514 273 5655", "Gsabb11 - 514 999 9999" };
                 for (String act : fourn) {
@@ -278,6 +290,8 @@ public class Main {
                 }
                 System.out.print("Appuyer sur 'entrée' pour quitter' ");
                 String input = scan2.nextLine();
+            case 4:
+                menuPrincipal(user);
         }
         menuPrincipal(user);
 
