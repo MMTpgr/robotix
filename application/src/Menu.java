@@ -1,114 +1,40 @@
-// Prototype du logiciel de gestion des robots.
-// Instructions en lignes de commande
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Classe principale du programme - Sera exécutée par le fichier .jar
- */
-public class Main {
+public class Menu {
 
-    // Les variables initiées ici seront comme une base de données
-    public static ArrayList<Utilisateur> users = new ArrayList<>();
-    public static ArrayList<Interet> interets = new ArrayList<>();
+    // Singleton
+    private static Menu _instance;
 
-    public static void main(String[] args) {
-        try {
-            String pick1;
-            Scanner scan = new Scanner(System.in);
-
-            System.out.println("\t-------------------------\n" +
-                    "\t- RoboTix        " +
-                    "\n\t-\n\t- 1. Se connecter\n\t- 2. S'inscrire\n\t-\n" +
-                    "\t- *CodeSniffers123" + (char) 153 + "*" +
-                    "\n\t-------------------------");
-            pick1 = scan.nextLine();
-
-            while (!pick1.equals("1") && !pick1.equals("2")) {
-                System.out.print("Veuillez entrer un choix valide: ");
-                pick1 = scan.nextLine();
-            }
-
-            String username;
-            String password;
-
-            if (pick1.equals("1")) {
-                System.out.print("Nom d'utilisateur: ");
-                username = scan.nextLine();
-
-                System.out.print("Mot de passe: ");
-                password = scan.nextLine();
-            } else {
-                System.out.print("Choisissez un nom d'utilisateur: ");
-                username = scan.nextLine();
-
-                System.out.print("Choisissez un mot de passe: ");
-                password = scan.nextLine();
-            }
-
-            // Hard-coding quelques robots
-            Robot robot1 = new Robot(new String[] { "Robot 1", "Type 1", "290891" }, 100, false);
-            Robot robot2 = new Robot(new String[] { "Robot 2", "Type 3", "236412" }, 90, false);
-            Robot robot3 = new Robot(new String[] { "Robot 3", "Type 1", "826423" }, 0, true);
-
-            // Hard-coding de 11 utilisateurs bidons
-            ArrayList<Fournisseur> fourn = new ArrayList<>();
-            for (int i = 0; i <= 10; i++) {
-                users.add(new Client("client" + String.valueOf(i), "client" + String.valueOf(i)));
-            }
-            // Le premier aura un suiveur
-            users.get(0).addFollower(users.get(1));
-
-            // Ajout de 6 fournisseurs bidons
-            for (int i = 0; i <= 5; i++) {
-                String identifiant = "fournisseur" + String.valueOf(i);
-                fourn.add(new Fournisseur(identifiant, identifiant));
-            }
-            // Ajout de 5 fournisseurs à l'uilisateur
-            for (Fournisseur fournisseur : fourn) {
-                ((Client) users.get(0)).addFournisseur(fournisseur);
-            }
-
-            // Hard-coding des activités
-            Activite act1 = new Activite("Course de voitures", new Robot[] { robot1, robot3 },
-                    Activite.ETAT.NONDEBUTEE);
-            Activite act2 = new Activite("Trajet en vol", new Robot[] { robot2 }, Activite.ETAT.ENCOURS);
-            Activite act3 = new Activite("Saut en hauteur", new Robot[] { robot2, robot3 }, Activite.ETAT.TERMINEE);
-            Activite act4 = new Activite("Course à obstacle", new Robot[] { robot2 }, Activite.ETAT.TERMINEE);
-            Activite act5 = new Activite("Saut en longueur", new Robot[] { robot1 }, Activite.ETAT.ENCOURS);
-
-            // Hard coding des intérêts
-            interets.add(new Interet("Programmation C++"));
-            interets.add(new Interet("Programmation Java"));
-            interets.add(new Interet("Programmation Python"));
-            interets.add(new Interet("Intelligence Artificielle"));
-            interets.add(new Interet("Aviation"));
-            interets.add(new Interet("Automobile"));
-            interets.add(new Interet("Restauration"));
-            interets.add(new Interet("Éducation"));
-            interets.add(new Interet("Nouveauté"));
-            interets.add(new Interet("Combats de robots"));
-            interets.add(new Interet("Programmation C#"));
-
-            Utilisateur user = new Client(username, password);
-            user.addRobot(robot1);
-            user.addRobot(robot2);
-            user.addRobot(robot3);
-
-            user.addActivite(act1);
-            user.addActivite(act2);
-
-            menuPrincipal(user);
-        } catch (Exception e) {
-            System.out.println("ERREUR de traitement de la demande. Veuillez suivre les indications.\n");
-            interets.clear();
-            users.clear();
-            main(args);
+    public static Menu getInstance(){
+        if (_instance == null){
+            _instance = new Menu();
         }
+        return _instance;
     }
 
-    public static void menuPrincipal(Utilisateur user) {
+    // -------------------------- MAIN MENU --------------------------
+
+
+    public void displayPageStart(){
+
+        // Here we choose between connexion ou inscription
+
+    }
+
+    public void displayPageConnexion(){
+
+    }
+
+    public void displayPageInscriptionClient(){
+
+    }
+
+    public void displayPageInscriptionFournisseur(){
+
+    }
+
+
+    public void displayPagePrincipalClient(Client user) {
 
         String pick2;
         Scanner scan2 = new Scanner(System.in);
@@ -129,26 +55,33 @@ public class Main {
 
         switch (Integer.parseInt(pick2)) {
             case 1:
-                menuFlotte(user);
+                displayPageFlotte(user);
                 break;
             case 2:
-                menuActivite(user);
+                displayPageActivite(user);
                 break;
             case 3:
-                menuMarket(user);
+                displayPageMarket(user);
             case 4:
-                menuInterets(user);
+                displayPageInterets(user);
             case 5:
-                menuAbonnements(user);
+                displayPageAbonnements(user);
             case 6:
-            interets.clear();
-            users.clear();
-            main(null);
+                interets.clear();
+                users.clear();
+                main(null);
         }
 
     }
 
-    public static void menuFlotte(Utilisateur user) {
+
+    public void displayPagePrincipalFournisseur(){
+
+    }
+
+    // -------------------------- ROBOTS --------------------------
+
+    public void displayPageFlotte(Utilisateur user) {
 
         String pick2;
         Scanner scan2 = new Scanner(System.in);
@@ -166,11 +99,11 @@ public class Main {
         }
         System.out.println("\t-\n\t-------------------------\n\t- 1. Enregistrer un robot" +
                 "\n\t- 2. Créer une action\n\t- 3. Créer une tâche pour un robot\n\n" + //
-                                        "\t- 4. Quitter\n");
+                "\t- 4. Quitter\n");
 
         pick2 = scan2.nextLine();
         while (!pick2.equals("1") && !pick2.equals("2") && !pick2.equals("3")
-        && !pick2.equals("4")) {
+                && !pick2.equals("4")) {
             System.out.print("Veuillez entrer un choix valide: ");
             pick2 = scan2.nextLine();
         }
@@ -190,22 +123,34 @@ public class Main {
                 System.out.print("Description de la nouvelle tâche: ");
                 name = scan2.nextLine();
                 System.out.println("Nouvelle tâche créée: " + name + "!!");
-            case 4: 
-                menuPrincipal(user);
+            case 4:
+                displayPagePrincipal(user);
         }
-        menuPrincipal(user);
+        displayPagePrincipal(user);
 
     }
 
-    public static void menuActivite(Utilisateur user) {
+
+    public void displayPageEnregistrerRobot(){
+
+    }
+
+
+    public void displayPageSupprimerRobot(){
+
+    }
+
+    // -------------------------- ACTIVITES --------------------------
+
+    public void displayPageActivite(Utilisateur user) {
 
         String pick2;
         Scanner scan2 = new Scanner(System.in);
 
         System.out.println("\n\nACTIVITÉS: \n");
         for (Activite act : user.activites) {
-            System.out.println("*" + act.desc + "*");
-            for (Robot rob : act.robotsInclus) {
+            System.out.println("*" + act.getDesc() + "*");
+            for (Robot rob : act.getRobotsInclus()) {
                 System.out.println("\t" + rob);
             }
             System.out.println();
@@ -237,14 +182,36 @@ public class Main {
                 String desc = scan2.nextLine();
                 System.out.println("Nouvel événement créé: " + name + " - " + desc + "!!");
                 break;
-            case 3: 
-                menuPrincipal(user);
+            case 3:
+                displayPagePrincipal(user);
         }
-        menuPrincipal(user);
+        displayPagePrincipal(user);
 
     }
 
-    public static void menuMarket(Utilisateur user) {
+
+    public void displayPageInscriptionActivite(Utilisateur user){
+
+        String pick2;
+        Scanner scan2 = new Scanner(System.in);
+
+    }
+
+    public void displayPageFilterActivite(){
+
+    }
+
+
+    public void displayPageFicheActivite(Utilisateur utilisateur, Activite activite){
+
+        String pick2;
+        Scanner scan2 = new Scanner(System.in);
+
+    }
+
+    // -------------------------- MARKETPLACE --------------------------
+
+    public void displayPageMarket(Utilisateur user) {
 
         String pick2;
         Scanner scan2 = new Scanner(System.in);
@@ -259,7 +226,7 @@ public class Main {
 
         pick2 = scan2.nextLine();
         while (!pick2.equals("1") && !pick2.equals("2") && !pick2.equals("3")
-        && !pick2.equals("4")) {
+                && !pick2.equals("4")) {
             System.out.print("Veuillez entrer un choix valide: ");
             pick2 = scan2.nextLine();
         }
@@ -291,13 +258,50 @@ public class Main {
                 System.out.print("Appuyer sur 'entrée' pour quitter' ");
                 String input = scan2.nextLine();
             case 4:
-                menuPrincipal(user);
+                displayPagePrincipal(user);
         }
-        menuPrincipal(user);
+        displayPagePrincipal(user);
 
     }
 
-    public static void menuInterets(Utilisateur user) {
+    public void displayPageFicheFournisseur(){
+
+    }
+
+    public void displayPageRechercherFournisseur() {
+    }
+
+    public void displayPageRechercheComposante(){
+
+    }
+
+    public void displayPageFicheComposante(){
+
+    }
+
+    public void displayPageVendreComposante(){
+
+    }
+
+
+    // -------------------------- UTILISATEURS --------------------------
+
+    public void displayPageFicheUtilisateur(){
+
+    }
+
+    public void displayPageRechercherUtilisateur(){
+
+    }
+
+    public void displayPageModifierSonProfil(){
+
+    }
+
+
+    // -------------------------- INTERETS --------------------------
+
+    public void displayPageInterets(Utilisateur user) {
         System.out.println("\tListe des intérêts:");
         for (Interet interet : interets) {
             System.out.println((interets.indexOf(interet) + 1) + " --- " + interet.nom);
@@ -324,11 +328,11 @@ public class Main {
                 }
             }
         }
-        menuPrincipal(user);
+        displayPagePrincipal(user);
 
     }
 
-    public static void menuAbonnements(Utilisateur user) {
+    public void displayPageAbonnements(Utilisateur user) {
         System.out.println("\tVous pourriez connaître:");
         for (Utilisateur u : users) {
             System.out.println((users.indexOf(u) + 1) + " --- " + u.getUsername());
@@ -350,6 +354,12 @@ public class Main {
                 System.out.println("Vous êtes abonné à: " + users.get(choix - 1).getUsername() + "\n");
             }
         }
-        menuPrincipal(user);
+        displayPagePrincipal(user);
     }
+
+
+    public void displayPageNotifications(){
+
+    }
+
 }
