@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AllActivites>
+
+    <Activite>
+        <name>Nettoyer mon appartement</name>
+
+        <etat>NONDEBUTEE</etat>
+
+        <date>2024-07-28</date>
+
+        <host>Jordan</host>
+
+        <description>My appartment need some love</description>
+
+        <participants>
+            <participant>p1</participant>
+        </participants>
+
+        <taches>
+            <tache>
+                <name>Nettoyer</name>
+
+                <actions>
+                    <action>
+                        <name>balayer</name>
+                        <robot>robot1</robot>
+                        <composantesNecessaires>
+                            <composante>Bras</composante>
+                            <composante>Roue</composante>
+                        </composantesNecessaires>
+                    </action>
+                </actions>
+            </tache>
+        </taches>
+
+        <interets>
+            <interet>Propreter</interet>
+            <interet>Bien etre</interet>
+        </interets>
+    </Activite>
+
+
+</AllActivites>

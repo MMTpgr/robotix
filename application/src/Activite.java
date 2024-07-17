@@ -10,15 +10,14 @@ public class Activite {
     private String desc;
     private int popularite;
     private LinkedList<Tache> taches;
-    private Utilisateur host;
-    private ArrayList<Utilisateur> participants;
+    private String host;
+    private ArrayList<String> participants;
     private ArrayList<Robot> robotsInclus;
     private ArrayList<Interet> interetsConcernes;
     private ETAT etat;
 
-    public Activite(String desc, Robot[] robots, ETAT etat){
+    public Activite(String name, LocalDate date, String desc, String host, ETAT etat){
         this.desc = desc;
-        this.robotsInclus = new ArrayList<>(Arrays.asList(robots));
         this.etat = etat;
 
         // Définir les intérêts concernés de la façon qui sera demandée d'implémenter DM3+...
@@ -121,28 +120,20 @@ public class Activite {
         this.taches = taches;
     }
 
-    public Utilisateur getHost() {
+    public String getHost() {
         return host;
     }
 
-    public void setHost(Utilisateur host) {
+    public void setHost(String host) {
         this.host = host;
     }
 
-    public ArrayList<Utilisateur> getParticipants() {
+    public ArrayList<String> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(ArrayList<Utilisateur> participants) {
+    public void setParticipants(ArrayList<String> participants) {
         this.participants = participants;
-    }
-
-    public ArrayList<Robot> getRobotsInclus() {
-        return robotsInclus;
-    }
-
-    public void setRobotsInclus(ArrayList<Robot> robotsInclus) {
-        this.robotsInclus = robotsInclus;
     }
 
     public ArrayList<Interet> getInteretsConcernes() {
