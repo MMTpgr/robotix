@@ -2,15 +2,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public abstract class Utilisateur {
-    private String username;
-    private String password;
-    private ArrayList<Activite> activites = new ArrayList<>();
-    private ArrayList<Utilisateur> followers = new ArrayList<>();
-    private ArrayList<Interet> interets = new ArrayList<>();
-    private int points;
-    private LocalDate inscription;
-    private ArrayList<Notification> notifications;
-    private ArrayList<Composante> composantes;
+    protected String username;
+    protected String password;
+    protected ArrayList<Activite> activites = new ArrayList<>();
+    protected ArrayList<Utilisateur> followers = new ArrayList<>();
+    protected ArrayList<Interet> interets = new ArrayList<>();
+    protected int points;
+    protected LocalDate inscription;
+    protected ArrayList<Notification> notifications;
+    protected ArrayList<Composante> composantes;
 
     public Utilisateur(String username, String password) {
         this.username = username;

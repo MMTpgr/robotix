@@ -7,16 +7,17 @@ public class Tache {
 
     private Robot robot;
 
-    LinkedList<Action> actions;
+    ArrayList<Action> actions;
 
 
     public Tache(String name){
         this.name = name;
+        this.actions = new ArrayList<>();
     }
 
-    public ArrayList<Composante> getComposantesRequises() {
+    public ArrayList<ComposanteType> getComposantesRequises() {
 
-        ArrayList<Composante> composantesRequise = new ArrayList<>();
+        ArrayList<ComposanteType> composantesRequise = new ArrayList<>();
 
             for (Action action: this.actions){
                 composantesRequise.addAll(action.getComposantesRequises());
@@ -78,11 +79,11 @@ public class Tache {
         this.robot = robot;
     }
 
-    public LinkedList<Action> getActions() {
+    public ArrayList<Action> getActions() {
         return actions;
     }
 
-    public void setActions(LinkedList<Action> actions) {
+    public void setActions(ArrayList<Action> actions) {
         this.actions = actions;
     }
 }

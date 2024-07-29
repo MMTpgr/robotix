@@ -4,13 +4,13 @@ public class Action {
 
     private String name;
     private Robot robotAssignee;
-    private ArrayList<Composante> composantesRequises;
+    private ArrayList<ComposanteType> composantesRequises;
 
     public String getName() {
         return name;
     }
 
-    public Action(String name, ArrayList<Composante> composantesRequises)
+    public Action(String name, ArrayList<ComposanteType> composantesRequises)
     {
         this.name = name;
         this.composantesRequises = composantesRequises;
@@ -29,11 +29,11 @@ public class Action {
         this.robotAssignee = robotAssignee;
     }
 
-    public ArrayList<Composante> getComposantesRequises() {
+    public ArrayList<ComposanteType> getComposantesRequises() {
         return composantesRequises;
     }
 
-    public void setComposantesRequises(ArrayList<Composante> composantesRequises) {
+    public void setComposantesRequises(ArrayList<ComposanteType> composantesRequises) {
         this.composantesRequises = composantesRequises;
     }
 }

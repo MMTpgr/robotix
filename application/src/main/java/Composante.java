@@ -1,4 +1,17 @@
+enum ComposanteType{
+    ROUE,
+    MICRO,
+    ECRAN,
+    HELICE,
+    BRAS,
+    CPU,
+    CAMERA,
+    HAUTPARLEUR
+}
+
 public abstract class Composante {
+
+    private ComposanteType type;
 
     public Composante(){
 
@@ -6,7 +19,6 @@ public abstract class Composante {
 
     protected String[] actionsPossibles;
 
-    private String type;
 
     private float prix;
 
@@ -22,14 +34,6 @@ public abstract class Composante {
 
     public void setActionsPossibles(String[] actionsPossibles) {
         this.actionsPossibles = actionsPossibles;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public float getPrix() {
@@ -54,6 +58,10 @@ public abstract class Composante {
 
     public void setFournisseur(Fournisseur fournisseur) {
         this.fournisseur = fournisseur;
+    }
+
+    public ComposanteType getType(){
+        return this.type;
     }
 
     // -------------------------- UTILS METHODS --------------------------

@@ -2,10 +2,8 @@ import java.util.ArrayList;
 
 public class Fournisseur extends Utilisateur {
 
-    private ArrayList<Composante> composantes;
-
     private int rating;
-    private int vistes;
+    private int visites;
     private int transactions;
     private ArrayList<String> typesComposantes;
 
@@ -14,14 +12,7 @@ public class Fournisseur extends Utilisateur {
     }
 
     // -------------------------- GETTER SETTER --------------------------
-    
-    public ArrayList<Composante> getComposantes() {
-        return composantes;
-    }
 
-    public void setComposantes(ArrayList<Composante> composantes) {
-        this.composantes = composantes;
-    }
 
     public int getRating() {
         return rating;
@@ -31,12 +22,12 @@ public class Fournisseur extends Utilisateur {
         this.rating = rating;
     }
 
-    public int getVistes() {
-        return vistes;
+    public int getVisites() {
+        return visites;
     }
 
     public void setVistes(int vistes) {
-        this.vistes = vistes;
+        this.visites = vistes;
     }
 
     public int getTransactions() {

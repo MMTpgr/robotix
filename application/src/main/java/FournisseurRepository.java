@@ -93,7 +93,7 @@ class RatingComparator implements Comparator<Fournisseur> {
 class VisiteComparator implements Comparator<Fournisseur> {
     @Override
     public int compare(Fournisseur f1, Fournisseur f2) {
-        return Integer.compare(f1.getVistes(), f2.getVistes());
+        return Integer.compare(f1.getVisites(), f2.getVisites());
     }
 }
 

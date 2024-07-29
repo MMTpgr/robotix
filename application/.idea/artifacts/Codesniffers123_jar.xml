@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="Codesniffers123:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Codesniffers123_jar</output-path>
-    <root id="archive" name="Codesniffers123.jar">
-      <element id="module-output" name="Codesniffers123" />
-    </root>
-  </artifact>
-</component>

@@ -1,7 +1,14 @@
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.time.LocalDate;
+
+enum ACTIVITEETAT{
+    NONDEBUTEE,
+    ENCOURS,
+    TERMINEE
+}
+
 
 
 public class Activite {
@@ -9,29 +16,24 @@ public class Activite {
     private LocalDate date;
     private String desc;
     private int popularite;
-    private LinkedList<Tache> taches;
+    private ArrayList<Tache> taches;
     private String host;
     private ArrayList<String> participants;
-    private ArrayList<Robot> robotsInclus;
+    private ArrayList<String> robotsInclus;
     private ArrayList<Interet> interetsConcernes;
-    private ETAT etat;
+    private ACTIVITEETAT etat;
 
-    public Activite(String name, LocalDate date, String desc, String host, ETAT etat){
+    public Activite(String name, LocalDate date, String desc, String host, ACTIVITEETAT etat){
         this.desc = desc;
         this.etat = etat;
-
+        this.taches = new ArrayList<>();
         // Définir les intérêts concernés de la façon qui sera demandée d'implémenter DM3+...
     }
 
-    public enum ETAT{
-        NONDEBUTEE,
-        ENCOURS,
-        TERMINEE
-    }
 
-    public ArrayList<Composante> getComposantesRequises() {
+    public ArrayList<ComposanteType> getComposantesRequises() {
 
-        ArrayList<Composante> composantesRequise = new ArrayList<>();
+        ArrayList<ComposanteType> composantesRequise = new ArrayList<>();
 
         for (Tache tache : this.taches){
             for (Action action: tache.getActions()){
@@ -78,6 +80,50 @@ public class Activite {
         return tache;
     }
 
+    public void addParticipant(Client client, ArrayList<Robot> robots){
+        this.participants.add(client.getUsername());
+
+        ArrayList<String> robotsName = new ArrayList<>();
+
+        for(Robot r : robots){
+            robotsName.add(r.getNom());
+        }
+
+        this.robotsInclus.addAll(robotsName);
+    }
+
+    public void removeParticipant(Client client){
+
+        this.participants.remove(client.getUsername());
+
+        ArrayList<String> robotsName = new ArrayList<>();
+
+        for(Robot r : client.getFlotte().getRobots()){
+            robotsName.add(r.getNom());
+        }
+
+        this.robotsInclus.removeAll(robotsName);
+
+    }
+
+    public static ArrayList<Activite> sortActivites(ArrayList<Activite> from,
+                                                    ActiviteFilter filter){
+
+        ArrayList<Activite> toSort = from;
+
+        // Filtering with Treeset or sort function.
+        if (filter.equals(ActiviteFilter.NOM)) {
+            toSort.sort(new NomComparator());
+        } else if (filter.equals(ActiviteFilter.DATE)) {
+            toSort.sort(new DateComparator());
+        } else if (filter.equals(ActiviteFilter.POPULARITE)) {
+            toSort.sort(new PopulariteComparator());
+        }
+
+        return toSort;
+
+    }
+
 
     // Getter Setter --------------------------
     public String getName() {
@@ -112,11 +158,11 @@ public class Activite {
         this.popularite = popularite;
     }
 
-    public LinkedList<Tache> getTaches() {
+    public ArrayList<Tache> getTaches() {
         return taches;
     }
 
-    public void setTaches(LinkedList<Tache> taches) {
+    public void setTaches(ArrayList<Tache> taches) {
         this.taches = taches;
     }
 
@@ -142,5 +188,34 @@ public class Activite {
 
     public void setInteretsConcernes(ArrayList<Interet> interetsConcernes) {
         this.interetsConcernes = interetsConcernes;
+    }
+
+}
+
+// -------------------------- Filtering --------------------------
+
+enum ActiviteFilter{
+    NOM,
+    DATE,
+    POPULARITE
+}
+
+class NomComparator implements Comparator<Activite> {
+    @Override
+    public int compare(Activite a1, Activite a2) {
+        return a1.getName().compareTo(a2.getName());
+    }
+}
+
+class DateComparator implements Comparator<Activite> {
+    @Override
+    public int compare(Activite a1, Activite a2) {
+        return a1.getDate().compareTo(a2.getDate());
+    }
+}
+class PopulariteComparator implements Comparator<Activite> {
+    @Override
+    public int compare(Activite a1, Activite a2) {
+        return Integer.compare(a1.getPopularite(), a2.getPopularite());
     }
 }
