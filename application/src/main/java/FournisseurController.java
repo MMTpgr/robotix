@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class FournisseurController extends FournisseurRepository {
+public class FournisseurController {
 
     // Singleton
     private static FournisseurController _instance;
@@ -12,7 +12,6 @@ public class FournisseurController extends FournisseurRepository {
         return _instance;
     }
 
-
     public boolean createAccount(ArrayList<String> infos){
 
         boolean succes = true;
@@ -21,6 +20,9 @@ public class FournisseurController extends FournisseurRepository {
         return succes;
     }
 
+    public FournisseurRepository getRepository(){
+        return FournisseurRepository.getInstance();
+    }
 
     public void notifierUtilisateur(Fournisseur fournisseur, Notification notification){
 
@@ -58,7 +60,5 @@ public class FournisseurController extends FournisseurRepository {
     void gererComposantes(ArrayList<String> infos){
         // Do Something
     }
-
-
 
 }

@@ -1,16 +1,30 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public abstract class FournisseurRepository {
+public class FournisseurRepository {
 
-
+    private static FournisseurRepository _instance;
     private String dataFile = "Fournisseurs.json";
-
+    private ArrayList<Fournisseur> fournisseurs;
 
     // -------------------------- GETTER SETTER --------------------------
 
+    // Singleton
+    public static FournisseurRepository getInstance(){
+        if (_instance == null){
+            _instance = new FournisseurRepository();
+        }
+        return _instance;
+    }
 
     // -------------------------- UTILS METHODS --------------------------
+
+    public ArrayList<Fournisseur> getFournisseurs() {
+        if (this.fournisseurs == null){
+            this.parseFournisseurs();
+        }
+        return this.fournisseurs;
+    }
 
     public Fournisseur getFournisseur(String name){
 

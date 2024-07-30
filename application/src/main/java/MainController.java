@@ -3,19 +3,23 @@ import java.util.ArrayList;
 
 public class MainController {
 
-    public ActiviteController activiteController =  ActiviteController.getInstance();
-    public ActiviteRepository activiteRepository = activiteController.getRepository();
-    public ClientController clientController =  ClientController.getInstance();
-    public FournisseurController fournisseurController =  FournisseurController.getInstance();
-    public ComposanteController composanteController =  ComposanteController.getInstance();
-    public FlotteController flotteController = null;
-    public Utilisateur currentUser = null;
+    // -------------------------- Controller and Repositories --------------------------
 
-    public MenuConnexion menu = MenuConnexion.getInstance();
-    public MenuClient menuClient = MenuClient.getInstance();
-
+    private final ActiviteController activiteController =  ActiviteController.getInstance();
+    private final ActiviteRepository activiteRepository = activiteController.getRepository();
+    private final ClientController clientController =  ClientController.getInstance();
+    private final FournisseurController fournisseurController = FournisseurController.getInstance();
+    private final FournisseurRepository fournisseurRepository = fournisseurController.getRepository();
+    private final  ComposanteController composanteController =  ComposanteController.getInstance();
+    private final ComposanteRepository composanteRepository = composanteController.getRepository();
+    private final FlotteController flotteController = null;
+    private final MenuConnexion menu = MenuConnexion.getInstance();
+    private final MenuClient menuClient = MenuClient.getInstance();
 
     // -------------------------- START --------------------------
+
+    private final Utilisateur currentUser = null;
+
     public void start(){
         // Connexion or login here
         //menu.displayPageStart();
@@ -41,13 +45,10 @@ public class MainController {
     }
 
     public void connexionClient(Client client){
-        this.currentUser = client;
-        flotteController = FlotteController.getInstance(client);
+
     }
 
     public void connexionFournisseur(Fournisseur fournisseur){
-
-        this.currentUser = fournisseur;
 
     }
 
@@ -64,8 +65,8 @@ public class MainController {
             case 2:
                 this.menuActivitesPrincipal(client);
                 break;
-//            case 3:
-//                displayPageMarket(user);
+            case 3:
+                menuMarketPlacePrincipal(client);
 //            case 4:
 //                displayPageInterets(user);
 //            case 5:
@@ -77,6 +78,112 @@ public class MainController {
         }
 
     }
+
+
+    // -------------------------- MarketPlace --------------------------
+
+
+    public void menuMarketPlacePrincipal(Client client){
+
+        String pick = menuClient.displayPageMarket(client);
+        ArrayList<Composante> composantes;
+        ArrayList<Fournisseur> fournisseurs;
+
+        switch (pick){
+            case "1":
+                composantes = composanteRepository.getComposantes();
+                this.menuRechercheComposante(client, composantes);
+            case "2":
+                fournisseurs = fournisseurRepository.getFournisseurs();
+                this.menuRechercheFournisseurs(client, fournisseurs);
+            case "-":
+                this.menuPrincipalClient(client);
+        }
+    }
+
+
+    public void menuRechercheComposante(Client client, ArrayList<Composante> composantes){
+
+        String pick = menuClient.displayPageRechercheComposante(composantes);
+
+
+        switch (pick){
+
+            case "!":
+                Composante.filterComposantes(composantes, ComposanteFilter.NAME);
+                this.menuRechercheComposante(client, composantes);
+            case "#":
+                Composante.filterComposantes(composantes, ComposanteFilter.TYPE);
+                this.menuRechercheComposante(client, composantes);
+            case "*":
+                Composante.filterComposantes(composantes, ComposanteFilter.FOURNISSEUR);
+                this.menuRechercheComposante(client, composantes);
+            case "-":
+                return;
+            default:
+                Composante choosenComposante = composantes.get(Integer.parseInt(pick)-1);
+
+                // For now checking if this is a sold composante with composante.getFournisseur()
+                if (choosenComposante.getFournisseur() == null){
+                    this.menuFicheComposante(choosenComposante);
+                } else {
+                    this.menuFicheAchatComposante(choosenComposante);
+                }
+                menuRechercheComposante(client, composantes);
+        }
+
+    }
+
+    public void menuFicheComposante(Composante composante){
+        menuClient.displayPageFicheComposante(composante);
+    }
+
+    public void menuFicheAchatComposante(Composante composante){
+
+        String pick = menuClient.displayPageFicheAchatComposante(composante);
+
+        switch (pick){
+            case "+":
+                // Achat Composante here
+            case "-":
+                return;
+        }
+    }
+
+    public void menuRechercheFournisseurs(Client client, ArrayList<Fournisseur> fournisseurs){
+
+        String pick = menuClient.displayPageRechercherFournisseur(fournisseurs);
+
+        switch (pick){
+
+            case "!":
+                Fournisseur.filterFournisseurs(fournisseurs, FournisseurFilter.NOM);
+                menuRechercheFournisseurs(client, fournisseurs);
+            case "#":
+                Fournisseur.filterFournisseurs(fournisseurs, FournisseurFilter.TYPECOMPOSANTES);
+                menuRechercheFournisseurs(client, fournisseurs);
+            case "-":
+                return;
+            default:
+                Fournisseur choosenFournisseur = fournisseurs.get(Integer.parseInt(pick));
+                this.menuFicheFournisseur(client, choosenFournisseur);
+                menuRechercheFournisseurs(client,  fournisseurs);
+        }
+    }
+
+
+    public void menuFicheFournisseur(Client client, Fournisseur fournisseur){
+
+        String pick = menuClient.displayPageFicheFournisseur(fournisseur);
+
+        switch (pick) {
+            case "+":
+                this.menuRechercheComposante(client, fournisseur.getComposantes());
+                this.menuFicheFournisseur(client, fournisseur);
+            case "-":
+        }
+    }
+
 
 
     // -------------------------- Activite --------------------------
@@ -93,7 +200,7 @@ public class MainController {
             case "2":
                 this.menuRechercheActivites(client,
                         activiteRepository.getActivites());
-            case "3":
+            case "-":
                 this.menuPrincipalClient(client);
         }
         }
@@ -101,7 +208,6 @@ public class MainController {
 
         public void menuRechercheActivites(Client client, ArrayList<Activite> activites){
 
-        ArrayList<Activite> sortedActivites;
         String pick;
 
         pick = menuClient.displayPageRechercheActivite(activites);
@@ -159,8 +265,7 @@ public class MainController {
                     MenuFicheActivite(client, activite, false);
                 }
             }
-        case "2":
-            return;
+        case "-":
         }
     }
 

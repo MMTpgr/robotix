@@ -1,16 +1,33 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public abstract class ComposanteRepository {
+public class ComposanteRepository {
 
+    private static ComposanteRepository _instance;
 
     private String dataFile = "Composantes.json";
 
+    private ArrayList<Composante> composantes;
 
     // -------------------------- GETTER SETTER --------------------------
 
+    // Singleton
+    public static ComposanteRepository getInstance(){
+        if (_instance == null){
+            _instance = new ComposanteRepository();
+        }
+        return _instance;
+    }
+
 
     // -------------------------- UTILS METHODS --------------------------
+
+    public ArrayList<Composante> getComposantes() {
+        if (this.composantes == null){
+            this.parseComposantes();
+        }
+        return this.composantes;
+    }
 
     public Composante getComposante(String name){
 

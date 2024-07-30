@@ -10,7 +10,9 @@ public class ComposanteController {
         }
         return _instance;
     }
-    
 
+    public ComposanteRepository getRepository(){
+        return ComposanteRepository.getInstance();
+    }
 
 }

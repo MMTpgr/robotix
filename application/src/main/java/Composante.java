@@ -14,7 +14,7 @@ enum ComposanteType{
 
 public abstract class Composante {
 
-    private ComposanteType type;
+    protected ComposanteType type;
 
     public Composante(){
 
@@ -25,9 +25,11 @@ public abstract class Composante {
 
     private float prix;
 
-    private String id;
+    protected String id;
 
-    private Fournisseur fournisseur;
+    protected Fournisseur fournisseur;
+
+    protected String nom;
 
     // -------------------------- GETTER SETTER --------------------------
 
@@ -67,14 +69,26 @@ public abstract class Composante {
         return this.type;
     }
 
+    public void setType(ComposanteType type) {
+        this.type = type;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
     // -------------------------- UTILS METHODS --------------------------
 
 
     public static  void filterComposantes (ArrayList<Composante> toSort, ComposanteFilter filter){
 
         // Filtering with Treeset or sort function.
-        if (filter.equals(ComposanteFilter.PRIX)){
-            toSort.sort(new PrixComparator());
+        if (filter.equals(ComposanteFilter.NAME)){
+            toSort.sort(new NameComparator());
         } else if (filter.equals(ComposanteFilter.TYPE)) {
             toSort.sort(new TypeComparator());
         }else if (filter.equals(ComposanteFilter.FOURNISSEUR)) {
@@ -89,15 +103,15 @@ public abstract class Composante {
 // -------------------------- Filtering --------------------------
 
 enum ComposanteFilter{
-    PRIX,
+    NAME,
     TYPE,
     FOURNISSEUR
 }
 
-class PrixComparator implements Comparator<Composante> {
+class NameComparator implements Comparator<Composante> {
     @Override
     public int compare(Composante c1, Composante c2) {
-        return Float.compare(c1.getPrix(), c2.getPrix());
+        return c1.getNom().compareTo(c2.getNom());
     }
 }
 
