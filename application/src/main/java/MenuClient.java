@@ -20,16 +20,19 @@ public class MenuClient extends MenuUtilisateur{
         String pick;
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("\n\n\t-------------------------\n" +
-                "\t- Bonjour " + user.getUsername() + "!" +
-                "\n\t-\n\t- 1. Voir ma flotte\n\t- 2. Activités\n\t- 3. MarketPlace" +
-                "\n\t- 4. Trouver des intérêts\n\t- 5. Parcourir des utilisateurs" +
-                "\n\t- 6. Se déconnecter" +
-                "\t\n\t( Vos points: " + user.points + " - Votre classement: 1er )" +
-                "\n\t-------------------------");
+        System.out.println("-------------------------");
+        System.out.println("Bonjour " + user.getUsername() + "!");
+        System.out.println("1 : Voir ma flotte");
+        System.out.println("2 : Activités");
+        System.out.println("3 : MarketPlace");
+        System.out.println("4 : Trouver des intérêts");
+        System.out.println("5 : Parcourir des utilisateurs");
+        System.out.println("- : Quitter");
+
+        ArrayList<String> validStrings = new ArrayList<>(Arrays.asList("-"));
 
         pick = scan.nextLine();
-        while (Integer.parseInt(pick) < 1 || Integer.parseInt(pick) > 6) {
+        while (!_pickIsValid(pick, validStrings, 5)) {
             System.out.print("Veuillez entrer un choix valide: ");
             pick = scan.nextLine();
         }
@@ -61,7 +64,7 @@ public class MenuClient extends MenuUtilisateur{
         System.out.println("-------------------------");
         System.out.println("1 : Mes activités");
         System.out.println("2 : Rechercher une activité");
-        System.out.println("'-' : Quitter");
+        System.out.println("- : Quitter");
 
         ArrayList<String> validStrings = new ArrayList<>(Arrays.asList("-"));
 
@@ -81,10 +84,10 @@ public class MenuClient extends MenuUtilisateur{
         int activiteIndex = 0;
 
         System.out.println("-------------------------");
-        System.out.println("'!' : Filter by Name");
-        System.out.println("'#' : Filter by Date");
-        System.out.println("'*' : Filter by Popularite");
-        System.out.println("'-' : Quitter");
+        System.out.println("! : Filter by Name");
+        System.out.println("# : Filter by Date");
+        System.out.println("* : Filter by Popularite");
+        System.out.println("- : Quitter");
         System.out.println();
         for (Activite activite : activites){
             activiteIndex += 1;
@@ -139,7 +142,7 @@ public class MenuClient extends MenuUtilisateur{
         } else {
             System.out.println("1 : Inscription");
         }
-        System.out.println("'-' : Quitter");
+        System.out.println("- : Quitter");
 
         String pick;
         Scanner scan = new Scanner(System.in);
@@ -178,7 +181,7 @@ public class MenuClient extends MenuUtilisateur{
         System.out.println("-------------------------");
         System.out.println("1 : Rechercher une Composante");
         System.out.println("2 : Rechercher un Fournisseur");
-        System.out.println("'-' : Quitter");
+        System.out.println("- : Quitter");
 
         ArrayList<String> validStrings = new ArrayList<>(Arrays.asList("-"));
 
@@ -203,8 +206,8 @@ public class MenuClient extends MenuUtilisateur{
         }
 
         System.out.println("-------------------------");
-        System.out.println("'+' : Afficher Ses Composantes");
-        System.out.println("'-' : Quitter");
+        System.out.println("+ : Afficher Ses Composantes");
+        System.out.println("- : Quitter");
         System.out.println();
         System.out.println("Nom: " + fournisseur.getUsername());
         System.out.println("Visites: " + fournisseur.getVisites());
@@ -229,9 +232,9 @@ public class MenuClient extends MenuUtilisateur{
         int maxIndex = fournisseurs.size();
 
         System.out.println("-------------------------");
-        System.out.println("'!' : Filter by Name");
-        System.out.println("'#' : Filter by Type de Composantes");
-        System.out.println("'-' : Quitter");
+        System.out.println("! : Filter by Name");
+        System.out.println("# : Filter by Type de Composantes");
+        System.out.println("- : Quitter");
         System.out.println();
         int index = 1;
         String composantes;
@@ -263,10 +266,10 @@ public class MenuClient extends MenuUtilisateur{
         int maxIndex = composantes.size();
 
         System.out.println("-------------------------");
-        System.out.println("'!' : Filter by Name");
-        System.out.println("'#' : Filter by Type");
-        System.out.println("'*' : Filter by Fournisseur");
-        System.out.println("'-' : Quitter");
+        System.out.println("! : Filter by Name");
+        System.out.println("# : Filter by Type");
+        System.out.println("* : Filter by Fournisseur");
+        System.out.println("- : Quitter");
         System.out.println();
         int index = 1;
         for(Composante composante : composantes){
@@ -292,7 +295,7 @@ public class MenuClient extends MenuUtilisateur{
         Scanner scan = new Scanner(System.in);
 
         System.out.println("-------------------------");
-        System.out.println("'-' : Quitter");
+        System.out.println("- : Quitter");
         System.out.println();
         System.out.println("Nom: " + composante.getNom());
         System.out.println("Type: " + composante.getType());
@@ -317,8 +320,8 @@ public class MenuClient extends MenuUtilisateur{
         Scanner scan = new Scanner(System.in);
 
         System.out.println("-------------------------");
-        System.out.println("'+' : Acheter");
-        System.out.println("'-' : Quitter");
+        System.out.println("+ : Acheter");
+        System.out.println("- : Quitter");
         System.out.println();
         System.out.println("Nom: " + composante.getNom());
         System.out.println("Type: " + composante.getType());
