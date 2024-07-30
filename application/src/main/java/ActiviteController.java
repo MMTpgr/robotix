@@ -55,7 +55,7 @@ public class ActiviteController{
     }
 
 
-    public void DesinscriptionUtilisateur(Client client, Activite activite){
+    public void desinscriptionUtilisateur(Client client, Activite activite){
 
         activite.getParticipants().remove(client.getUsername());
         client.getActivites().remove(activite);

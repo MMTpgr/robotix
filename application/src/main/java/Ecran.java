@@ -1,5 +1,5 @@
 public class Ecran extends Composante{
-    private ComposanteType type = ComposanteType.ECRAN;
+    protected ComposanteType type = ComposanteType.ECRAN;
     public Ecran(){
         this.actionsPossibles = new String[]{"Afficher"};
     }

@@ -40,21 +40,12 @@ public class FournisseurController {
         // Do Something
     }
 
-    public void gererFollowers(ArrayList<String> infos){
+    public void registerComposante(Fournisseur fournisseur, Composante composante){
 
-        // Do Something
     }
 
-    public void followUtilisateur(Utilisateur utilisateur){
-        // Do Something
-    }
+    public void supprimerComposante(){
 
-    public void showNotifications(Utilisateur utilisateur){
-        // Do Something
-    }
-
-    public void registerComposante(Composante composante){
-        // Do Something
     }
 
     void gererComposantes(ArrayList<String> infos){

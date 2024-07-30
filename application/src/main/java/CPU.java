@@ -1,4 +1,5 @@
 public class CPU extends Composante{
-    private ComposanteType type = ComposanteType.CPU;
-    public CPU(){ }
+    public CPU(){
+        this.type = ComposanteType.CPU;
+    }
 }

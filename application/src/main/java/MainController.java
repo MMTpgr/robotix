@@ -253,7 +253,7 @@ public class MainController {
         switch (pick){
         case "1":
             if (alreadySubscribed){
-                activiteController.DesinscriptionUtilisateur(client, activite);
+                activiteController.desinscriptionUtilisateur(client, activite);
                 MenuFicheActivite(client, activite, false);
             } else {
                 boolean succes = activiteController.inscriptionUtilisateur(client, activite);

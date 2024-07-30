@@ -12,6 +12,8 @@ public class Flotte {
         return robots;
     }
 
+    public void addRobot(Robot robot) {this.robots.add(robot);}
+
     public void setRobots(ArrayList<Robot> robots) {
         this.robots = robots;
     }

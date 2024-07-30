@@ -28,11 +28,6 @@ public class Client extends Utilisateur {
     }
 
     // -------------------------- UTILS METHODS --------------------------
-    
-    public void addFournisseur(Fournisseur fourn){
-        this.fournisseurs.add(fourn);
-    }
-
 
     public static void filterClient (ArrayList<Client> toSort, ClientFilter filter){
 
