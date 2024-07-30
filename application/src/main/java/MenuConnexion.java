@@ -1,13 +1,11 @@
-import java.util.Scanner;
-
-public class Menu {
+public class MenuConnexion {
 
     // Singleton
-    private static Menu _instance;
+    private static MenuConnexion _instance;
 
-    public static Menu getInstance(){
+    public static MenuConnexion getInstance(){
         if (_instance == null){
-            _instance = new Menu();
+            _instance = new MenuConnexion();
         }
         return _instance;
     }

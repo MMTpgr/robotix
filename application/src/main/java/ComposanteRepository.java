@@ -45,50 +45,5 @@ public abstract class ComposanteRepository {
 
     }
 
-
-    public ArrayList<Composante> filterComposantes (ComposanteFilter filter, boolean robotsConform){
-
-        ArrayList<Composante> composantes = this.parseComposantes();
-
-        // Filtering with Treeset or sort function.
-        if (filter.equals(ComposanteFilter.PRIX)){
-            composantes.sort(new PrixComparator());
-        } else if (filter.equals(ComposanteFilter.TYPE)) {
-            composantes.sort(new TypeComparator());
-        }else if (filter.equals(ComposanteFilter.FOURNISSEUR)) {
-            composantes.sort(new FournisseurComparator());
-        }
-
-        return composantes;
-    }
-}
-
-// -------------------------- Filtering --------------------------
-
-enum ComposanteFilter{
-    PRIX,
-    TYPE,
-    FOURNISSEUR
-}
-
-class PrixComparator implements Comparator<Composante> {
-    @Override
-    public int compare(Composante c1, Composante c2) {
-        return Float.compare(c1.getPrix(), c2.getPrix());
-    }
-}
-
-class TypeComparator implements Comparator<Composante> {
-    @Override
-    public int compare(Composante c1, Composante c2) {
-        return c1.getType().compareTo(c2.getType());
-    }
-}
-
-class FournisseurComparator implements Comparator<Composante> {
-    @Override
-    public int compare(Composante c1, Composante c2) {
-        return c1.getFournisseur().getUsername().compareTo(c2.getFournisseur().getUsername());
-    }
 }
 

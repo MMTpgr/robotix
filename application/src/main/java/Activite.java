@@ -15,19 +15,20 @@ public class Activite {
     private String name;
     private LocalDate date;
     private String desc;
-    private int popularite;
-    private ArrayList<Tache> taches;
+    private int popularite = 0;
+    private ArrayList<Tache> taches = new ArrayList<>();
     private String host;
-    private ArrayList<String> participants;
-    private ArrayList<String> robotsInclus;
-    private ArrayList<Interet> interetsConcernes;
+    private ArrayList<String> participants = new ArrayList<>();
+    private ArrayList<String> robotsInclus = new ArrayList<>();
+    private ArrayList<Interet> interetsConcernes = new ArrayList<>();
     private ACTIVITEETAT etat;
 
     public Activite(String name, LocalDate date, String desc, String host, ACTIVITEETAT etat){
+        this.name = name;
+        this.date = date;
+        this.host = host;
         this.desc = desc;
         this.etat = etat;
-        this.taches = new ArrayList<>();
-        // Définir les intérêts concernés de la façon qui sera demandée d'implémenter DM3+...
     }
 
 
@@ -37,7 +38,11 @@ public class Activite {
 
         for (Tache tache : this.taches){
             for (Action action: tache.getActions()){
-                composantesRequise.addAll(action.getComposantesRequises());
+                for (ComposanteType composanteType : action.getComposantesRequises()){
+                    if (!composantesRequise.contains(composanteType)){
+                        composantesRequise.add(composanteType);
+                    }
+                }
             }
         }
 
@@ -106,10 +111,8 @@ public class Activite {
 
     }
 
-    public static ArrayList<Activite> sortActivites(ArrayList<Activite> from,
+    public static void sortActivites(ArrayList<Activite> toSort,
                                                     ActiviteFilter filter){
-
-        ArrayList<Activite> toSort = from;
 
         // Filtering with Treeset or sort function.
         if (filter.equals(ActiviteFilter.NOM)) {
@@ -120,14 +123,12 @@ public class Activite {
             toSort.sort(new PopulariteComparator());
         }
 
-        return toSort;
-
     }
 
 
     // Getter Setter --------------------------
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -190,6 +191,21 @@ public class Activite {
         this.interetsConcernes = interetsConcernes;
     }
 
+    public ArrayList<String> getRobotsInclus() {
+        return robotsInclus;
+    }
+
+    public void setRobotsInclus(ArrayList<String> robotsInclus) {
+        this.robotsInclus = robotsInclus;
+    }
+
+    public ACTIVITEETAT getEtat() {
+        return etat;
+    }
+
+    public void setEtat(ACTIVITEETAT etat) {
+        this.etat = etat;
+    }
 }
 
 // -------------------------- Filtering --------------------------

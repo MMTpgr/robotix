@@ -1,4 +1,4 @@
-public class MenuFournisseur {
+public class MenuFournisseur extends MenuUtilisateur{
 
     // Singleton
     private static MenuFournisseur _instance;

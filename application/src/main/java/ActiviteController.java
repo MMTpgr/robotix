@@ -33,6 +33,7 @@ public class ActiviteController{
         }
 
         activite.addParticipant(client, robotValides);
+        client.addActivite(activite);
         return true;
     }
 
@@ -56,8 +57,12 @@ public class ActiviteController{
 
     public void DesinscriptionUtilisateur(Client client, Activite activite){
 
+        activite.getParticipants().remove(client.getUsername());
+        client.getActivites().remove(activite);
 
-
+        for (Robot robot : client.getFlotte().getRobots()){
+                activite.getRobotsInclus().remove(robot.getNom());
+        }
     }
 
     public void createActivite(ArrayList<String> infos){

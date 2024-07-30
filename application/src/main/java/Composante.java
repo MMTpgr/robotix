@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+
 enum ComposanteType{
     ROUE,
     MICRO,
@@ -66,4 +69,48 @@ public abstract class Composante {
 
     // -------------------------- UTILS METHODS --------------------------
 
+
+    public static  void filterComposantes (ArrayList<Composante> toSort, ComposanteFilter filter){
+
+        // Filtering with Treeset or sort function.
+        if (filter.equals(ComposanteFilter.PRIX)){
+            toSort.sort(new PrixComparator());
+        } else if (filter.equals(ComposanteFilter.TYPE)) {
+            toSort.sort(new TypeComparator());
+        }else if (filter.equals(ComposanteFilter.FOURNISSEUR)) {
+            toSort.sort(new FournisseurComparator());
+        }
+
+    }
+
+}
+
+
+// -------------------------- Filtering --------------------------
+
+enum ComposanteFilter{
+    PRIX,
+    TYPE,
+    FOURNISSEUR
+}
+
+class PrixComparator implements Comparator<Composante> {
+    @Override
+    public int compare(Composante c1, Composante c2) {
+        return Float.compare(c1.getPrix(), c2.getPrix());
+    }
+}
+
+class TypeComparator implements Comparator<Composante> {
+    @Override
+    public int compare(Composante c1, Composante c2) {
+        return c1.getType().compareTo(c2.getType());
+    }
+}
+
+class FournisseurComparator implements Comparator<Composante> {
+    @Override
+    public int compare(Composante c1, Composante c2) {
+        return c1.getFournisseur().getUsername().compareTo(c2.getFournisseur().getUsername());
+    }
 }

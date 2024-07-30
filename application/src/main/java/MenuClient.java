@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
-public class MenuClient {
+public class MenuClient extends MenuUtilisateur{
 
     // Singleton
     private static MenuClient _instance;
@@ -13,7 +14,6 @@ public class MenuClient {
         }
         return _instance;
     }
-
 
         public String displayPagePrincipal(Client user) {
 
@@ -58,8 +58,10 @@ public class MenuClient {
         Scanner scan = new Scanner(System.in);
 
 
-        System.out.println("\t-\n\t-------------------------\n\t- 1. Mes activités" +
-                "\n\t- 2. Rechercher une activité\n\t- 3. Quitter");
+        System.out.println("-------------------------");
+        System.out.println("1. Mes activités");
+        System.out.println("2. Rechercher une activité");
+        System.out.println("3. Quitter");
 
         pick = scan.nextLine();
         while (!pick.equals("1") && !pick.equals("2") && !pick.equals("3")) {
@@ -72,13 +74,15 @@ public class MenuClient {
 
     public String displayPageRechercheActivite(ArrayList<Activite> activites){
 
-    int activiteIndex = 0;
+        System.out.println(activites.get(0));
+
+        int activiteIndex = 0;
 
         System.out.println("-------------------------");
         System.out.println("Filter by Name: '!'");
         System.out.println("Filter by Date: '#'");
         System.out.println("Filter by Popularite: '*'");
-        System.out.println("Quitter: '`'");
+        System.out.println("Quitter: '-'");
         System.out.println();
         for (Activite activite : activites){
             activiteIndex += 1;
@@ -87,13 +91,15 @@ public class MenuClient {
 
         String pick;
         Scanner scan = new Scanner(System.in);
+        ArrayList<String> validStrings = new ArrayList<>(Arrays.asList("!", "#", "*", "-"));
 
         pick = scan.nextLine();
-        while ((!pick.equals("!") && !pick.equals("#") && !pick.equals("*") && !pick.equals("-") && !pick.equals("`"))
-                 || (Integer.parseInt(pick) < 1 && Integer.parseInt(pick) > activiteIndex)) {
-            System.out.print("Veuillez entrer un choix valide: ");
+
+        while (!_pickIsValid(pick, validStrings, activiteIndex)){
+            System.out.println("Veuillez entrer un choix valide: ");
             pick = scan.nextLine();
         }
+
         return pick;
 
     }
@@ -102,17 +108,17 @@ public class MenuClient {
 
         String composanteRequise = "";
         for (ComposanteType ct : activite.getComposantesRequises()){
-            composanteRequise += " " + ct.name();
-        }
-
-        String interets = "";
-        for (Interet interet : activite.getInteretsConcernes()){
-            interets += " " + interet.getNom();
+            composanteRequise +=  ct.name() + " ";
         }
 
         String participants = "";
         for (String client : activite.getParticipants()){
-            participants += " " + client;
+            participants += client + " ";
+        }
+
+        String robots = "";
+        for (String robot : activite.getRobotsInclus()){
+            participants += robot + " ";
         }
 
         System.out.println("-------------------------");
@@ -120,10 +126,11 @@ public class MenuClient {
         System.out.println("Description: " + activite.getDesc());
         System.out.println("Date: " + activite.getDate().toString());
         System.out.println("Participants: " + participants);
+        System.out.println("Robots: " + robots);
         System.out.println("Popularite: " + activite.getPopularite());
         System.out.println("Host: " + activite.getHost());
         System.out.println("Composantes Requises: " + composanteRequise);
-        System.out.println("Interets: " + interets);
+        System.out.println("État: " + activite.getEtat().name());
         System.out.println();
         if (alreadySubscribed){
             System.out.println("1- Desinscription");
@@ -147,7 +154,7 @@ public class MenuClient {
     public void displayPagecomposanteManquantes(Activite activite){
 
         System.out.println("-------------------------");
-        System.out.println("!!! Inscription Echoue !!!");
+        System.out.println("!!! Inscription Echoué !!!");
         System.out.println("Aucun de vos robots ne possede une composante requise:");
         String composanteRequises = "";
         for (ComposanteType composanteType : activite.getComposantesRequises()){
@@ -189,13 +196,23 @@ public class MenuClient {
 
     }
 
-    public void displayPageModifierSonProfil(){
-
-    }
-
     public void displayPageNotifications(){
 
     }
 
+
+    private boolean _pickIsValid(String pick, ArrayList<String> validStrings, int maxIndex){
+
+        boolean validNumber = false;
+        boolean validString = validStrings.contains(pick);
+
+        try {
+            validNumber = Integer.parseInt(pick) > 0 && Integer.parseInt(pick) < maxIndex + 1;
+        } catch (NumberFormatException e) {
+        }
+
+        return (validString || validNumber);
+
+    }
 
 }

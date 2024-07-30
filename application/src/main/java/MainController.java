@@ -4,19 +4,20 @@ import java.util.ArrayList;
 public class MainController {
 
     public ActiviteController activiteController =  ActiviteController.getInstance();
+    public ActiviteRepository activiteRepository = activiteController.getRepository();
     public ClientController clientController =  ClientController.getInstance();
     public FournisseurController fournisseurController =  FournisseurController.getInstance();
     public ComposanteController composanteController =  ComposanteController.getInstance();
     public FlotteController flotteController = null;
     public Utilisateur currentUser = null;
 
-    public Menu menu = Menu.getInstance();
+    public MenuConnexion menu = MenuConnexion.getInstance();
     public MenuClient menuClient = MenuClient.getInstance();
 
 
     // -------------------------- START --------------------------
     public void start(){
-
+        // Connexion or login here
         //menu.displayPageStart();
         Client client = new Client("toto", "bobo");
         menuPrincipalClient(client);
@@ -83,7 +84,6 @@ public class MainController {
     public void menuActivitesPrincipal(Client client){
 
         String pick = menuClient.displayPageActivite(client);
-
         switch (pick){
 
             // ---------------- Mes Activites ----------------
@@ -92,7 +92,7 @@ public class MainController {
             // ---------------- Toutes Activites ----------------
             case "2":
                 this.menuRechercheActivites(client,
-                        this.activiteController.getRepository().getActivites());
+                        activiteRepository.getActivites());
             case "3":
                 this.menuPrincipalClient(client);
         }
@@ -109,16 +109,16 @@ public class MainController {
         switch (pick){
             // ---- FILTERS ----
             case "!":
-                sortedActivites = Activite.sortActivites(activites, ActiviteFilter.NOM);
-                this.menuRechercheActivites(client, sortedActivites);
+                Activite.sortActivites(activites, ActiviteFilter.NOM);
+                this.menuRechercheActivites(client, activites);
             case "#":
-                sortedActivites = Activite.sortActivites(activites, ActiviteFilter.DATE);
-                this.menuRechercheActivites(client, sortedActivites);
+                Activite.sortActivites(activites, ActiviteFilter.DATE);
+                this.menuRechercheActivites(client, activites);
             case "*":
-                sortedActivites = Activite.sortActivites(activites, ActiviteFilter.POPULARITE);
-                this.menuRechercheActivites(client, sortedActivites);
+                Activite.sortActivites(activites, ActiviteFilter.POPULARITE);
+                this.menuRechercheActivites(client, activites);
             // ---- QUITTER ----
-            case "`":
+            case "-":
                 this.menuActivitesPrincipal(client);
             // ---- CHOOSED AN ACTIVITE ----
             default:
@@ -155,8 +155,8 @@ public class MainController {
                 if (succes){
                     MenuFicheActivite(client, activite, true);
                 } else {
-                    MenuFicheActivite(client, activite, false);
                     menuClient.displayPagecomposanteManquantes(activite);
+                    MenuFicheActivite(client, activite, false);
                 }
             }
         case "2":

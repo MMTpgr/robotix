@@ -26,7 +26,7 @@ public class ActiviteRepository {
 
     private String dataFile = "Activites.json";
 
-    private ArrayList<Activite> activites = null;
+    private ArrayList<Activite> activites;
 
     // -------------------------- GETTER SETTER --------------------------
 
@@ -46,7 +46,7 @@ public class ActiviteRepository {
         if (this.activites == null){
             this.parseActivites();
         }
-        return activites;
+        return this.activites;
     }
 
     public void setActivites(ArrayList<Activite> activites) {
@@ -81,7 +81,6 @@ public class ActiviteRepository {
             Type foundType = new TypeToken<ArrayList<Activite>>(){}.getType();
 
             this.activites = gson.fromJson(content, foundType);
-
         } catch (IOException e){
             System.out.println(e);
         }
@@ -104,9 +103,20 @@ public class ActiviteRepository {
 
 // -------------------------- Serializers --------------------------
 
-class LocalDateAdapter implements JsonSerializer<LocalDate> {
-    public JsonElement serialize(LocalDate date, Type typeOfSrc, JsonSerializationContext context) {
-        return new JsonPrimitive(date.format(DateTimeFormatter.ISO_LOCAL_DATE)); // "yyyy-mm-dd"
+class LocalDateAdapter implements JsonSerializer<LocalDate>, JsonDeserializer<LocalDate> {
+
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+    @Override
+    public JsonElement serialize(final LocalDate date, final Type typeOfSrc,
+                                 final JsonSerializationContext context) {
+        return new JsonPrimitive(date.format(formatter));
+    }
+
+    @Override
+    public LocalDate deserialize(final JsonElement json, final Type typeOfT,
+                                 final JsonDeserializationContext context) throws JsonParseException {
+        return LocalDate.parse(json.getAsString(), formatter);
     }
 }
 
