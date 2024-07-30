@@ -1,0 +1,181 @@
+[
+  {
+    "name": "Menage chez Jordan",
+    "date": "2024-08-01",
+    "desc": "Menage de la cuisine et du salon",
+    "popularite": 0,
+    "taches": [
+      {
+        "name": "Balayeuse",
+        "actions": [
+          {
+            "name": "Avancer",
+            "composantesRequises": [
+              "ROUE",
+              "BRAS"
+            ]
+          },
+          {
+            "name": "Aspirer",
+            "composantesRequises": [
+              "ROUE",
+              "BRAS"
+            ]
+          }
+        ]
+      }
+    ],
+    "host": "Jordan",
+    "participants": [],
+    "robotsInclus": [],
+    "interetsConcernes": [],
+    "etat": "NONDEBUTEE"
+  },
+  {
+    "name": "Chasse au trésor",
+    "date": "2024-08-23",
+    "desc": "Recherche de trésors enfoui",
+    "popularite": 5,
+    "taches": [
+      {
+        "name": "Chercher",
+        "actions": [
+          {
+            "name": "Avancer",
+            "composantesRequises": [
+              "ROUE"
+            ]
+          },
+          {
+            "name": "Analyser",
+            "composantesRequises": [
+              "CAMERA"
+            ]
+          },
+          {
+            "name": "Creuser",
+            "composantesRequises": [
+              "BRAS"
+            ]
+          }
+        ]
+      }
+    ],
+    "host": "Dora",
+    "participants": [],
+    "robotsInclus": [],
+    "interetsConcernes": [],
+    "etat": "NONDEBUTEE"
+  },
+  {
+    "name": "Captation Ultimate Frisbee",
+    "date": "2024-07-25",
+    "desc": "Captation d'un match de ultimate Frisbee.",
+    "popularite": 2,
+    "taches": [
+      {
+        "name": "Camera Drone",
+        "actions": [
+          {
+            "name": "Voler",
+            "composantesRequises": [
+              "HELICE"
+            ]
+          },
+          {
+            "name": "Enregistrer",
+            "composantesRequises": [
+              "CAMERA"
+            ]
+          }
+        ]
+      }, {
+        "name": "Camera Ground",
+        "actions": [
+          {
+            "name": "Avancer",
+            "composantesRequises": [
+              "ROUE"
+            ]
+          },
+          {
+            "name": "Enregistrer",
+            "composantesRequises": [
+              "CAMERA"
+            ]
+          }
+        ]
+      }, {
+        "name": "Enregistrer Son",
+        "actions": [
+          {
+            "name": "Enregistrer",
+            "composantesRequises": [
+              "MICRO"
+            ]
+          }
+        ]
+      }
+
+    ],
+    "host": "Guillaume",
+    "participants": [],
+    "robotsInclus": [],
+    "interetsConcernes": [],
+    "etat": "TERMINEE"
+  },
+  {
+    "name": "Revision Examen",
+    "date": "2024-07-22",
+    "desc": "Robot de support lors de la revision.",
+    "popularite": 2,
+    "taches": [
+      {
+        "name": "Poser une question.",
+        "actions": [
+          {
+            "name": "Question Visuelle",
+            "composantesRequises": [
+              "ECRAN"
+            ]
+          },
+          {
+            "name": "Question Audio",
+            "composantesRequises": [
+              "HAUTPARLEUR"
+            ]
+          }
+        ]
+      }
+    ],
+    "host": "MEDHI",
+    "participants": [],
+    "robotsInclus": [],
+    "interetsConcernes": [],
+    "etat": "TERMINEE"
+  },
+  {
+    "name": "Course Robots",
+    "date": "2024-07-30",
+    "desc": "Course de robots sur 100 mètres.",
+    "popularite": 8,
+    "taches": [
+      {
+        "name": "Rouler.",
+        "actions": [
+          {
+            "name": "Avancer",
+            "composantesRequises": [
+              "ROUE"
+            ]
+          }
+        ]
+      }
+    ],
+    "host": "Nikolas",
+    "participants": [],
+    "robotsInclus": [],
+    "interetsConcernes": [],
+    "etat": "ENCOURS"
+  }
+]
