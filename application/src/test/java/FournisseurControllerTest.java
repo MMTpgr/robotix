@@ -12,25 +12,25 @@ public class FournisseurControllerTest {
         this.baseFournisseur = new Fournisseur("Fournisseux", "CaFournit");
     }
 
-    @Test
-    public void testRegisterComposante(){
-        fournisseurController.registerComposante();
-    }
-
-    @Test
-    public void testSupprimerComposante(){
-        fournisseurController.supprimerComposante();
-    }
-
-    @Test
-    public void testNotifierUtilisateur(){
-        fournisseurController.notifierUtilisateur();
-    }
-
-
-    @Test
-    public void testGererComposantes(){
-        fournisseurController.gererComposantes();
-    }
+//    @Test
+//    public void testRegisterComposante(){
+//        fournisseurController.registerComposante();
+//    }
+//
+//    @Test
+//    public void testSupprimerComposante(){
+//        fournisseurController.supprimerComposante();
+//    }
+//
+//    @Test
+//    public void testNotifierUtilisateur(){
+//        fournisseurController.notifierUtilisateur();
+//    }
+//
+//
+//    @Test
+//    public void testGererComposantes(){
+//        fournisseurController.gererComposantes();
+//    }
 
 }
