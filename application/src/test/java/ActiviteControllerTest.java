@@ -10,7 +10,10 @@ public class ActiviteControllerTest {
     private ActiviteController activiteController = ActiviteController.getInstance();
     private Activite baseActivite;
     private Client baseClient;
-    // before each test, Resetting this activite
+
+    /**
+     * before each test, Resetting base activite
+     */
     @Before
     public void generateBaseActivite(){
 
@@ -39,7 +42,10 @@ public class ActiviteControllerTest {
         activite.addTache(tache1, 0);
         this.baseActivite = activite;
     }
-    // Before each test, Resetting this client
+
+    /**
+     * Before each test, Resetting base client
+     */
     @Before
     public void generateBaseClient(){
         Client client = new Client("Testy", "Testeux");
@@ -56,7 +62,9 @@ public class ActiviteControllerTest {
         client.getFlotte().addRobot(robot);
     }
 
-
+    /**
+     * Test de client valide pour une activité.
+     */
     @Test
     public void testClientValidesRobotsForActivite(){
 
@@ -64,20 +72,26 @@ public class ActiviteControllerTest {
         Assert.assertEquals(robotsValide.get(0).getNom(), "Bender");
     }
 
+    /**
+     * Test d'inscription de client à une activité.
+     */
     @Test
-    public void testInscriptionUtilisateur(){
+    public void testinscriptionClient(){
 
-        activiteController.inscriptionUtilisateur(this.baseClient, this.baseActivite);
+        activiteController.inscriptionClient(this.baseClient, this.baseActivite);
         // Activite is link to client
         Assert.assertEquals(this.baseClient.getActivites().get(0).getName(), this.baseActivite.getName());
         // Client is link to activite
         Assert.assertEquals(this.baseActivite.getParticipants().get(0), this.baseClient.getUsername());
     }
 
+    /**
+     * Test de désinscription de client à une activité.
+     */
     @Test
-    public void testDesinscriptionUtilisateur(){
-        activiteController.inscriptionUtilisateur(this.baseClient, this.baseActivite);
-        activiteController.desinscriptionUtilisateur(this.baseClient, this.baseActivite);
+    public void testDesinscriptionClient(){
+        activiteController.inscriptionClient(this.baseClient, this.baseActivite);
+        activiteController.desinscriptionClient(this.baseClient, this.baseActivite);
         // Activite is unlink to client
         Assert.assertTrue(this.baseClient.getActivites().isEmpty());
         // Client is unlink to activite

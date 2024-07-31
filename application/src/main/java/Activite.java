@@ -23,6 +23,15 @@ public class Activite {
     private ArrayList<Interet> interetsConcernes = new ArrayList<>();
     private ACTIVITEETAT etat;
 
+    /**
+     * Constructeur Activite.
+     *
+     * @param name Nom de l'activité
+     * @param date Date de l'activité
+     * @param desc Description de l'activité
+     * @param host Host de l'activité
+     * @param etat État de l'activité
+     */
     public Activite(String name, LocalDate date, String desc, String host, ACTIVITEETAT etat){
         this.name = name;
         this.date = date;
@@ -31,7 +40,11 @@ public class Activite {
         this.etat = etat;
     }
 
-
+    /**
+     * Obtient les composantes requises de l'activité selon les tâches et les actions.
+     *
+     * @return ArrayList de composantes requises.
+     */
     public ArrayList<ComposanteType> getComposantesRequises() {
 
         ArrayList<ComposanteType> composantesRequise = new ArrayList<>();
@@ -49,6 +62,13 @@ public class Activite {
         return composantesRequise;
     }
 
+    /**
+     * Ajout d'une tâche à l'activité.
+     * La tâche doit avoir un nom unique parmis les tâches de l'activité.
+     *
+     * @param tache Tache à ajouter.
+     * @param order Index de la tâche à ajouter.
+     */
     public void addTache(Tache tache, int order){
 
         for (Tache t : this.taches){
@@ -60,19 +80,13 @@ public class Activite {
         this.taches.add(order, tache);
     }
 
-    public void removeTache(String name){
 
-        Tache tache = this.getTacheByName(name);
-
-        if ((tache==null)){
-            System.out.println("Tache non presente.");
-            return;
-        }
-
-        this.taches.remove(tache);
-    }
-
-
+    /**
+     * Obtenir une tâche à partir de son nom.
+     *
+     * @param name String nom.
+     * @return Objet 'Tache'.
+     */
     public Tache getTacheByName(String name){
         Tache tache = null;
 
@@ -85,6 +99,12 @@ public class Activite {
         return tache;
     }
 
+    /**
+     * Ajouter un participant ainsi qu'une liste de robots à l'activité.
+     *
+     * @param client Client à ajouter.
+     * @param robots Robots à ajouter.
+     */
     public void addParticipant(Client client, ArrayList<Robot> robots){
         this.participants.add(client.getUsername());
 
@@ -97,6 +117,11 @@ public class Activite {
         this.robotsInclus.addAll(robotsName);
     }
 
+    /**
+     * Retrait d'un participant à l'activité, ainsi que ses robots.
+     * 
+     * @param client Client à retirer. 
+     */
     public void removeParticipant(Client client){
 
         this.participants.remove(client.getUsername());
@@ -111,6 +136,12 @@ public class Activite {
 
     }
 
+    /**
+     * Ordonner d'une liste d'activités.
+     * 
+     * @param toSort Liste d'activités.
+     * @param filter Filtre à appliquer.
+     */
     public static void sortActivites(ArrayList<Activite> toSort,
                                                     ActiviteFilter filter){
 
@@ -217,6 +248,13 @@ enum ActiviteFilter{
 }
 
 class NomComparator implements Comparator<Activite> {
+    /**
+     * Comparer selon le nom
+     *
+     * @param a1 the first object to be compared.
+     * @param a2 the second object to be compared.
+     * @return
+     */
     @Override
     public int compare(Activite a1, Activite a2) {
         return a1.getName().compareTo(a2.getName());
@@ -224,12 +262,26 @@ class NomComparator implements Comparator<Activite> {
 }
 
 class DateComparator implements Comparator<Activite> {
+    /**
+     * Comparer selon la date
+     *
+     * @param a1 the first object to be compared.
+     * @param a2 the second object to be compared.
+     * @return
+     */
     @Override
     public int compare(Activite a1, Activite a2) {
         return a1.getDate().compareTo(a2.getDate());
     }
 }
 class PopulariteComparator implements Comparator<Activite> {
+    /**
+     * Comparer selon la popularité.
+     *
+     * @param a1 the first object to be compared.
+     * @param a2 the second object to be compared.
+     * @return
+     */
     @Override
     public int compare(Activite a1, Activite a2) {
         return Integer.compare(a1.getPopularite(), a2.getPopularite());

@@ -55,6 +55,14 @@ public class MenuClient extends MenuUtilisateur{
 
     // -------------------------- Activite --------------------------
 
+    /**
+     * Affichage de la page principal d'activités.
+     * Le client pour choisir de voir ses activités ou les activités de la base de données.
+     * * Le client peux faire retour arrière.
+     *
+     * @param user Le client.
+     * @return Choix du client.
+     */
     public String displayPageActivite(Client user) {
 
         String pick;
@@ -76,7 +84,15 @@ public class MenuClient extends MenuUtilisateur{
         return pick;
     }
 
-
+    /**
+     * Affichage de la page de recherche d'activités.
+     * Le client peux ordonner les activité selon plusieurs filtre.
+     * * Le client peux faire retour arrière.
+     * Le client peux choisir une activité, sa fiche sera affiché.
+     *
+     * @param activites Liste d'activité à afficher.
+     * @return Choix du client.
+     */
     public String displayPageRechercheActivite(ArrayList<Activite> activites){
 
         System.out.println(activites.get(0));
@@ -109,6 +125,15 @@ public class MenuClient extends MenuUtilisateur{
 
     }
 
+    /**
+     * Affichage d'une fiche d'activité.
+     * Le client peux s'inscrire ou se désinscrire de l'activité
+     * Le client peux faire retour arrière.
+     *
+     * @param activite Activité duquelle afficher la fiche.
+     * @param alreadySubscribed Si le client est deja abonné ou non.
+     * @return Choix du client.
+     */
     public String displayPageFicheActivite(Activite activite, boolean alreadySubscribed){
 
         String composanteRequise = "";
@@ -158,6 +183,11 @@ public class MenuClient extends MenuUtilisateur{
 
     }
 
+    /**
+     * Affichage avertissement, le client de possede pas de robots valide.
+     *
+     * @param activite activité
+     */
     public void displayPagecomposanteManquantes(Activite activite){
 
         System.out.println("-------------------------");
@@ -173,6 +203,15 @@ public class MenuClient extends MenuUtilisateur{
 
     // -------------------------- MARKETPLACE --------------------------
 
+    /**
+     * Affichage de la page principal du MarketPlace.
+     * Le client peut afficher le menu de recherche de composante.
+     * * Le client peut afficher le menu de recherche de fournisseur.
+     * * Le client peut faire retour arrière.
+     *
+     * @param user Le Client.
+     * @return Choix du client.
+     */
     public String displayPageMarket(Utilisateur user) {
 
         String pick;
@@ -195,6 +234,14 @@ public class MenuClient extends MenuUtilisateur{
 
     }
 
+    /**
+     * Affichage d'une fiche d'un fournisseur.
+     * Le client peut afficher ses composantes.
+     * Le client peut faire retour arrière.
+     *
+     * @param fournisseur Fournisseur duquel afficher la fiche.
+     * @return Choix du Client
+     */
     public String displayPageFicheFournisseur(Fournisseur fournisseur){
 
         String pick;
@@ -225,6 +272,16 @@ public class MenuClient extends MenuUtilisateur{
 
     }
 
+    /**
+     * Affichage page de recherche de fournisseur.
+     *
+     * Le client peux ordonner les fournisseurs selon plusieurs filtre.
+     * Le client peux faire retour arrière.
+     * Le client peux choisir un fournisseur, sa fiche sera affiché.
+     *
+     * @param fournisseurs Liste de fournisseur à afficher.
+     * @return Choix du client.
+     */
     public String displayPageRechercherFournisseur(ArrayList<Fournisseur> fournisseurs) {
 
         String pick;
@@ -259,6 +316,16 @@ public class MenuClient extends MenuUtilisateur{
 
     }
 
+    /**
+     * Affichage page de recherche de Composantes.
+     *
+     * Le client peux ordonner les composantes selon plusieurs filtre.
+     * Le client peux faire retour arrière.
+     * Le client peux choisir une composante, sa fiche sera affiché.
+     *
+     * @param composantes Liste de composante à afficher.
+     * @return Choix du client.
+     */
     public String displayPageRechercheComposante(ArrayList<Composante> composantes){
 
         String pick;
@@ -289,6 +356,13 @@ public class MenuClient extends MenuUtilisateur{
         return pick;
     }
 
+    /**
+     * Affichage d'une fiche d'une composante.
+     * Le client peut faire retour arrière.
+     *
+     * @param composante Composante duquelle afficher la fiche.
+     * @return Choix du client.
+     */
     public String displayPageFicheComposante(Composante composante){
 
         String pick;
@@ -313,7 +387,14 @@ public class MenuClient extends MenuUtilisateur{
 
     }
 
-
+    /**
+     * Affichage d'une fiche d'une composante pour un achat.
+     * Le client peut acheter la composante.
+     * Le client peut faire retour arrière.
+     *
+     * @param composante Composante duquelle afficher la fiche.
+     * @return Choix du client.
+     */
     public String displayPageFicheAchatComposante(Composante composante){
 
         String pick;
@@ -341,6 +422,12 @@ public class MenuClient extends MenuUtilisateur{
 
     }
 
+    /**
+     * Affichage avertissement, fond insuffisant pour achat d'une composante.
+     *
+     * @param composante Composante à acheter.
+     * @param client Le client.
+     */
     public void displayPageAchatFondInsuffisant(Composante composante, Client client){
 
         System.out.println("-------------------------");
@@ -364,7 +451,14 @@ public class MenuClient extends MenuUtilisateur{
 
     }
 
-
+    /**
+     * Vérifie se le choix du client est valide selon le context du menu.
+     *
+     * @param pick Le choix du client.
+     * @param validStrings List de String valide selon le context.
+     * @param maxIndex index maximal de choix valide selon le context. (starting at '1')
+     * @return Si le choix est valide ou non.
+     */
     private boolean _pickIsValid(String pick, ArrayList<String> validStrings, int maxIndex){
 
         boolean validNumber = false;

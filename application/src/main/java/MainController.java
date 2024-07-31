@@ -82,7 +82,13 @@ public class MainController {
 
     // -------------------------- MarketPlace --------------------------
 
-
+    /**
+     * Logique du menu MarketPlace.
+     * Selon le choix du client, le menu de recherche de composantes/fournisseurs sera atteint ou
+     * retour au menu principal.
+     *
+     * @param client Le client.
+     */
     public void menuMarketPlacePrincipal(Client client){
 
         String pick = menuClient.displayPageMarket(client);
@@ -101,7 +107,14 @@ public class MainController {
         }
     }
 
-
+    /**
+     * Logique du menu de Recherche de Composante.
+     * Selon le choix du client, affichage de la fiche d'une activité, filtrage
+     * des activités ou retour au menu de recherche de composantes.
+     *
+     * @param client Le client
+     * @param composantes Liste de Composante à afficher/filtrer.
+     */
     public void menuRechercheComposante(Client client, ArrayList<Composante> composantes){
 
         String pick = menuClient.displayPageRechercheComposante(composantes);
@@ -134,10 +147,20 @@ public class MainController {
 
     }
 
+    /**
+     * Logique d'une fiche d'une composante.
+     *
+     * @param composante Composante duqelle afficher la fiche.
+     */
     public void menuFicheComposante(Composante composante){
         menuClient.displayPageFicheComposante(composante);
     }
 
+    /**
+     * Logique d'une fiche d'achat d'une composante.
+     *
+     * @param composante Composante duqelle afficher la fiche.
+     */
     public void menuFicheAchatComposante(Composante composante){
 
         String pick = menuClient.displayPageFicheAchatComposante(composante);
@@ -150,6 +173,14 @@ public class MainController {
         }
     }
 
+    /**
+     * Logique du menu de recherche de Fournisseurs.
+     * Selon le choix du client, afficher la fiche d'un fournisseur, filtrage
+     * des fournisseurs ou retour au menu MarketPlace.
+     *
+     * @param client Le client.
+     * @param fournisseurs Liste de Fournisseur à afficher/filtrer.
+     */
     public void menuRechercheFournisseurs(Client client, ArrayList<Fournisseur> fournisseurs){
 
         String pick = menuClient.displayPageRechercherFournisseur(fournisseurs);
@@ -171,7 +202,14 @@ public class MainController {
         }
     }
 
-
+    /**
+     * Logique d'une fiche d'un fournisseur.
+     * Selon le choix du client, afficher les composantes du founisseur ou retour
+     * au menu de recherche de fournisseur.
+     *
+     * @param client Le client
+     * @param fournisseur Fournisseur duquel afficher la fiche.
+     */
     public void menuFicheFournisseur(Client client, Fournisseur fournisseur){
 
         String pick = menuClient.displayPageFicheFournisseur(fournisseur);
@@ -188,6 +226,13 @@ public class MainController {
 
     // -------------------------- Activite --------------------------
 
+    /**
+     * Logique du menu principal des activités.
+     * Selon le choix du client, afficher le menu de recherche d'activité du repertoir/des
+     * activités du client ou retour au menu principal.
+     *
+     * @param client le Client.
+     */
     public void menuActivitesPrincipal(Client client){
 
         String pick = menuClient.displayPageActivite(client);
@@ -205,8 +250,15 @@ public class MainController {
         }
         }
 
-
-        public void menuRechercheActivites(Client client, ArrayList<Activite> activites){
+    /**
+     * Logique du menu de recherche d'activité.
+     * Selon le choix du client, affichage d'une fiche d'activité, filtrage ou
+     * retour au menu principal des activités.
+     *
+     * @param client
+     * @param activites
+     */
+    public void menuRechercheActivites(Client client, ArrayList<Activite> activites){
 
         String pick;
 
@@ -244,6 +296,15 @@ public class MainController {
 
     }
 
+    /**
+     * Logique d'une fiche d'activité.
+     * Selon le choix du client, si il est deja inscrit, il peut se désinscrire, si il n'est pas inscrit, il peut
+     * s'inscrire ou retour au menu de recherche d'activité.
+     *
+     * @param client Le client.
+     * @param activite Activité duquelle afficher la fiche.
+     * @param alreadySubscribed Client déja inscrit ou non.
+     */
     public void MenuFicheActivite(Client client, Activite activite, boolean alreadySubscribed){
 
         String pick;
@@ -253,10 +314,10 @@ public class MainController {
         switch (pick){
         case "1":
             if (alreadySubscribed){
-                activiteController.desinscriptionUtilisateur(client, activite);
+                activiteController.desinscriptionClient(client, activite);
                 MenuFicheActivite(client, activite, false);
             } else {
-                boolean succes = activiteController.inscriptionUtilisateur(client, activite);
+                boolean succes = activiteController.inscriptionClient(client, activite);
 
                 if (succes){
                     MenuFicheActivite(client, activite, true);
