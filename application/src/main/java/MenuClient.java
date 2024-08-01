@@ -15,7 +15,7 @@ public class MenuClient extends MenuUtilisateur{
         return _instance;
     }
 
-        public String displayPagePrincipal(Client user) {
+    public String displayPagePrincipal(Client user) {
 
         String pick;
         Scanner scan = new Scanner(System.in);
@@ -40,7 +40,29 @@ public class MenuClient extends MenuUtilisateur{
         return pick;
     }
 
-    public void displayPageFlotte(Utilisateur user) {
+    public String displayPageFlotte(Utilisateur user) {
+
+        String pick;
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("-------------------------");
+        System.out.println("Ma flotte");
+        System.out.println("1 : Ajouter un robot à la flotte");
+        System.out.println("2 : Supprimer un robot à la flotte");
+        System.out.println("3 : Afficher l'etat des robot");
+        System.out.println("4 : Revenir au menu principal");
+
+        ArrayList<String> validStrings = new ArrayList<>(Arrays.asList("-"));
+
+
+        pick = scan.nextLine();
+        while (!_pickIsValid(pick, validStrings, 4)) {
+            System.out.print("Veuillez entrer un choix valide: ");
+            pick = scan.nextLine();
+        }
+
+        return pick;
+
 
     }
 
@@ -142,6 +164,7 @@ public class MenuClient extends MenuUtilisateur{
         } else {
             System.out.println("1 : Inscription");
         }
+
         System.out.println("- : Quitter");
 
         String pick;
@@ -327,7 +350,6 @@ public class MenuClient extends MenuUtilisateur{
         System.out.println("Type: " + composante.getType());
         System.out.println("Prix: " + composante.getPrix());
         System.out.println("Fournisseur: " + composante.getFournisseur().getUsername());
-
 
         pick = scan.nextLine();
         ArrayList<String> validStrings = new ArrayList<>(Arrays.asList("-", "+"));

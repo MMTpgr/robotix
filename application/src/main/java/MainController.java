@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MainController {
 
@@ -12,7 +13,7 @@ public class MainController {
     private final FournisseurRepository fournisseurRepository = fournisseurController.getRepository();
     private final  ComposanteController composanteController =  ComposanteController.getInstance();
     private final ComposanteRepository composanteRepository = composanteController.getRepository();
-    private final FlotteController flotteController = null;
+    private FlotteController flotteController ;
     private final MenuConnexion menu = MenuConnexion.getInstance();
     private final MenuClient menuClient = MenuClient.getInstance();
 
@@ -24,6 +25,17 @@ public class MainController {
         // Connexion or login here
         //menu.displayPageStart();
         Client client = new Client("toto", "bobo");
+        ArrayList<Composante> nes = new ArrayList<Composante>();
+
+        Composante c1 = new Bras();
+        Composante c2 = new CPU();
+        Composante c3 = new Camera();
+
+        nes.add(c1);
+        nes.add(c2);
+        nes.add(c3);
+        client.composantes = nes;
+
         menuPrincipalClient(client);
 
     }
@@ -59,9 +71,13 @@ public class MainController {
         String pick = menuClient.displayPagePrincipal(client);
 
         switch (Integer.parseInt(pick)) {
-//            case 1:
-//                displayPageFlotte(user);
-//                break;
+            case 1:
+                //flotteController = FlotteController.getInstance(client);
+                //menuClient.displayPageFlotte(client);
+
+                MenuFlotte(client);
+
+                break;
             case 2:
                 this.menuActivitesPrincipal(client);
                 break;
@@ -268,6 +284,53 @@ public class MainController {
         case "-":
         }
     }
+
+    public void MenuFlotte(Client client){
+        String pick;
+        FlotteController flotteController = FlotteController.getInstance(client);
+
+        pick = menuClient.displayPageFlotte(client);
+
+        switch (pick){
+            case "1" :
+                Robot robot = flotteController.createRobot(client.getComposantes());
+                flotteController.enregistrerRobot(robot);
+
+                MenuFlotte(client);
+                break;
+
+            case "2" :
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Entrez le nom du robot que vous voullez supprimer");
+                String inputName = scanner.nextLine();
+
+                flotteController.removeRobot(inputName);
+                MenuFlotte(client);
+                break;
+
+
+            case "3" :
+                Scanner subscanner = new Scanner(System.in);
+                System.out.println("souhaitez vous une vue Generale ou une vue complete?");
+                System.out.println("1. vue generale");
+                System.out.println("2. vue complete");
+                String subpick = subscanner.nextLine();
+                if (subpick.equals("1")){
+                    flotteController.vueGenerale(client.getFlotte());
+                }
+                else if (subpick.equals("2")){
+                    flotteController.vueComplete(client.getFlotte());
+                }
+                else {
+                    System.out.println("prenez un choix valide sinon consequences");
+                }
+                MenuFlotte(client);
+
+            case "4":
+                menuClient.displayPagePrincipal(client);
+        }
+    }
+
 
     // TO BE CONTINUED...
 

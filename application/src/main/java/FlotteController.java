@@ -1,4 +1,6 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class FlotteController {
 
@@ -6,34 +8,220 @@ public class FlotteController {
     private static FlotteController _instance;
 
     private static Flotte _flotte;
+    private static ArrayList<Composante> _composantes;
 
     public static FlotteController getInstance(Client client){
         if (_instance == null){
             _instance = new FlotteController();
             _flotte = client.getFlotte();
+            _composantes = client.getComposantes();
         }
         return _instance;
     }
 
+
+    public void vueGenerale(Flotte flotte){
+        for (Robot r : flotte.getRobots()){
+            System.out.println("Robot: "+r.getNom() +" type: " +r.getType() + " batterie restante: "+r.getBatterie()) ;
+        }
+    }
+    //Afficher en plus son numéro de série, sa position, sa vitesse, sa consommation CPU et mémoire.
+    public void vueComplete(Flotte flotte){
+        for (Robot r : flotte.getRobots()){
+            System.out.println("numéro de série: "+r.getNumSerie() +" position: " +r.getPosition() + " vitesse: "+r.getVitesse() + " consommation CPU et mémoire: " + r.getConsommationCPU() ) ;
+        }
+    }
+
     public void removeRobot(String name){
-        // Do Something
+        boolean isSuppr = false;
+        ArrayList<Robot> listeRobots = _flotte.getRobots();
+
+        for (int  i=0; i<listeRobots.size();i++ ){
+            if(listeRobots.get(i).getNom().equals(name)){
+                listeRobots.remove(i);
+                isSuppr=true;
+            }
+        }
+
+        if (isSuppr) {
+            _flotte.setRobots(listeRobots);
+            AfficherValidationSupprRobot();
+        }
+        else {
+            System.out.println("Ce robot n'existe pas");
+        }
     }
 
     public void enregistrerRobot(Robot robot){
-        // Do Something
+
+        _flotte.addRobot(robot);
+        System.out.println("robot enregistre avec succes!");
     }
 
-    public void createRobot(ArrayList<Composante> composantes){
-        // Do Something
+    public Robot createRobot(ArrayList<Composante> composantes){
+        String nom ="";
+        String type;
+        String numSerie;
+        int batterie;
+        boolean prise;
+        boolean cpuStable;
+
+        String pick="";
+
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Comment appelerez vous votre robot?");
+        do {
+            nom = scan.nextLine();
+            if (nom.length()==0){
+                System.out.println("Entre un nom valide");
+            }
+        } while (nom.length()==0);
+
+        System.out.println("Quel sera son type?");
+        do {
+            type = scan.nextLine();
+            if (type.length()==0){
+                System.out.println("Entre un nom valide");
+            }
+        } while (nom.length()==0);
+
+
+        System.out.println("Entrez votre numero de serie");
+
+        do {
+            numSerie = scan.nextLine();
+            if (numSerie.length()==0){
+                System.out.println("Entre un nom valide");
+            }
+        } while (nom.length()==0);
+
+        if(_composantes.size()<2){
+            System.out.println("Vous n'avez pas assez de composantes pour creer un robot donc peine de mort ");
+
+        }
+        else {
+            System.out.println("Quels composantes souhaitez vous integrer?");
+
+
+            ArrayList<Composante> composantesChoisies = new ArrayList<Composante>();
+            ArrayList<Composante> CopieInit = new ArrayList<Composante>(_composantes);
+
+
+            while (true) {
+                for (int i = 0; i < _composantes.size(); i++) {
+                    System.out.println((i + 1) + ". " + _composantes.get(i).getNom());
+                }
+
+                System.out.println("- Creer le robot");
+
+                pick = scan.nextLine();
+                while (pick != "-") {
+
+                    if (isInList(_composantes, pick)) {
+                        Composante compo = removeComp(_composantes, pick);
+                        composantesChoisies.add(compo);
+                        for (int i = 0; i < _composantes.size(); i++) {
+                            System.out.println((i + 1) + ". " + _composantes.get(i).getNom());
+                        }
+                        System.out.println("- Creer le robot");
+                    } else {
+                        if (pick.equals("-")) {
+                            break;
+                        } else {
+                            System.out.println("Entrez un choix valide");
+                        }
+                    }
+                    pick = scan.nextLine();
+
+                }
+                boolean presenceCPU = false;
+                boolean presenceComp = false;
+
+
+                for (Composante comp : composantesChoisies) {
+
+                    if (comp.getNom().equals("CPU")) {
+                        presenceCPU = true;
+                    }
+                    if (!comp.getNom().equals("CPU")) {
+                        presenceComp = true;
+                    }
+                }
+
+                System.out.println((composantesChoisies.size() >= 2 && presenceCPU && presenceComp));
+
+                if (composantesChoisies.size() >= 2 && presenceCPU && presenceComp) {
+                    String[] infosRobot = {nom, type, numSerie};
+                    Robot robot = new Robot(infosRobot, 100, false, composantesChoisies);
+                    _flotte.addRobot(robot);
+                    AfficherValidationCreationRobot();
+                    return robot;
+
+
+                } else {
+                    System.out.println("Choix de composantes invalide, tu es gay");
+
+                    _composantes.clear();
+                    _composantes.addAll(CopieInit);
+
+                    System.out.println(CopieInit.size());
+                    composantesChoisies = new ArrayList<Composante>();
+
+
+                }
+            }
+        }
+        return null;
+    }
+
+    private Composante removeComp (ArrayList<Composante> arr,String str ){
+
+        for (int i=0;i<arr.size(); i++ ){
+            Composante comp = arr.get(i);
+            if (comp.getNom().equals(str)) {
+                arr.remove(i);
+                return comp;
+            }
+
+        }
+        return null;
+    }
+
+
+    private boolean isInList(ArrayList<Composante> arr,String str){
+        boolean isIn = false;
+
+        for (Composante c : arr){
+            if (c.getNom().equals(str)) {
+                isIn = true;
+            }
+        }
+        return isIn;
     }
 
     public Robot getRobot(String name){
         Robot robot = null;
 
+        for (Robot rob : _flotte.getRobots()){
+            if (rob.getNom().equals(name)){
+                robot = rob;
+            }
+        }
         // Do Something
-
         return robot;
     }
+
+    public void AfficherValidationCreationRobot(){
+        System.out.println("Robot ajouté avec succes!");
+    }
+
+    public void AfficherValidationSupprRobot(){
+        System.out.println("Robot supprimé avec succes!");
+    }
+
+
+
 
 
     public void afficherMetriqueFlotte(){

@@ -3,4 +3,8 @@ public class Bras extends Composante {
         this.actionsPossibles = new String[]{"Attraper", "Dancer", "Appuyer", "Saluer"};
         this.type = ComposanteType.BRAS;
     }
+
+    public String getNom(){
+        return "BRAS";
+    }
 }

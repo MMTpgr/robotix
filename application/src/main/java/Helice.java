@@ -4,4 +4,8 @@ public class Helice extends Composante{
         this.actionsPossibles = new String[]{"Tourner"};
         this.type = ComposanteType.HELICE;
     }
+
+    public String getNom(){
+        return "HELICE";
+    }
 }

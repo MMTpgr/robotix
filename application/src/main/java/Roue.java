@@ -5,5 +5,8 @@ public class Roue extends Composante{
         this.type = ComposanteType.ROUE;
     }
 
+    public String getNom(){
+        return "ROUE";
+    }
 
 }

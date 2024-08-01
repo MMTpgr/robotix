@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Robot {
     private String nom;
     private String type;
@@ -5,16 +7,20 @@ public class Robot {
     private int batterie;
     private boolean brise;
     private boolean cpustable;
+    private float consommationCPU;
+    private int[] position;
+    private float vitesse;
 
-    Composante[] composantes;
+    ArrayList<Composante> composantes;
 
-    public Robot(String[] infos, int bat, boolean brise){
+    public Robot(String[] infos, int bat, boolean brise,ArrayList<Composante> Composantes){
         this.nom = infos[0];
         this.type = infos [1];
         this.numSerie = infos[2];
         this.batterie = bat;
         this.brise = brise;
         this.cpustable = true;
+        this.composantes = Composantes;
     }
     // -------------------------- GETTER SETTER --------------------------
 
@@ -66,12 +72,36 @@ public class Robot {
         this.cpustable = cpustable;
     }
 
-    public Composante[] getComposantes() {
+    public ArrayList<Composante> getComposantes() {
         return composantes;
     }
 
-    public void setComposantes(Composante[] composantes) {
+    public void setComposantes(ArrayList<Composante> composantes) {
         this.composantes = composantes;
+    }
+
+    public float getVitesse(){
+        return this.vitesse;
+    }
+
+    public float getConsommationCPU(){
+        return this.consommationCPU;
+    }
+
+    public int[] getPosition(){
+        return this.position;
+    }
+
+    public void setVitesse(float nouvelleVitesse){
+        this.vitesse = nouvelleVitesse;
+    }
+
+    public void setConsommationCPU (float nouvelleConsommation) {
+        this.consommationCPU = nouvelleConsommation;
+    }
+
+    public void setPosition (int[] nouvelleposition) {
+        this.position = nouvelleposition;
     }
 
     // -------------------------- UTILS METHODS --------------------------

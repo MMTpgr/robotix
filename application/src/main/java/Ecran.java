@@ -3,4 +3,8 @@ public class Ecran extends Composante{
     public Ecran(){
         this.actionsPossibles = new String[]{"Afficher"};
     }
+
+    public String getNom(){
+        return "ECRAN";
+    }
 }
