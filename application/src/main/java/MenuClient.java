@@ -40,8 +40,8 @@ public class MenuClient extends MenuUtilisateur{
         return pick;
     }
 
-    /**
-    *
+    
+    
     public String displayPageFlotte(Utilisateur user) {
 
         String pick;
