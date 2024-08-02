@@ -22,12 +22,25 @@ public class MainController {
 
     // -------------------------- START --------------------------
 
-    private final Utilisateur currentUser = null;
+    private Utilisateur currentUser = null;
 
     public void start(){
-        // Connexion or login here
-        //menu.displayPageStart();
 
+        // Connexion or login here
+        int choixConnexion = menu.displayPageStart();
+
+        switch (choixConnexion){
+            case 1:
+            case 3:
+                connexion();
+                break;
+            case 2:
+                menu.displayPageInscriptionClient();
+                break;
+            default:
+                menu.displayPageInscriptionFournisseur();
+                break;
+        }
         // Client
         Client client = new Client("totoClient", "bobo");
         // Fournisseur
@@ -52,16 +65,47 @@ public class MainController {
         fournisseur.ajouterComposante(new Composante("SuperSqueaker", "HAUTPARLEUR", "SuperSqueaker, un classique!", "69.99"));
         //-----
 
-        // Affiche le menu principal du client
-        //menuPrincipalClient(client);
-        // Affiche le menu principal du fournisseur
-        menuPrincipalFournisseur(fournisseur);
-
+        if (currentUser instanceof Client){
+            // Affiche le menu principal du client
+            menuPrincipalClient((Client) currentUser);
+        } else {
+            // Affiche le menu principal du fournisseur
+            menuPrincipalFournisseur((Fournisseur) currentUser);
+        }
     }
 
     // -------------------------- CONNEXION/SIGN-IN --------------------------
 
-    public void connexion(String username, String password){
+    public void connexion(){
+        boolean validUser = false;
+        boolean validPassword = false;
+
+        menu.displayPageConnexion();
+
+        Scanner keyb = new Scanner(System.in);
+        // si entre 0, start() et clear currentUser
+
+        // Demander username
+        while (!validUser){
+            String username = keyb.nextLine();
+            // Chercher à travers les users
+
+            //si trouvé, validUser = true
+            //et userCurrent = user.
+        }
+
+        while (!validPassword){
+            System.out.print("Mot de passe: ");
+            String password = keyb.nextLine();
+
+            if (!currentUser.getPassword().equals(password)){
+                System.out.print("\nMot de passe erroné.");
+            } else {validPassword = true;}
+        }
+
+
+
+
 
         // Get User from ClientRepository or FournisseurRepository
 
