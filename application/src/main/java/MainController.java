@@ -92,9 +92,6 @@ public class MainController {
 
         switch (Integer.parseInt(pick)) {
             case 1:
-                //flotteController = FlotteController.getInstance(client);
-                //menuClient.displayPageFlotte(client);
-
                 MenuFlotte(client);
 
                 break;
