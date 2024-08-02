@@ -16,6 +16,9 @@ public class MainController {
     private FlotteController flotteController ;
     private final MenuConnexion menu = MenuConnexion.getInstance();
     private final MenuClient menuClient = MenuClient.getInstance();
+    //MenuFournisseur
+    //private final MenuFournisseur menuFournisseur = MenuFournisseur.getInstance();
+    MenuFournisseur menuFournisseur = MenuFournisseur.getInstance();
 
     // -------------------------- START --------------------------
 
@@ -24,7 +27,12 @@ public class MainController {
     public void start(){
         // Connexion or login here
         //menu.displayPageStart();
-        Client client = new Client("toto", "bobo");
+
+        // Client
+        Client client = new Client("totoClient", "bobo");
+        // Fournisseur
+        Fournisseur fournisseur = new Fournisseur("totoFournisseur", "bobo");
+
         ArrayList<Composante> nes = new ArrayList<Composante>();
 
         Composante c1 = new Bras();
@@ -36,7 +44,18 @@ public class MainController {
         nes.add(c3);
         client.composantes = nes;
 
-        menuPrincipalClient(client);
+        //------
+        //ENLEVER! TESTS! - Stocker dans un fichier permanent plus tard.
+        // Initialisation des composantes
+        fournisseur.ajouterComposante(new Composante("MegaRotor", "HELICE", "Gâtez-vous avec le tout nouveau MegaRotor!", "299.99"));
+        fournisseur.ajouterComposante(new Composante("BigBrain", "CPU", "Maintenant disponible, le processeur BigBrain9 offre les meilleures performances du marché!", "799.99"));
+        fournisseur.ajouterComposante(new Composante("SuperSqueaker", "HAUTPARLEUR", "SuperSqueaker, un classique!", "69.99"));
+        //-----
+
+        // Affiche le menu principal du client
+        //menuPrincipalClient(client);
+        // Affiche le menu principal du fournisseur
+        menuPrincipalFournisseur(fournisseur);
 
     }
 
@@ -65,6 +84,7 @@ public class MainController {
     }
 
     // -------------------------- Client --------------------------
+    // Version pour fournisseur vers le milieu / fin de ce document
 
     public void menuPrincipalClient(Client client){
 
@@ -362,7 +382,7 @@ public class MainController {
 
             case "2" :
                 Scanner scanner = new Scanner(System.in);
-                System.out.println("Entrez le nom du robot que vous voullez supprimer");
+                System.out.println("Entrez le nom du robot que vous voulez supprimer");
                 String inputName = scanner.nextLine();
 
                 flotteController.removeRobot(inputName);
@@ -394,5 +414,141 @@ public class MainController {
 
 
     // TO BE CONTINUED...
+
+    // -------------------------- Fournisseur --------------------------
+    /**
+     * Affiche le menu principal pour le Fournisseur et gère les choix de l'utilisateur.
+     *
+     * @param fournisseur le Fournisseur
+     */
+    public void menuPrincipalFournisseur(Fournisseur fournisseur){
+
+        String pick = menuFournisseur.displayPagePrincipal(fournisseur);
+
+        switch (Integer.parseInt(pick)) {
+            case 1:
+                menuProfil(fournisseur);
+                break;
+            case 2:
+                menuGestionComposantes(fournisseur);
+                //voir ses composantes (de base)
+                //supprimer une composante
+                //modifier ses composantes
+                break;
+            case 3:
+                menuEnregisterComposante(fournisseur);
+                break;
+
+        }
+
+    }
+    //menuProfil est mentionné dans DM3, mais pas à compléter.
+    /**
+     * Affiche le menu de gestion du profil pour le Fournisseur et gère les choix de l'utilisateur.
+     *
+     * @param fournisseur le Fournisseur
+     */
+    public void menuProfil(Fournisseur fournisseur){
+        String pick;
+        pick = menuFournisseur.displayPageProfil(fournisseur);
+
+        switch (pick){
+            case "1" :
+                //nouveau nom d'utilisateur
+                break;
+
+            case "2" :
+                //nouveau mot de passe
+                break;
+
+            case "3" :
+                //nouveau courriel
+                break;
+
+            case "4":
+                //retour aux menus
+                menuFournisseur.displayPagePrincipal(fournisseur);
+                break;
+        }
+    }
+
+    /**
+     * Affiche le menu de gestion des composantes pour le Fournisseur et gère les choix de l'utilisateur.
+     *
+     * @param fournisseur le Fournisseur
+     */
+    public void menuGestionComposantes(Fournisseur fournisseur) {
+        String pick;
+        pick = menuFournisseur.displayPageGestionComposante(fournisseur);
+
+        switch (pick) {
+            case "1":
+                // Affiche toutes les composantes du fournisseur
+                for (Composante comp : fournisseur.getComposantes()) {
+                    System.out.println(comp);
+                }
+                break;
+            case "2":
+                // Supprime une composante au choix
+                Scanner scan = new Scanner(System.in);
+                System.out.print("Entrez le nom de la composante à supprimer: ");
+                String nomASupprimer = scan.nextLine();
+                fournisseur.supprimerComposante(nomASupprimer);
+                System.out.println("Composante supprimée avec succès!");
+                break;
+            case "3":
+                // Modifier une composante
+                Scanner scan2 = new Scanner(System.in);
+                System.out.print("Entrez le nom de la composante à modifier: ");
+                String nomAModifier = scan2.nextLine();
+                fournisseur.supprimerComposante(nomAModifier);
+                System.out.print("Entrez le nouveau nom de la composante: ");
+                String nouveauNom = scan2.nextLine();
+                System.out.print("Entrez le nouveau type de la composante: ");
+                String nouveauType = scan2.nextLine();
+                System.out.print("Entrez la nouvelle description de la composante: ");
+                String nouvelleDescription = scan2.nextLine();
+                System.out.print("Entrez le nouveau prix de la composante: ");
+                String nouveauPrix = scan2.nextLine();
+                fournisseur.ajouterComposante(new Composante(nouveauNom, nouveauType, nouvelleDescription, nouveauPrix));
+                System.out.println("Composante modifiée avec succès!");
+                break;
+            case "4":
+                menuFournisseur.displayPagePrincipal(fournisseur);
+                break;
+        }
+    }
+
+
+    /**
+     * Affiche le menu d'enregistrement de composante pour le Fournisseur et gère les choix de l'utilisateur.
+     *
+     * @param fournisseur le Fournisseur
+     */
+    public void menuEnregisterComposante(Fournisseur fournisseur) {
+        String pick;
+        pick = menuFournisseur.displayPageEnregisterComposante(fournisseur);
+
+        switch (pick) {
+            case "1":
+                // Enregistrer nouvelle composante
+                Scanner scan = new Scanner(System.in);
+                System.out.print("Entrez le nom de la composante: ");
+                String nom = scan.nextLine();
+                System.out.print("Entrez le type de la composante: ");
+                String type = scan.nextLine();
+                System.out.print("Entrez la description de la composante: ");
+                String description = scan.nextLine();
+                System.out.print("Entrez le prix de la composante: ");
+                String prix = scan.nextLine();
+                fournisseur.ajouterComposante(new Composante(nom, type, description, prix));
+                System.out.println("Composante ajoutée avec succès!");
+                break;
+            case "2":
+                menuFournisseur.displayPagePrincipal(fournisseur);
+                break;
+        }
+    }
+
 
 }

@@ -474,12 +474,12 @@ public class MenuClient extends MenuUtilisateur{
     }
 
     /**
-     * Vérifie se le choix du client est valide selon le context du menu.
+     * Vérifie si le choix de l'utilisateur est valide selon le contexte du menu.
      *
-     * @param pick Le choix du client.
-     * @param validStrings List de String valide selon le context.
-     * @param maxIndex index maximal de choix valide selon le context. (starting at '1')
-     * @return Si le choix est valide ou non.
+     * @param pick le choix de l'utilisateur
+     * @param validStrings liste des chaînes valides selon le contexte
+     * @param maxIndex index maximal de choix valide selon le contexte (commençant à '1')
+     * @return vrai si le choix est valide, faux sinon
      */
     private boolean _pickIsValid(String pick, ArrayList<String> validStrings, int maxIndex){
 

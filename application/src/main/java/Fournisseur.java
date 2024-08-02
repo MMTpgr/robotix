@@ -7,13 +7,14 @@ public class Fournisseur extends Utilisateur {
     private int visites;
     private int transactions;
     private ArrayList<ComposanteType> typesComposantes;
+    private ArrayList<Composante> composantes; // Ajout de la liste de composantes
 
-    public Fournisseur(String username, String password){
+    public Fournisseur(String username, String password) {
         super(username, password);
+        this.composantes = new ArrayList<>(); // Initialisation de la liste de composantes
     }
 
     // -------------------------- GETTER SETTER --------------------------
-
 
     public int getRating() {
         return rating;
@@ -47,28 +48,38 @@ public class Fournisseur extends Utilisateur {
         this.typesComposantes = typesComposantes;
     }
 
+    public ArrayList<Composante> getComposantes() {
+        return composantes;
+    }
+
     // -------------------------- UTILS METHODS --------------------------
-    
-    public void acheterComposante(Composante c){
+
+    public void ajouterComposante(Composante composante) {
+        this.composantes.add(composante);
+    }
+
+    public void supprimerComposante(String nom) {
+        composantes.removeIf(comp -> comp.getNom().equalsIgnoreCase(nom));
+    }
+
+    public void acheterComposante(Composante c) {
         this.composantes.remove(c);
     }
 
-
-    public static void filterFournisseurs (ArrayList<Fournisseur> toSort, FournisseurFilter filter){
-
+    public static void filterFournisseurs(ArrayList<Fournisseur> toSort, FournisseurFilter filter) {
         // Filtering with Treeset or sort function.
-        if (filter.equals(FournisseurFilter.NOM)){
+        if (filter.equals(FournisseurFilter.NOM)) {
             toSort.sort(new NomComparatorF());
         } else if (filter.equals(FournisseurFilter.TYPECOMPOSANTES)) {
             toSort.sort(new TypeComposanteComparator());
         }
     }
-
 }
+
 
 // -------------------------- Filtering --------------------------
 
-enum FournisseurFilter{
+enum FournisseurFilter {
     NOM,
     TYPECOMPOSANTES
 }

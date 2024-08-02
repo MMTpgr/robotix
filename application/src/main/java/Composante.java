@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 
-enum ComposanteType{
+enum ComposanteType {
     ROUE,
     MICRO,
     ECRAN,
@@ -12,24 +12,27 @@ enum ComposanteType{
     HAUTPARLEUR
 }
 
-public abstract class Composante {
+public class Composante {
 
     protected ComposanteType type;
+    protected String[] actionsPossibles;
+    private float prix;
+    protected String id;
+    protected Fournisseur fournisseur;
+    protected String nom;
+    protected String description; // Ajout de l'attribut description
 
-    public Composante(){
-
+    // Constructeur par défaut
+    public Composante() {
     }
 
-    protected String[] actionsPossibles;
-
-
-    private float prix;
-
-    protected String id;
-
-    protected Fournisseur fournisseur;
-
-    protected String nom;
+    // Constructeur avec paramètres
+    public Composante(String nom, String type, String description, String prix) {
+        this.nom = nom;
+        this.type = ComposanteType.valueOf(type.toUpperCase());
+        this.description = description; // Initialisation de l'attribut description
+        this.prix = Float.parseFloat(prix);
+    }
 
     // -------------------------- GETTER SETTER --------------------------
 
@@ -65,7 +68,7 @@ public abstract class Composante {
         this.fournisseur = fournisseur;
     }
 
-    public ComposanteType getType(){
+    public ComposanteType getType() {
         return this.type;
     }
 
@@ -81,28 +84,36 @@ public abstract class Composante {
         this.nom = nom;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Nom: " + nom + ", Type: " + type + ", Description: " + description + ", Prix: " + prix;
+    }
+
     // -------------------------- UTILS METHODS --------------------------
 
-
-    public static  void filterComposantes (ArrayList<Composante> toSort, ComposanteFilter filter){
-
+    public static void filterComposantes(ArrayList<Composante> toSort, ComposanteFilter filter) {
         // Filtering with Treeset or sort function.
-        if (filter.equals(ComposanteFilter.NAME)){
+        if (filter.equals(ComposanteFilter.NAME)) {
             toSort.sort(new NameComparator());
         } else if (filter.equals(ComposanteFilter.TYPE)) {
             toSort.sort(new TypeComparator());
-        }else if (filter.equals(ComposanteFilter.FOURNISSEUR)) {
+        } else if (filter.equals(ComposanteFilter.FOURNISSEUR)) {
             toSort.sort(new FournisseurComparator());
         }
-
     }
-
 }
-
 
 // -------------------------- Filtering --------------------------
 
-enum ComposanteFilter{
+enum ComposanteFilter {
     NAME,
     TYPE,
     FOURNISSEUR
