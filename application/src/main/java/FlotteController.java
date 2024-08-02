@@ -21,15 +21,19 @@ public class FlotteController {
 
 
     public void vueGenerale(Flotte flotte){
+        String message = "";
         for (Robot r : flotte.getRobots()){
-            System.out.println("Robot: "+r.getNom() +" type: " +r.getType() + " batterie restante: "+r.getBatterie()) ;
+            message += "Robot: "+r.getNom() +" type: " +r.getType() + " batterie restante: "+r.getBatterie() +"\n";
         }
+        System.out.println(message);
     }
-    //Afficher en plus son numéro de série, sa position, sa vitesse, sa consommation CPU et mémoire.
+
     public void vueComplete(Flotte flotte){
+        String message = "";
         for (Robot r : flotte.getRobots()){
-            System.out.println("numéro de série: "+r.getNumSerie() +" position: " +r.getPosition() + " vitesse: "+r.getVitesse() + " consommation CPU et mémoire: " + r.getConsommationCPU() ) ;
+            message+= "numéro de série: "+r.getNumSerie() +" position: " +r.getPosition() + " vitesse: "+r.getVitesse() + " consommation CPU et mémoire: " + r.getConsommationCPU() +"\n";
         }
+        System.out.println(message);
     }
 
     public void removeRobot(String name){
