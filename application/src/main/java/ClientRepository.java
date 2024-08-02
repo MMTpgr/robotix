@@ -4,6 +4,8 @@ import java.util.*;
 public abstract class ClientRepository {
 
     private String dataFile = "Clients.json";
+    private ArrayList<Client> clients;
+
 
 
     // -------------------------- GETTER SETTER --------------------------
@@ -23,6 +25,13 @@ public abstract class ClientRepository {
 
     public void removeClient(String name){
         return;
+    }
+
+    public ArrayList<Client> getClients() {
+        if (this.clients == null){
+            this.parseClients();
+        }
+        return this.clients;
     }
 
     public ArrayList<Client> parseClients(){

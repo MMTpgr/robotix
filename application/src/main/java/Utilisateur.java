@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public abstract class Utilisateur {
+public abstract class  Utilisateur {
     protected String username;
     protected String password;
     protected ArrayList<Activite> activites = new ArrayList<>();
@@ -91,7 +91,7 @@ public abstract class Utilisateur {
         this.composantes = composantes;
     }
 
-    // -------------------------- UTILS METHODS --------------------------
+    // -------------------------- UTILS METHODS -------------------------- //
 
 
     public void addActivite(Activite act){
@@ -110,4 +110,16 @@ public abstract class Utilisateur {
         this.notifications.add(notification);
     }
 
+    /**
+     * Méthode toString() qui renvoit un message en String à afficher lorsque l'on veux voir
+     * toutes les notifications associées à un user
+     * @return
+     */
+    public String toStringNotifs(){
+        String display = "";
+        for (Notification notif : notifications){
+            display += "Notification - FROM " + notif.getFrom() + ": " + notif.getMessage() + "\n";
+        }
+        return display;
+    }
 }

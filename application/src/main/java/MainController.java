@@ -83,29 +83,47 @@ public class MainController {
         menu.displayPageConnexion();
 
         Scanner keyb = new Scanner(System.in);
-        // si entre 0, start() et clear currentUser
 
         // Demander username
         while (!validUser){
             String username = keyb.nextLine();
-            // Chercher à travers les users
 
-            //si trouvé, validUser = true
-            //et userCurrent = user.
+            // Si utilisateur veux quitter
+            if (username.equals("0")){
+                currentUser = null;
+                start();
+            }
+
+            // Chercher à travers les users
+            for (Client client : clientController.getClients()){
+                if (client.getUsername().equals(username)){
+                    validUser = true;
+                    currentUser = client;
+                }
+            }
+
+            // Chercher à travers les fournisseurs
+            for (Fournisseur fourn : fournisseurController.getRepository().getFournisseurs()){
+                if (fourn.getUsername().equals(username)){
+                    validUser = true;
+                    currentUser = fourn;
+                }
+            }
         }
 
         while (!validPassword){
             System.out.print("Mot de passe: ");
             String password = keyb.nextLine();
 
+            if (password.equals("0")){
+                currentUser = null;
+                start();
+            }
+
             if (!currentUser.getPassword().equals(password)){
                 System.out.print("\nMot de passe erroné.");
             } else {validPassword = true;}
         }
-
-
-
-
 
         // Get User from ClientRepository or FournisseurRepository
 
