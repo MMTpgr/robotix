@@ -40,6 +40,8 @@ public class MenuClient extends MenuUtilisateur{
         return pick;
     }
 
+    /**
+    *
     public String displayPageFlotte(Utilisateur user) {
 
         String pick;
@@ -49,7 +51,7 @@ public class MenuClient extends MenuUtilisateur{
         System.out.println("Ma flotte");
         System.out.println("1 : Ajouter un robot à la flotte");
         System.out.println("2 : Supprimer un robot à la flotte");
-        System.out.println("3 : Afficher l'etat des robot");
+        System.out.println("3 : Afficher l'état des robot");
         System.out.println("4 : Revenir au menu principal");
 
         ArrayList<String> validStrings = new ArrayList<>(Arrays.asList("-"));
