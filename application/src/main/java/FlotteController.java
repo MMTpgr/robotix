@@ -52,14 +52,13 @@ public class FlotteController {
             AfficherValidationSupprRobot();
         }
         else {
-            System.out.println("Ce robot n'existe pas");
+            System.out.println("Ce robot n'éxiste pas");
         }
     }
 
     public void enregistrerRobot(Robot robot){
-
         _flotte.addRobot(robot);
-        System.out.println("robot enregistre avec succes!");
+        System.out.println("robot enregistré avec succès!");
     }
 
     public Robot createRobot(ArrayList<Composante> composantes){
@@ -74,11 +73,11 @@ public class FlotteController {
 
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Comment appelerez vous votre robot?");
+        System.out.println("Comment appelleriez  vous votre robot?");
         do {
             nom = scan.nextLine();
             if (nom.length()==0){
-                System.out.println("Entre un nom valide");
+                System.out.println("Entrez un nom valide");
             }
         } while (nom.length()==0);
 
@@ -86,26 +85,26 @@ public class FlotteController {
         do {
             type = scan.nextLine();
             if (type.length()==0){
-                System.out.println("Entre un nom valide");
+                System.out.println("Entrez un type valide");
             }
         } while (nom.length()==0);
 
 
-        System.out.println("Entrez votre numero de serie");
+        System.out.println("Entrez votre numéro de sèrie");
 
         do {
             numSerie = scan.nextLine();
             if (numSerie.length()==0){
-                System.out.println("Entre un nom valide");
+                System.out.println("Entre un numéro de sèrie valide");
             }
         } while (nom.length()==0);
 
         if(_composantes.size()<2){
-            System.out.println("Vous n'avez pas assez de composantes pour creer un robot donc peine de mort ");
+            System.out.println("Vous n'avez pas assez de composantes pour créer un robot ");
 
         }
         else {
-            System.out.println("Quels composantes souhaitez vous integrer?");
+            System.out.println("Quelles composantes souhaitez vous intégrer? (Veuillez entrer le nom de la composante");
 
 
             ArrayList<Composante> composantesChoisies = new ArrayList<Composante>();
@@ -117,7 +116,7 @@ public class FlotteController {
                     System.out.println((i + 1) + ". " + _composantes.get(i).getNom());
                 }
 
-                System.out.println("- Creer le robot");
+                System.out.println("- Créer le robot");
 
                 pick = scan.nextLine();
                 while (pick != "-") {
@@ -128,7 +127,7 @@ public class FlotteController {
                         for (int i = 0; i < _composantes.size(); i++) {
                             System.out.println((i + 1) + ". " + _composantes.get(i).getNom());
                         }
-                        System.out.println("- Creer le robot");
+                        System.out.println("- Créer le robot");
                     } else {
                         if (pick.equals("-")) {
                             break;
@@ -164,7 +163,7 @@ public class FlotteController {
 
 
                 } else {
-                    System.out.println("Choix de composantes invalide, tu es gay");
+                    System.out.println("Choix de composantes invalide");
 
                     _composantes.clear();
                     _composantes.addAll(CopieInit);
@@ -223,11 +222,6 @@ public class FlotteController {
     public void AfficherValidationSupprRobot(){
         System.out.println("Robot supprimé avec succes!");
     }
-
-
-
-
-
     public void afficherMetriqueFlotte(){
 
     }
