@@ -55,6 +55,13 @@ public class ActiviteController{
 
         activite.addParticipant(client, robotValides);
         client.addActivite(activite);
+
+        Notification notification = new Notification();
+        notification.setFrom("Menu Activite");
+        notification.setMessage("Vous etes maintenant inscrit à " + activite.getName());
+
+        client.addNotification(notification);
+
         return true;
     }
 
@@ -73,7 +80,7 @@ public class ActiviteController{
 
         for (Robot robot : client.getFlotte().getRobots()){
             for (Composante composante : robot.getComposantes()){
-                if (activite.getComposantesRequises().contains(composante.getType())){
+                if (activite.getComposantesRequises().contains(composante.getType().name())){
                     robotValides.add(robot);
                     break;
                 }
@@ -87,7 +94,7 @@ public class ActiviteController{
      * Désincription d'un client à une activité.
      *
      * @param client Client à désinscrire
-     * @param activite Activtié cible
+     * @param activite Activité cible
      */
     public void desinscriptionClient(Client client, Activite activite){
 
@@ -97,14 +104,12 @@ public class ActiviteController{
         for (Robot robot : client.getFlotte().getRobots()){
                 activite.getRobotsInclus().remove(robot.getNom());
         }
-    }
 
-    public void notifierUtilisateurs(Activite activite, Notification notification){
+        Notification notification = new Notification();
+        notification.setFrom("Menu Activite");
+        notification.setMessage("Vous etes maintenant désinscrit de " + activite.getName());
 
-    }
-
-
-    public void addPointToUser(Utilisateur utilisateur, int points){
+        client.addNotification(notification);
 
     }
 

@@ -1,14 +1,14 @@
 public class Notification {
 
-    private Utilisateur from;
+    private String from;
 
     private String message;
 
-    public Utilisateur getFrom() {
+    public String getFrom() {
         return from;
     }
 
-    public void setFrom(Utilisateur from) {
+    public void setFrom(String from) {
         this.from = from;
     }
 

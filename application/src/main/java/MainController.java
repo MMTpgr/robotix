@@ -15,7 +15,7 @@ public class MainController {
     private final FournisseurRepository fournisseurRepository = fournisseurController.getRepository();
     private final  ComposanteController composanteController =  ComposanteController.getInstance();
     private final ComposanteRepository composanteRepository = composanteController.getRepository();
-    private FlotteController flotteController ;
+    private FlotteController flotteController;
     private final MenuConnexion menu = MenuConnexion.getInstance();
     private final MenuClient menuClient = MenuClient.getInstance();
     //MenuFournisseur
@@ -86,7 +86,7 @@ public class MainController {
         Client client1 = new Client("toto", "bobo");
         String[] infos1 = {"Bender", "bender", "KD-09290"};
         client1.getFlotte().addRobot( new Robot(infos1, 100, false,
-                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Camera())) ));
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Camera(), new HautParleur())) ));
 
         String[] infos2 = {"AlphaTron", "Assistant domestique", "AT-00123"};
         client1.getFlotte().addRobot( new Robot(infos2, 18, false,
@@ -96,7 +96,7 @@ public class MainController {
         Client client2 = new Client("coco", "lolo");
         String[] infos3 = {"BetaGuard", "Sécurité résidentielle", "BG-00456"};
         client2.getFlotte().addRobot( new Robot(infos3, 92, false,
-                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Camera(), new Micro()))));
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Camera(), new Micro(), new Roue()))));
         String[] infos4 = {"GammaCook", "Chef culinaire", "GC-00789"};
         client2.getFlotte().addRobot( new Robot(infos4, 82, false,
                 new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new HautParleur(), new Helice()))));
@@ -105,7 +105,7 @@ public class MainController {
         Client client3 = new Client("popo", "momo");
         String[] infos5 = {"DeltaMed", "Infirmier médical", "DM-01012"};
         client3.getFlotte().addRobot( new Robot(infos5, 92, false,
-                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Camera(), new Micro()))));
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Camera(), new Micro(), new Ecran()))));
         String[] infos6 = {"EpsilonClean", "Nettoyage industriel", "EC-01345"};
         client3.getFlotte().addRobot( new Robot(infos6, 98, false,
                 new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Camera(), new Roue()))));
@@ -132,7 +132,7 @@ public class MainController {
         Client client6 = new Client("Jordan", "VFX");
         String[] infos11 = {"KappaDrone", "Drone de surveillance", "KD-02890"};
         client6.getFlotte().addRobot( new Robot(infos11, 64, false,
-                new ArrayList<>(Arrays.asList(new CPU(), new Helice(), new Micro(), new Camera()))));
+                new ArrayList<>(Arrays.asList(new CPU(), new Helice(), new Micro(), new Camera(), new Ecran()))));
         String[] infos12 = {"LambdaLift", "Exosquelette d'assistance", "LL-03123"};
         client6.getFlotte().addRobot( new Robot(infos12, 82, false,
                 new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Roue(), new Camera()))));
@@ -153,7 +153,7 @@ public class MainController {
                 new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Roue(), new Camera(), new Micro()))));
         String[] infos16 = {"OmicronClean", "Nettoyage de vitres", "OC-04445"};
         client8.getFlotte().addRobot( new Robot(infos16, 18, false,
-                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Roue(), new Camera(), new Micro()))));
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Roue(), new Camera(), new Micro(), new Ecran()))));
 
         // --- client9 ---
         Client client9 = new Client("Johnny", "test");
@@ -162,7 +162,7 @@ public class MainController {
                 new ArrayList<>(Arrays.asList(new CPU(), new Roue(), new Camera(), new Micro(), new Helice()))));
         String[] infos18 = {"RhoGuard", "Robot de sécurité publique", "RG-05101"};
         client9.getFlotte().addRobot( new Robot(infos18, 46, false,
-                new ArrayList<>(Arrays.asList(new CPU(), new Roue(), new Camera(), new Micro(), new Helice()))));
+                new ArrayList<>(Arrays.asList(new CPU(), new Roue(), new Camera(), new Micro(), new Helice(), new Ecran()))));
 
         // --- client10 ---
         Client client10 = new Client("Gateau", "vanille");
@@ -171,7 +171,7 @@ public class MainController {
                 new ArrayList<>(Arrays.asList(new CPU(), new Roue(), new Bras(), new Micro(), new Helice()))));
         String[] infos20 = {"TauTutor", "Tuteur éducatif", "TT-05767"};
         client10.getFlotte().addRobot( new Robot(infos20, 76, false,
-                new ArrayList<>(Arrays.asList(new CPU(), new Roue(), new Bras(), new Micro(), new Helice()))));
+                new ArrayList<>(Arrays.asList(new CPU(), new Roue(), new Bras(), new Micro(), new Helice(), new Ecran()))));
 
 
 
@@ -180,6 +180,7 @@ public class MainController {
         // --- Fournisseur1 ---
 
         Fournisseur fournisseur1 = new Fournisseur("SKF Group", "sadwf");
+
         CPU cpu1 = new CPU();
         cpu1.setNom("dasdas");
         cpu1.setPrix(25);
@@ -288,7 +289,7 @@ public class MainController {
                 "Menage de la cuisine et du salon",
                 "Jordan",
                 ACTIVITEETAT.NONDEBUTEE);
-
+        activite1.setPopularite(0);
         Tache tache1 = new Tache("Balayeuse");
 
         ArrayList<ComposanteType> composanteTypes1 = new ArrayList<>();
@@ -296,8 +297,8 @@ public class MainController {
         Action action1 = new Action("Avancer", composanteTypes1);
 
         ArrayList<ComposanteType> composanteTypes2 = new ArrayList<>();
-        composanteTypes1.add(ComposanteType.BRAS);
-        Action action2 = new Action("Aspirer", composanteTypes1);
+        composanteTypes2.add(ComposanteType.BRAS);
+        Action action2 = new Action("Aspirer", composanteTypes2);
 
         tache1.addAction(action2, 0);
         tache1.addAction(action1, 0);
@@ -312,20 +313,20 @@ public class MainController {
                 "Recherche de trésors enfoui",
                 "Dora",
                 ACTIVITEETAT.NONDEBUTEE);
-
+        activite2.setPopularite(4);
         Tache tache2 = new Tache("Chercher");
 
         ArrayList<ComposanteType> composanteTypes3 = new ArrayList<>();
-        composanteTypes1.add(ComposanteType.ROUE);
+        composanteTypes3.add(ComposanteType.ROUE);
         Action action3 = new Action("Avancer", composanteTypes3);
 
         ArrayList<ComposanteType> composanteTypes4 = new ArrayList<>();
-        composanteTypes1.add(ComposanteType.CAMERA);
+        composanteTypes4.add(ComposanteType.CAMERA);
         Action action4 = new Action("Analyser", composanteTypes4);
 
 
         ArrayList<ComposanteType> composanteTypes5 = new ArrayList<>();
-        composanteTypes1.add(ComposanteType.BRAS);
+        composanteTypes5.add(ComposanteType.BRAS);
         Action action5 = new Action("Creuser", composanteTypes5);
 
         tache2.addAction(action3, 0);
@@ -342,15 +343,15 @@ public class MainController {
                 "Captation d'un match de ultimate Frisbee.",
                 "Guillaume",
                 ACTIVITEETAT.NONDEBUTEE);
-
+        activite2.setPopularite(4);
         Tache tache3 = new Tache("Camera Drone");
 
         ArrayList<ComposanteType> composanteTypes6 = new ArrayList<>();
-        composanteTypes1.add(ComposanteType.HELICE);
+        composanteTypes6.add(ComposanteType.HELICE);
         Action action6 = new Action("Voler", composanteTypes6);
 
         ArrayList<ComposanteType> composanteTypes7 = new ArrayList<>();
-        composanteTypes1.add(ComposanteType.CAMERA);
+        composanteTypes7.add(ComposanteType.CAMERA);
         Action action7 = new Action("Enregistrer", composanteTypes7);
 
 
@@ -361,11 +362,11 @@ public class MainController {
         Tache tache4 = new Tache("Camera Ground");
 
         ArrayList<ComposanteType> composanteTypes8 = new ArrayList<>();
-        composanteTypes1.add(ComposanteType.ROUE);
+        composanteTypes8.add(ComposanteType.ROUE);
         Action action8 = new Action("Avancer", composanteTypes8);
 
         ArrayList<ComposanteType> composanteTypes9 = new ArrayList<>();
-        composanteTypes1.add(ComposanteType.CAMERA);
+        composanteTypes9.add(ComposanteType.CAMERA);
         Action action9 = new Action("Enregistrer", composanteTypes9);
 
         tache4.addAction(action8, 0);
@@ -374,7 +375,7 @@ public class MainController {
 
         Tache tache5 = new Tache("Enregistrer Son");
         ArrayList<ComposanteType> composanteTypes10 = new ArrayList<>();
-        composanteTypes1.add(ComposanteType.MICRO);
+        composanteTypes10.add(ComposanteType.MICRO);
         Action action10 = new Action("Enregistrer", composanteTypes10);
 
         tache5.addAction(action10, 0);
@@ -392,15 +393,15 @@ public class MainController {
                 "Robot de support lors de la revision.",
                 "MEDHI",
                 ACTIVITEETAT.TERMINEE);
-
+        activite2.setPopularite(8);
         Tache tache6 = new Tache("Poser une question.");
 
         ArrayList<ComposanteType> composanteTypes11 = new ArrayList<>();
-        composanteTypes1.add(ComposanteType.ECRAN);
+        composanteTypes11.add(ComposanteType.ECRAN);
         Action action11 = new Action("Question Visuelle", composanteTypes11);
 
         ArrayList<ComposanteType> composanteTypes12 = new ArrayList<>();
-        composanteTypes1.add(ComposanteType.HAUTPARLEUR);
+        composanteTypes12.add(ComposanteType.HAUTPARLEUR);
         Action action12 = new Action("Question Audio", composanteTypes12);
 
         tache6.addAction(action11, 0);
@@ -418,16 +419,103 @@ public class MainController {
                 "Course de robots sur 100 mètres.",
                 "Nikolas",
                 ACTIVITEETAT.ENCOURS);
-
+        activite2.setPopularite(10);
 
         Tache tache7 = new Tache("Rouler.");
         ArrayList<ComposanteType> composanteTypes13 = new ArrayList<>();
-        composanteTypes1.add(ComposanteType.ROUE);
+        composanteTypes13.add(ComposanteType.ROUE);
         Action action13 = new Action("Question Visuelle", composanteTypes13);
 
 
         tache7.addAction(action13, 0);
         activite5.addTache(tache7, 0);
+
+
+        // ---Activite numero 6---
+
+
+        LocalDate date5 = LocalDate.of(2024, 8, 20);
+
+        Activite activite6 = new Activite("Ateliers mecanique",
+                date5,
+                "Journee d'atelier sur la mecanique des robots",
+                "Nappa",
+                ACTIVITEETAT.NONDEBUTEE);
+        activite2.setPopularite(10);
+        Tache tache8 = new Tache("Reparation");
+        ArrayList<ComposanteType> composanteTypes14 =
+                new ArrayList<>( Arrays.asList(ComposanteType.CPU,
+                        ComposanteType.ROUE, ComposanteType.BRAS,
+
+                        ComposanteType.HAUTPARLEUR, ComposanteType.ECRAN,
+                        ComposanteType.HELICE));
+        Action action14 = new Action("Support Visuelle", composanteTypes14);
+
+        tache8.addAction(action14, 0);
+
+        activite6.addTache(tache8, 0);
+
+        // ------------------------- Inscription Activites ------------------------
+        activiteController.inscriptionClient(client1, activite1);
+        activiteController.inscriptionClient(client1, activite2);
+        activiteController.inscriptionClient(client1, activite3);
+        activiteController.inscriptionClient(client1, activite4);
+        activiteController.inscriptionClient(client1, activite5);
+
+        activiteController.inscriptionClient(client2, activite1);
+        activiteController.inscriptionClient(client2, activite2);
+        activiteController.inscriptionClient(client2, activite3);
+        activiteController.inscriptionClient(client2, activite4);
+        activiteController.inscriptionClient(client2, activite6);
+
+        activiteController.inscriptionClient(client3, activite1);
+        activiteController.inscriptionClient(client3, activite2);
+        activiteController.inscriptionClient(client3, activite3);
+        activiteController.inscriptionClient(client3, activite4);
+        activiteController.inscriptionClient(client3, activite5);
+
+        activiteController.inscriptionClient(client4, activite1);
+        activiteController.inscriptionClient(client4, activite2);
+        activiteController.inscriptionClient(client4, activite3);
+        activiteController.inscriptionClient(client4, activite4);
+        activiteController.inscriptionClient(client4, activite6);
+
+        activiteController.inscriptionClient(client5, activite1);
+        activiteController.inscriptionClient(client5, activite2);
+        activiteController.inscriptionClient(client5, activite3);
+        activiteController.inscriptionClient(client5, activite4);
+        activiteController.inscriptionClient(client5, activite6);
+
+        activiteController.inscriptionClient(client6, activite1);
+        activiteController.inscriptionClient(client6, activite2);
+        activiteController.inscriptionClient(client6, activite3);
+        activiteController.inscriptionClient(client6, activite4);
+        activiteController.inscriptionClient(client6, activite5);
+
+        activiteController.inscriptionClient(client7, activite1);
+        activiteController.inscriptionClient(client7, activite2);
+        activiteController.inscriptionClient(client7, activite3);
+        activiteController.inscriptionClient(client7, activite4);
+        activiteController.inscriptionClient(client7, activite6);
+
+        activiteController.inscriptionClient(client8, activite1);
+        activiteController.inscriptionClient(client8, activite2);
+        activiteController.inscriptionClient(client8, activite3);
+        activiteController.inscriptionClient(client8, activite4);
+        activiteController.inscriptionClient(client8, activite5);
+
+        activiteController.inscriptionClient(client9, activite1);
+        activiteController.inscriptionClient(client9, activite2);
+        activiteController.inscriptionClient(client9, activite3);
+        activiteController.inscriptionClient(client9, activite4);
+        activiteController.inscriptionClient(client9, activite6);
+
+        activiteController.inscriptionClient(client10, activite1);
+        activiteController.inscriptionClient(client10, activite2);
+        activiteController.inscriptionClient(client10, activite3);
+        activiteController.inscriptionClient(client10, activite4);
+        activiteController.inscriptionClient(client10, activite5);
+
 
     }
 
@@ -499,39 +587,33 @@ public class MainController {
 
     }
 
-    public void connexionClient(Client client){
-
-    }
-
-    public void connexionFournisseur(Fournisseur fournisseur){
-
-    }
-
     // -------------------------- Client --------------------------
     // Version pour fournisseur vers le milieu / fin de ce document
 
+    /**
+     * Logique du menu Principal d'utilisateur
+     * Selon le choix du client, menu flotte, menu activites, menu marketplace, afficher les notifications
+     * ou retour au menu de connexion.
+     * @param client
+     */
     public void menuPrincipalClient(Client client){
 
         String pick = menuClient.displayPagePrincipal(client);
 
-        switch (Integer.parseInt(pick)) {
-            case 1:
+        switch (pick) {
+            case "1":
                 MenuFlotte(client);
-
                 break;
-            case 2:
+            case "2":
                 this.menuActivitesPrincipal(client);
                 break;
-            case 3:
+            case "3":
                 menuMarketPlacePrincipal(client);
-//            case 4:
-//                displayPageInterets(user);
-//            case 5:
-//                displayPageAbonnements(user);
-//            case 6:
-//                interets.clear();
-//                users.clear();
-//                main(null);
+            case "4":
+
+            case "-":
+                this.start();
+
         }
 
     }
@@ -787,6 +869,11 @@ public class MainController {
         }
     }
 
+    /**
+     * Logique du menu Flotte
+     *
+     * @param client Le client.
+     */
     public void MenuFlotte(Client client){
         String pick;
         FlotteController flotteController = FlotteController.getInstance(client);
@@ -833,8 +920,6 @@ public class MainController {
         }
     }
 
-
-    // TO BE CONTINUED...
 
     // -------------------------- Fournisseur --------------------------
     /**

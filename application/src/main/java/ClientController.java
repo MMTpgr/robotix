@@ -38,10 +38,6 @@ public class ClientController extends ClientRepository {
         // Do Something
     }
 
-    public void trouverUtilisateur(String name){
-
-        // Do Something
-    }
 
     public void modifierSonProfil(ArrayList<String> infos){
 

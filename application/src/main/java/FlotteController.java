@@ -24,6 +24,11 @@ public class FlotteController {
 
     }
 
+    /**
+     * Affichage Menu general de metrique flotte
+     *
+     * @param flotte La flotte
+     */
     public void vueGenerale(Flotte flotte){
         String message = "";
         for (Robot r : flotte.getRobots()){
@@ -32,6 +37,11 @@ public class FlotteController {
         System.out.println(message);
     }
 
+    /**
+     * Affichage Menu complete de metrique flotte
+     *
+     * @param flotte La flotte
+     */
     public void vueComplete(Flotte flotte){
         String message = "";
         for (Robot r : flotte.getRobots()){
@@ -40,6 +50,11 @@ public class FlotteController {
         System.out.println(message);
     }
 
+    /**
+     * Retrait d'un robot de la flotte du Client
+     *
+     * @param name nom du robot
+     */
     public void removeRobot(String name){
         boolean isSuppr = false;
         ArrayList<Robot> listeRobots = _flotte.getRobots();
@@ -60,11 +75,22 @@ public class FlotteController {
         }
     }
 
+    /**
+     * Enregistrement d'un robot a la flotte du client.
+     *
+     * @param robot
+     */
     public void enregistrerRobot(Robot robot){
         _flotte.addRobot(robot);
         System.out.println("robot enregistré avec succès!");
     }
 
+    /**
+     * Creation d'un robot a partir de composantes et d'information pour le robot.
+     *
+     * @param composantes Liste de composantes.
+     * @return Le robot.
+     */
     public Robot createRobot(ArrayList<Composante> composantes){
         String nom ="";
         String type;
@@ -182,6 +208,15 @@ public class FlotteController {
         return null;
     }
 
+    /**
+     * Retrait d'une composantes parmi une liste de composante.
+     *
+     * Choix selon le nom de la composante.
+     *
+     * @param arr Liste de composante.
+     * @param str Nom de la composante a retirer.
+     * @return La composante retirer.
+     */
     private Composante removeComp (ArrayList<Composante> arr,String str ){
 
         for (int i=0;i<arr.size(); i++ ){
@@ -195,7 +230,14 @@ public class FlotteController {
         return null;
     }
 
-
+    /**
+     * Verifie si une composante fait partis d'une liste de composante.
+     * verification selon le nom de la composante..
+     *
+     * @param arr Liste de composante.
+     * @param str Nom de la composante a retirer.
+     * @return true or false selon la presence de la composante.
+     */
     private boolean isInList(ArrayList<Composante> arr,String str){
         boolean isIn = false;
 
@@ -207,6 +249,13 @@ public class FlotteController {
         return isIn;
     }
 
+    /**
+     * Getter d'un robot parmis une flotte de robot.
+     * Choix selon le nom du robot.
+     *
+     * @param name Nom du robot
+     * @return Le robot.
+     */
     public Robot getRobot(String name){
         Robot robot = null;
 
@@ -219,20 +268,18 @@ public class FlotteController {
         return robot;
     }
 
+    /**
+     * Affichage de validation de la creation d'un robot
+     */
     public void AfficherValidationCreationRobot(){
         System.out.println("Robot ajouté avec succes!");
     }
 
+    /**
+     * Affichage de validation de suppression d'un robot.
+     */
     public void AfficherValidationSupprRobot(){
         System.out.println("Robot supprimé avec succes!");
     }
-    public void afficherMetriqueFlotte(){
-
-    }
-
-    public void afficherMetriqueRobot(Robot robot){
-
-    }
-
 
 }

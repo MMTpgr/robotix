@@ -45,15 +45,15 @@ public class Activite {
      *
      * @return ArrayList de composantes requises.
      */
-    public ArrayList<ComposanteType> getComposantesRequises() {
+    public ArrayList<String> getComposantesRequises() {
 
-        ArrayList<ComposanteType> composantesRequise = new ArrayList<>();
+        ArrayList<String> composantesRequise = new ArrayList<>();
 
         for (Tache tache : this.taches){
             for (Action action: tache.getActions()){
                 for (ComposanteType composanteType : action.getComposantesRequises()){
-                    if (!composantesRequise.contains(composanteType)){
-                        composantesRequise.add(composanteType);
+                    if (!composantesRequise.contains(composanteType.name())){
+                        composantesRequise.add(composanteType.name());
                     }
                 }
             }

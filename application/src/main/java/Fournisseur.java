@@ -41,6 +41,17 @@ public class Fournisseur extends Utilisateur {
     }
 
     public ArrayList<ComposanteType> getTypesComposantes() {
+
+        ArrayList<ComposanteType> composanteTypes = new ArrayList<>();
+
+        for (Composante composante : this.getComposantes()){
+
+            if (!composanteTypes.contains(composante.getType())){
+                composanteTypes.add(composante.getType());
+            }
+
+        }
+        this.typesComposantes = composanteTypes;
         return typesComposantes;
     }
 
@@ -85,6 +96,13 @@ enum FournisseurFilter {
 }
 
 class NomComparatorF implements Comparator<Fournisseur> {
+    /**
+     * Comparaison par Nom
+     *
+     * @param f1 the first Fournisseur to be compared.
+     * @param f2 the second Fournisseur to be compared.
+     * @return
+     */
     @Override
     public int compare(Fournisseur f1, Fournisseur f2) {
         return f1.getUsername().compareTo(f2.getUsername());
@@ -92,9 +110,16 @@ class NomComparatorF implements Comparator<Fournisseur> {
 }
 
 class TypeComposanteComparator implements Comparator<Fournisseur> {
+
+    /**
+     * Comparaison par type de composantes
+     *
+     * @param f1 the first Fournisseur to be compared.
+     * @param f2 the second Fournisseur to be compared.
+     * @return
+     */
     @Override
     public int compare(Fournisseur f1, Fournisseur f2) {
-        // DO SOMETHING SOMEHOW :)
-        return 0;
+        return Integer.compare(f1.getTypesComposantes().size(), f2.getTypesComposantes().size());
     }
 }

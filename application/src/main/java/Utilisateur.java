@@ -16,6 +16,8 @@ public abstract class  Utilisateur {
         this.username = username;
         this.password = password;
         this.points = 0;
+        this.notifications = new ArrayList<>();
+        this.composantes = new ArrayList<>();
     }
     
     // -------------------------- GETTER SETTER --------------------------

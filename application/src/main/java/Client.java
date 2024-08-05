@@ -50,7 +50,15 @@ enum ClientFilter{
     SCORE
 }
 
+
 class UserNameComparator implements Comparator<Client> {
+    /**
+     * Comparaison par Username
+     *
+     * @param c1 the first Client to be compared.
+     * @param c2 the second Client to be compared.
+     * @return
+     */
     @Override
     public int compare(Client c1, Client c2) {
         return c1.getUsername().compareTo(c2.getUsername());
@@ -58,6 +66,13 @@ class UserNameComparator implements Comparator<Client> {
 }
 
 class AncienneteComparatorC implements Comparator<Client> {
+    /**
+     * Comparaison par anciennete
+     *
+     * @param c1 the first Client to be compared.
+     * @param c2 the second Client to be compared.
+     * @return
+     */
     @Override
     public int compare(Client c1, Client c2) {
         return c1.getInscription().compareTo(c2.getInscription());
@@ -65,6 +80,13 @@ class AncienneteComparatorC implements Comparator<Client> {
 }
 
 class ScoreComparator implements Comparator<Client> {
+    /**
+     * Comparaison par Score
+     *
+     * @param c1 the first Client to be compared.
+     * @param c2 the second Client to be compared.
+     * @return
+     */
     @Override
     public int compare(Client c1, Client c2) {
         return Integer.compare(c1.getPoints(), c2.getPoints());

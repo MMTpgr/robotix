@@ -38,14 +38,6 @@ public class FournisseurRepository {
 
     }
 
-    public void addFournisseur(Fournisseur fournisseur){
-        return;
-    }
-
-    public void removeFournisseur(String name){
-        return;
-    }
-
     public ArrayList<Fournisseur> parseFournisseurs(){
 
         ArrayList<Fournisseur> fournisseurs = new ArrayList<>();

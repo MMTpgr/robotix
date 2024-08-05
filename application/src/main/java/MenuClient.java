@@ -19,6 +19,14 @@ public class MenuClient extends MenuUtilisateur{
 
     }
 
+    /**
+     * Affichage du menu principal d'un client.
+     * Le client peut choisir de voir sa flottes, ses activites, marketplace ou
+     * de voir ses notifications
+     *
+     * @param user Le client.
+     * @return Choix du client.
+     */
     public String displayPagePrincipal(Client user) {
 
         String pick;
@@ -29,14 +37,13 @@ public class MenuClient extends MenuUtilisateur{
         System.out.println("1 : Voir ma flotte");
         System.out.println("2 : Activités");
         System.out.println("3 : MarketPlace");
-        System.out.println("4 : Trouver des intérêts");
-        System.out.println("5 : Parcourir des utilisateurs");
+        System.out.println("4 : Voir Notifications");
         System.out.println("- : Quitter");
 
         ArrayList<String> validStrings = new ArrayList<>(Arrays.asList("-"));
 
         pick = scan.nextLine();
-        while (!_pickIsValid(pick, validStrings, 5)) {
+        while (!_pickIsValid(pick, validStrings, 4)) {
             System.out.print("Veuillez entrer un choix valide: ");
             pick = scan.nextLine();
         }
@@ -44,8 +51,14 @@ public class MenuClient extends MenuUtilisateur{
         return pick;
     }
 
-    
-    
+
+    /**
+     * Affichage de la page principal de la flotte du client d'activités.
+     * Le client peut choisir d'ajouter/supprimer un robot a sa flotte, afficher etat de ses robot.
+     * ou de retourner au menu principal
+     * @param user Le client.
+     * @return Choix du client.
+     */
     public String displayPageFlotte(Utilisateur user) {
 
         String pick;
@@ -72,20 +85,12 @@ public class MenuClient extends MenuUtilisateur{
 
     }
 
-    public void displayPageEnregistrerRobot(){
-
-    }
-
-
-    public void displayPageSupprimerRobot(){
-
-    }
 
     // -------------------------- Activite --------------------------
 
     /**
      * Affichage de la page principal d'activités.
-     * Le client pour choisir de voir ses activités ou les activités de la base de données.
+     * Le client peut choisir de voir ses activités ou les activités de la base de données.
      * * Le client peux faire retour arrière.
      *
      * @param user Le client.
@@ -165,8 +170,8 @@ public class MenuClient extends MenuUtilisateur{
     public String displayPageFicheActivite(Activite activite, boolean alreadySubscribed){
 
         String composanteRequise = "";
-        for (ComposanteType ct : activite.getComposantesRequises()){
-            composanteRequise +=  ct.name() + " ";
+        for (String ct : activite.getComposantesRequises()){
+            composanteRequise +=  ct + " ";
         }
 
         String participants = "";
@@ -223,8 +228,8 @@ public class MenuClient extends MenuUtilisateur{
         System.out.println("!!! Inscription Echoué !!!");
         System.out.println("Aucun de vos robots ne possede une composante requise:");
         String composanteRequises = "";
-        for (ComposanteType composanteType : activite.getComposantesRequises()){
-            composanteRequises += " " + composanteType.name();
+        for (String composanteType : activite.getComposantesRequises()){
+            composanteRequises += " " + composanteType;
         }
         System.out.println(composanteRequises);
     }
@@ -467,13 +472,6 @@ public class MenuClient extends MenuUtilisateur{
 
     // -------------------------- UTILISATEURS --------------------------
 
-    public void displayPageFicheUtilisateur(){
-
-    }
-
-    public void displayPageRechercherUtilisateur(){
-
-    }
 
     public void displayPageNotifications(){
 

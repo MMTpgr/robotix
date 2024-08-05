@@ -120,6 +120,13 @@ enum ComposanteFilter {
 }
 
 class NameComparator implements Comparator<Composante> {
+    /**
+     * Comparaison par nom
+     *
+     * @param c1 the first Composante to be compared.
+     * @param c2 the second Composante to be compared.
+     * @return
+     */
     @Override
     public int compare(Composante c1, Composante c2) {
         return c1.getNom().compareTo(c2.getNom());
@@ -127,6 +134,13 @@ class NameComparator implements Comparator<Composante> {
 }
 
 class TypeComparator implements Comparator<Composante> {
+    /**
+     * Comparaison par type
+     *
+     * @param c1 the first Composante to be compared.
+     * @param c2 the second Composante to be compared.
+     * @return
+     */
     @Override
     public int compare(Composante c1, Composante c2) {
         return c1.getType().compareTo(c2.getType());
@@ -134,6 +148,13 @@ class TypeComparator implements Comparator<Composante> {
 }
 
 class FournisseurComparator implements Comparator<Composante> {
+    /**
+     * Comparaison par fournisseur
+     *
+     * @param c1 the first Composante to be compared.
+     * @param c2 the second Composante to be compared.
+     * @return
+     */
     @Override
     public int compare(Composante c1, Composante c2) {
         return c1.getFournisseur().getUsername().compareTo(c2.getFournisseur().getUsername());

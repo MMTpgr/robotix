@@ -15,6 +15,11 @@ public class ComposanteController {
 
     }
 
+    /**
+     * Retourne le repository des composantes a vendres.
+     *
+     * @return
+     */
     public ComposanteRepository getRepository(){
         return ComposanteRepository.getInstance();
     }
