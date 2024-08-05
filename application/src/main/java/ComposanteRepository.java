@@ -19,6 +19,10 @@ public class ComposanteRepository {
         return _instance;
     }
 
+    private ComposanteRepository(){
+
+    }
+
 
     // -------------------------- UTILS METHODS --------------------------
 

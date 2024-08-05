@@ -20,6 +20,10 @@ public class ActiviteController{
         return _instance;
     }
 
+    private ActiviteController(){
+
+    }
+
 
     /**
      * Repertoire des activités
@@ -87,7 +91,7 @@ public class ActiviteController{
      */
     public void desinscriptionClient(Client client, Activite activite){
 
-        activite.getParticipants().remove(client.getUsername());
+        activite.getParticipants().remove(client);
         client.getActivites().remove(activite);
 
         for (Robot robot : client.getFlotte().getRobots()){

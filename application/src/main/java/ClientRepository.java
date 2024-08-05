@@ -6,8 +6,6 @@ public abstract class ClientRepository {
     private String dataFile = "Clients.json";
     private ArrayList<Client> clients;
 
-
-
     // -------------------------- GETTER SETTER --------------------------
     
     // -------------------------- UTILS METHODS --------------------------

@@ -12,6 +12,10 @@ public class MenuConnexion {
         return _instance;
     }
 
+    private MenuConnexion(){
+
+    }
+
     // -------------------------- MAIN MENU --------------------------
 
     public int displayPageStart(){

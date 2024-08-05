@@ -20,6 +20,10 @@ public class FlotteController {
     }
 
 
+    private FlotteController(){
+
+    }
+
     public void vueGenerale(Flotte flotte){
         String message = "";
         for (Robot r : flotte.getRobots()){

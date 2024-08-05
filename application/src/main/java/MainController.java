@@ -1,5 +1,7 @@
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MainController {
@@ -73,6 +75,366 @@ public class MainController {
             menuPrincipalFournisseur((Fournisseur) currentUser);
         }
     }
+
+
+    public void writeDefaultValues(){
+
+
+        // ------------------------- Clients ------------------------
+
+        // --- client1 ---
+        Client client1 = new Client("toto", "bobo");
+        String[] infos1 = {"Bender", "bender", "KD-09290"};
+        client1.getFlotte().addRobot( new Robot(infos1, 100, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Camera())) ));
+
+        String[] infos2 = {"AlphaTron", "Assistant domestique", "AT-00123"};
+        client1.getFlotte().addRobot( new Robot(infos2, 18, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Camera(), new Roue())) ));
+
+        // --- client2 ---
+        Client client2 = new Client("coco", "lolo");
+        String[] infos3 = {"BetaGuard", "Sécurité résidentielle", "BG-00456"};
+        client2.getFlotte().addRobot( new Robot(infos3, 92, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Camera(), new Micro()))));
+        String[] infos4 = {"GammaCook", "Chef culinaire", "GC-00789"};
+        client2.getFlotte().addRobot( new Robot(infos4, 82, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new HautParleur(), new Helice()))));
+
+        // --- client3 ---
+        Client client3 = new Client("popo", "momo");
+        String[] infos5 = {"DeltaMed", "Infirmier médical", "DM-01012"};
+        client3.getFlotte().addRobot( new Robot(infos5, 92, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Camera(), new Micro()))));
+        String[] infos6 = {"EpsilonClean", "Nettoyage industriel", "EC-01345"};
+        client3.getFlotte().addRobot( new Robot(infos6, 98, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Camera(), new Roue()))));
+
+        // --- client4 ---
+        Client client4 = new Client("Guillaume", "Frisbee");
+        String[] infos7 = {"ZetaBot", "Robot éducatif", "ZB-01678"};
+        client4.getFlotte().addRobot( new Robot(infos7, 45, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Micro(), new Ecran()))));
+        String[] infos8 = {"EtaGard", "Jardinier automatisé", "EG-01901"};
+        client4.getFlotte().addRobot( new Robot(infos8, 32, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Helice(), new Ecran()))));
+
+        // --- client5 ---
+        Client client5 = new Client("Nikolas", "Crypto");
+        String[] infos9 = {"ThetaLab", "Assistant de laboratoire", "TL-02234"};
+        client5.getFlotte().addRobot( new Robot(infos9, 72, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Micro(), new HautParleur()))));
+        String[] infos10 = {"IotaBuild", "Ouvrier de construction", "IB-02567"};
+        client5.getFlotte().addRobot( new Robot(infos10, 64, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Micro(), new Roue()))));
+
+        // --- client6 ---
+        Client client6 = new Client("Jordan", "VFX");
+        String[] infos11 = {"KappaDrone", "Drone de surveillance", "KD-02890"};
+        client6.getFlotte().addRobot( new Robot(infos11, 64, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Helice(), new Micro(), new Camera()))));
+        String[] infos12 = {"LambdaLift", "Exosquelette d'assistance", "LL-03123"};
+        client6.getFlotte().addRobot( new Robot(infos12, 82, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Roue(), new Camera()))));
+
+        // --- client7 ---
+        Client client7 = new Client("Medhi", "Couscous");
+        String[] infos13 = {"MuPet", "Animal de compagnie robotique", "MP-03456"};
+        client7.getFlotte().addRobot( new Robot(infos13, 42, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Roue(), new Camera(), new Micro()))));
+        String[] infos14 = {"NuComm", "Communication avancée", "NC-03789"};
+        client7.getFlotte().addRobot( new Robot(infos14, 34, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Roue(), new Camera(), new Micro(), new Ecran()))));
+
+        // --- client8 ---
+        Client client8 = new Client("Amal", "DaQueen");
+        String[] infos15 = {"XiCare", "Assistant aux personnes âgées", "XC-04112"};
+        client8.getFlotte().addRobot( new Robot(infos15, 81, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Roue(), new Camera(), new Micro()))));
+        String[] infos16 = {"OmicronClean", "Nettoyage de vitres", "OC-04445"};
+        client8.getFlotte().addRobot( new Robot(infos16, 18, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Bras(), new Roue(), new Camera(), new Micro()))));
+
+        // --- client9 ---
+        Client client9 = new Client("Johnny", "test");
+        String[] infos17 = {"PiFix", "Réparateur de systèmes", "PF-04778"};
+        client9.getFlotte().addRobot( new Robot(infos17, 59, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Roue(), new Camera(), new Micro(), new Helice()))));
+        String[] infos18 = {"RhoGuard", "Robot de sécurité publique", "RG-05101"};
+        client9.getFlotte().addRobot( new Robot(infos18, 46, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Roue(), new Camera(), new Micro(), new Helice()))));
+
+        // --- client10 ---
+        Client client10 = new Client("Gateau", "vanille");
+        String[] infos19 = {"SigmaChef", "Chef de cuisine gastronomique", "SC-05434"};
+        client10.getFlotte().addRobot( new Robot(infos19, 82, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Roue(), new Bras(), new Micro(), new Helice()))));
+        String[] infos20 = {"TauTutor", "Tuteur éducatif", "TT-05767"};
+        client10.getFlotte().addRobot( new Robot(infos20, 76, false,
+                new ArrayList<>(Arrays.asList(new CPU(), new Roue(), new Bras(), new Micro(), new Helice()))));
+
+
+
+        // ------------------------- Fournisseur ------------------------
+
+        // --- Fournisseur1 ---
+
+        Fournisseur fournisseur1 = new Fournisseur("SKF Group", "sadwf");
+        CPU cpu1 = new CPU();
+        cpu1.setNom("dasdas");
+        cpu1.setPrix(25);
+        Roue roue1 = new Roue();
+        roue1.setNom("dawheel");
+        roue1.setPrix(68);
+        Bras bras1 = new Bras();
+        bras1.setNom("chestbras");
+        bras1.setPrix(76);
+        HautParleur hautParleur1 = new HautParleur();
+        hautParleur1.setNom("celine");
+        hautParleur1.setPrix(100);
+        Ecran ecran1 = new Ecran();
+        ecran1.setNom("Samsung");
+        ecran1.setPrix(200);
+        fournisseur1.setComposantes(new ArrayList<>(Arrays.asList(cpu1, roue1, bras1, hautParleur1, ecran1)));
+
+        // --- Fournisseur2 ---
+
+        Fournisseur fournisseur2 = new Fournisseur("Bosch Rexroth", "gfdyger");
+        CPU cpu2 = new CPU();
+        cpu2.setNom("sdadas");
+        cpu2.setPrix(95);
+        Helice helice1 = new Helice();
+        helice1.setNom("helice1");
+        helice1.setPrix(65);
+        Bras bras2 = new Bras();
+        bras2.setNom("Pipe");
+        bras2.setPrix(68);
+        Micro micro1 = new Micro();
+        micro1.setNom("crachoire");
+        micro1.setPrix(54);
+        HautParleur hautParleur2 = new HautParleur();
+        hautParleur2.setNom("JohnnyHoliday");
+        hautParleur2.setPrix(999);
+        fournisseur2.setComposantes(new ArrayList<>(Arrays.asList(cpu2, helice1, bras2, micro1, hautParleur2)));
+
+        // --- Fournisseur3 ---
+
+        Fournisseur fournisseur3 = new Fournisseur("Nappa", "fsdfsefe");
+        CPU cpu3 = new CPU();
+        cpu3.setNom("capu");
+        cpu3.setPrix(56);
+        CPU cpu4 = new CPU();
+        cpu4.setNom("capuplus");
+        cpu4.setPrix(560);
+        Roue roue2 = new Roue();
+        roue2.setNom("vroomvroom");
+        roue2.setPrix(45);
+        Roue roue3 = new Roue();
+        roue3.setNom("vroooom");
+        roue3.setPrix(87);
+        Helice helice2 = new Helice();
+        helice2.setNom("helicopterius");
+        helice2.setPrix(100);
+        fournisseur3.setComposantes(new ArrayList<>(Arrays.asList(cpu3, cpu4, roue2, roue3, helice2)));
+
+        // --- Fournisseur4 ---
+        Fournisseur fournisseur4 = new Fournisseur("KIA", "grthgerge");
+        Bras bras3 = new Bras();
+        bras3.setNom("Manchoke");
+        bras3.setPrix(72);
+        Ecran ecran2 = new Ecran();
+        ecran2.setNom("Roku");
+        ecran2.setPrix(75);
+        Camera camera1 = new Camera();
+        camera1.setNom("Sony");
+        camera1.setPrix(500);
+        HautParleur hautParleur3 = new HautParleur();
+        hautParleur3.setNom("blabla");
+        hautParleur3.setPrix(45);
+        CPU cpu5 = new CPU();
+        cpu5.setNom("dsdds");
+        cpu5.setPrix(30);
+        fournisseur4.setComposantes(new ArrayList<>(Arrays.asList(bras3, ecran2, camera1, hautParleur3, cpu5)));
+
+
+        // --- Fournisseur5 ---
+        Fournisseur fournisseur5 = new Fournisseur("FORD", "hty4ujerth");
+        Helice helice3 = new Helice();
+        helice3.setNom("windy");
+        helice3.setPrix(65);
+        CPU cpu6 = new CPU();
+        cpu6.setNom("wewdw");
+        cpu6.setPrix(82);
+        Ecran ecran3 = new Ecran();
+        ecran3.setNom("Toshiba");
+        ecran3.setPrix(65);
+        Bras bras4 = new Bras();
+        bras4.setNom("Tchad");
+        bras4.setPrix(62);
+        Roue roue = new Roue();
+        roue.setNom("wheelo");
+        roue.setPrix(81);
+        fournisseur5.setComposantes(new ArrayList<>(Arrays.asList(helice3, cpu6, ecran3, bras4, roue)));
+
+
+
+        // ------------------------- Activites ------------------------
+
+        // ---Activite numero 1---
+        LocalDate date = LocalDate.of(2024, 10, 6);
+
+        Activite activite1 = new Activite("Menage chez Jordan",
+                date,
+                "Menage de la cuisine et du salon",
+                "Jordan",
+                ACTIVITEETAT.NONDEBUTEE);
+
+        Tache tache1 = new Tache("Balayeuse");
+
+        ArrayList<ComposanteType> composanteTypes1 = new ArrayList<>();
+        composanteTypes1.add(ComposanteType.ROUE);
+        Action action1 = new Action("Avancer", composanteTypes1);
+
+        ArrayList<ComposanteType> composanteTypes2 = new ArrayList<>();
+        composanteTypes1.add(ComposanteType.BRAS);
+        Action action2 = new Action("Aspirer", composanteTypes1);
+
+        tache1.addAction(action2, 0);
+        tache1.addAction(action1, 0);
+
+        activite1.addTache(tache1, 0);
+
+        // ---Activite numero 2---
+        LocalDate date1 = LocalDate.of(2024, 8, 23);
+
+        Activite activite2 = new Activite("Chasse au trésor",
+                date1,
+                "Recherche de trésors enfoui",
+                "Dora",
+                ACTIVITEETAT.NONDEBUTEE);
+
+        Tache tache2 = new Tache("Chercher");
+
+        ArrayList<ComposanteType> composanteTypes3 = new ArrayList<>();
+        composanteTypes1.add(ComposanteType.ROUE);
+        Action action3 = new Action("Avancer", composanteTypes3);
+
+        ArrayList<ComposanteType> composanteTypes4 = new ArrayList<>();
+        composanteTypes1.add(ComposanteType.CAMERA);
+        Action action4 = new Action("Analyser", composanteTypes4);
+
+
+        ArrayList<ComposanteType> composanteTypes5 = new ArrayList<>();
+        composanteTypes1.add(ComposanteType.BRAS);
+        Action action5 = new Action("Creuser", composanteTypes5);
+
+        tache2.addAction(action3, 0);
+        tache2.addAction(action4, 0);
+        tache2.addAction(action5, 0);
+
+        activite2.addTache(tache2, 0);
+
+        // ---Activite numero 3---
+        LocalDate date2 = LocalDate.of(2024, 7, 25);
+
+        Activite activite3 = new Activite("Captation Ultimate Frisbee",
+                date2,
+                "Captation d'un match de ultimate Frisbee.",
+                "Guillaume",
+                ACTIVITEETAT.NONDEBUTEE);
+
+        Tache tache3 = new Tache("Camera Drone");
+
+        ArrayList<ComposanteType> composanteTypes6 = new ArrayList<>();
+        composanteTypes1.add(ComposanteType.HELICE);
+        Action action6 = new Action("Voler", composanteTypes6);
+
+        ArrayList<ComposanteType> composanteTypes7 = new ArrayList<>();
+        composanteTypes1.add(ComposanteType.CAMERA);
+        Action action7 = new Action("Enregistrer", composanteTypes7);
+
+
+        tache3.addAction(action6, 0);
+        tache3.addAction(action7, 0);
+
+
+        Tache tache4 = new Tache("Camera Ground");
+
+        ArrayList<ComposanteType> composanteTypes8 = new ArrayList<>();
+        composanteTypes1.add(ComposanteType.ROUE);
+        Action action8 = new Action("Avancer", composanteTypes8);
+
+        ArrayList<ComposanteType> composanteTypes9 = new ArrayList<>();
+        composanteTypes1.add(ComposanteType.CAMERA);
+        Action action9 = new Action("Enregistrer", composanteTypes9);
+
+        tache4.addAction(action8, 0);
+        tache4.addAction(action9, 0);
+
+
+        Tache tache5 = new Tache("Enregistrer Son");
+        ArrayList<ComposanteType> composanteTypes10 = new ArrayList<>();
+        composanteTypes1.add(ComposanteType.MICRO);
+        Action action10 = new Action("Enregistrer", composanteTypes10);
+
+        tache5.addAction(action10, 0);
+
+        activite3.addTache(tache3, 0);
+        activite3.addTache(tache4, 0);
+        activite3.addTache(tache5, 0);
+
+
+        // ---Activite numero 4---
+        LocalDate date3 = LocalDate.of(2024, 7, 22);
+
+        Activite activite4 = new Activite("Revision Examen",
+                date3,
+                "Robot de support lors de la revision.",
+                "MEDHI",
+                ACTIVITEETAT.TERMINEE);
+
+        Tache tache6 = new Tache("Poser une question.");
+
+        ArrayList<ComposanteType> composanteTypes11 = new ArrayList<>();
+        composanteTypes1.add(ComposanteType.ECRAN);
+        Action action11 = new Action("Question Visuelle", composanteTypes11);
+
+        ArrayList<ComposanteType> composanteTypes12 = new ArrayList<>();
+        composanteTypes1.add(ComposanteType.HAUTPARLEUR);
+        Action action12 = new Action("Question Audio", composanteTypes12);
+
+        tache6.addAction(action11, 0);
+        tache6.addAction(action12, 0);
+
+        activite4.addTache(tache6, 0);
+
+
+        // ---Activite numero 5---
+
+        LocalDate date4 = LocalDate.of(2024, 8, 4);
+
+        Activite activite5 = new Activite("Course Robots",
+                date4,
+                "Course de robots sur 100 mètres.",
+                "Nikolas",
+                ACTIVITEETAT.ENCOURS);
+
+
+        Tache tache7 = new Tache("Rouler.");
+        ArrayList<ComposanteType> composanteTypes13 = new ArrayList<>();
+        composanteTypes1.add(ComposanteType.ROUE);
+        Action action13 = new Action("Question Visuelle", composanteTypes13);
+
+
+        tache7.addAction(action13, 0);
+        activite5.addTache(tache7, 0);
+
+    }
+
+
+
+
+
 
     // -------------------------- CONNEXION/SIGN-IN --------------------------
 

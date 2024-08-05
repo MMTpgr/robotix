@@ -12,6 +12,11 @@ public class ClientController extends ClientRepository {
         return _instance;
     }
 
+    private ClientController(){
+
+    }
+
+
 
     public boolean createAccount(ArrayList<String> infos){
 

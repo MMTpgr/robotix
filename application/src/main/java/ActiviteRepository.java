@@ -42,6 +42,10 @@ public class ActiviteRepository {
         return _instance;
     }
 
+    private ActiviteRepository(){
+
+    }
+
     public String getDataFile() {
         return dataFile;
     }

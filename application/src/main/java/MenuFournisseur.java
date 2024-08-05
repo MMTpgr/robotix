@@ -22,6 +22,10 @@ public class MenuFournisseur extends MenuUtilisateur{
         return _instance;
     }
 
+    private MenuFournisseur(){
+
+    }
+
     /**
      * Affiche le menu principal pour le Fournisseur.
      *

@@ -17,6 +17,10 @@ public class FournisseurRepository {
         return _instance;
     }
 
+    private FournisseurRepository(){
+
+    }
+
     // -------------------------- UTILS METHODS --------------------------
 
     public ArrayList<Fournisseur> getFournisseurs() {

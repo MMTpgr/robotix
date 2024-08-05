@@ -18,8 +18,8 @@ public class Activite {
     private int popularite = 0;
     private ArrayList<Tache> taches = new ArrayList<>();
     private String host;
-    private ArrayList<String> participants = new ArrayList<>();
-    private ArrayList<String> robotsInclus = new ArrayList<>();
+    private ArrayList<Client> participants = new ArrayList<>();
+    private ArrayList<Robot> robotsInclus = new ArrayList<>();
     private ArrayList<Interet> interetsConcernes = new ArrayList<>();
     private ACTIVITEETAT etat;
 
@@ -106,15 +106,8 @@ public class Activite {
      * @param robots Robots à ajouter.
      */
     public void addParticipant(Client client, ArrayList<Robot> robots){
-        this.participants.add(client.getUsername());
-
-        ArrayList<String> robotsName = new ArrayList<>();
-
-        for(Robot r : robots){
-            robotsName.add(r.getNom());
-        }
-
-        this.robotsInclus.addAll(robotsName);
+        this.participants.add(client);
+        this.robotsInclus.addAll(robots);
     }
 
     /**
@@ -124,15 +117,8 @@ public class Activite {
      */
     public void removeParticipant(Client client){
 
-        this.participants.remove(client.getUsername());
-
-        ArrayList<String> robotsName = new ArrayList<>();
-
-        for(Robot r : client.getFlotte().getRobots()){
-            robotsName.add(r.getNom());
-        }
-
-        this.robotsInclus.removeAll(robotsName);
+        this.participants.remove(client);
+        this.robotsInclus.removeAll(client.getFlotte().getRobots());
 
     }
 
@@ -206,11 +192,11 @@ public class Activite {
         this.host = host;
     }
 
-    public ArrayList<String> getParticipants() {
+    public ArrayList<Client> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(ArrayList<String> participants) {
+    public void setParticipants(ArrayList<Client> participants) {
         this.participants = participants;
     }
 
@@ -222,11 +208,11 @@ public class Activite {
         this.interetsConcernes = interetsConcernes;
     }
 
-    public ArrayList<String> getRobotsInclus() {
+    public ArrayList<Robot> getRobotsInclus() {
         return robotsInclus;
     }
 
-    public void setRobotsInclus(ArrayList<String> robotsInclus) {
+    public void setRobotsInclus(ArrayList<Robot> robotsInclus) {
         this.robotsInclus = robotsInclus;
     }
 

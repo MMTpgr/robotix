@@ -15,6 +15,10 @@ public class MenuClient extends MenuUtilisateur{
         return _instance;
     }
 
+    private MenuClient(){
+
+    }
+
     public String displayPagePrincipal(Client user) {
 
         String pick;
@@ -166,13 +170,13 @@ public class MenuClient extends MenuUtilisateur{
         }
 
         String participants = "";
-        for (String client : activite.getParticipants()){
-            participants += client + " ";
+        for (Client client : activite.getParticipants()){
+            participants += client.getUsername() + " ";
         }
 
         String robots = "";
-        for (String robot : activite.getRobotsInclus()){
-            participants += robot + " ";
+        for (Robot robot : activite.getRobotsInclus()){
+            participants += robot.getNom() + " ";
         }
 
         System.out.println("-------------------------");

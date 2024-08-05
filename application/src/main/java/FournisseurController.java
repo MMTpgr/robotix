@@ -12,6 +12,11 @@ public class FournisseurController {
         return _instance;
     }
 
+    private FournisseurController(){
+
+    }
+
+
     public boolean createAccount(ArrayList<String> infos){
 
         boolean succes = true;

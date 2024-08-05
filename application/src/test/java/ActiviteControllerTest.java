@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ActiviteControllerTest {
     private ActiviteController activiteController = ActiviteController.getInstance();
@@ -53,12 +54,11 @@ public class ActiviteControllerTest {
 
         // Creating a robot
         String[] infos = {"Bender", "bender", "sad1879s32dsa"};
-        Robot robot = new Robot(infos, 100, false);
         Bras bras = new Bras();
         Roue roue = new Roue();
         CPU cpu = new CPU();
-        Composante[] composantes = {bras, roue, cpu};
-        robot.setComposantes(composantes);
+        ArrayList<Composante> composantes = new ArrayList<>(Arrays.asList(bras, roue, cpu));
+        Robot robot = new Robot(infos, 100, false, composantes);
         client.getFlotte().addRobot(robot);
     }
 
@@ -82,7 +82,7 @@ public class ActiviteControllerTest {
         // Activite is link to client
         Assert.assertEquals(this.baseClient.getActivites().get(0).getName(), this.baseActivite.getName());
         // Client is link to activite
-        Assert.assertEquals(this.baseActivite.getParticipants().get(0), this.baseClient.getUsername());
+        Assert.assertEquals(this.baseActivite.getParticipants().get(0).getUsername(), this.baseClient.getUsername());
     }
 
     /**
