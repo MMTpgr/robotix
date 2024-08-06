@@ -67,13 +67,12 @@ public class MenuFournisseur extends MenuUtilisateur{
         System.out.println("Mon profil");
         System.out.println("1 : Modifier nom d'utilisateur");
         System.out.println("2 : Modifier mot de passe");
-        System.out.println("3 : Modifier courriel");
-        System.out.println("4 : Revenir au menu principal");
+        System.out.println("3 : Revenir au menu principal");
 
         ArrayList<String> validStrings = new ArrayList<>(Arrays.asList("-"));
 
         pick = scan.nextLine();
-        while (!_pickIsValid(pick, validStrings, 4)) {
+        while (!_pickIsValid(pick, validStrings, 3)) {
             System.out.print("Veuillez entrer un choix valide: ");
             pick = scan.nextLine();
         }

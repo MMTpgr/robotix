@@ -46,12 +46,19 @@ public class MenuConnexion {
                 "retourner au menu principal.\nEntrez votre nom d'utilisateur: ");
     }
 
-    public void displayPageInscriptionClient(){
+    public Utilisateur displayPageInscription(boolean fourn){
+        System.out.print("Choisissez un nom d'utilisateur: ");
+        Scanner keyb = new Scanner(System.in);
+        String username = keyb.nextLine();
 
+        System.out.print("Choisissez un mot de passe: ");
+        String password = keyb.nextLine();
+
+        System.out.println("Bienvenue, " + username);
+        if (!fourn){
+            return new Client(username, password);
+        } else {
+            return new Fournisseur(username, password);
+        }
     }
-
-    public void displayPageInscriptionFournisseur(){
-
-    }
-
 }

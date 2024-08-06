@@ -44,10 +44,10 @@ public class MainController {
                 connexion();
                 break;
             case 2:
-                menu.displayPageInscriptionClient();
+                currentUser = menu.displayPageInscription(false);
                 break;
             default:
-                menu.displayPageInscriptionFournisseur();
+                currentUser = menu.displayPageInscription(true);
                 break;
         }
 
@@ -616,8 +616,15 @@ public class MainController {
                 break;
             case "3":
                 menuMarketPlacePrincipal(client);
+                break;
             case "4":
-
+                menuClient.displayPageNotifications(client);
+                break;
+            case "5":
+                menuClient.displayPageModifierSonProfil(client, "username");
+                break;
+            case "6":
+                menuClient.displayPageModifierSonProfil(client, "password");
             case "-":
                 this.start();
 
@@ -713,7 +720,7 @@ public class MainController {
 
         switch (pick){
             case "+":
-            composanteController.achatComposante(this.currentUser, composante);
+            composanteController.achatComposante((Client) this.currentUser, composante);
             case "-":
                 return;
         }
@@ -951,7 +958,6 @@ public class MainController {
             case 3:
                 menuEnregisterComposante(fournisseur);
                 break;
-
         }
 
     }
@@ -967,18 +973,14 @@ public class MainController {
 
         switch (pick){
             case "1" :
-                //nouveau nom d'utilisateur
+                menuFournisseur.displayPageModifierSonProfil(fournisseur, "username");
                 break;
 
             case "2" :
-                //nouveau mot de passe
+                menuFournisseur.displayPageModifierSonProfil(fournisseur, "password");
                 break;
 
-            case "3" :
-                //nouveau courriel
-                break;
-
-            case "4":
+            case "3":
                 //retour aux menus
                 menuFournisseur.displayPagePrincipal(fournisseur);
                 break;
