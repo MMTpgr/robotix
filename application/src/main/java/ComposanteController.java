@@ -42,9 +42,7 @@ public class ComposanteController {
 
         composante.setPrix(0);
 
-        Notification notification = new Notification();
-        notification.setFrom("MarketPlace");
-        notification.setMessage("Achat de la composante " + composante.getNom());
+        Notification notification = new Notification("MarketPlace", "Achat de la composante " + composante.getNom());
 
         client.addNotification(notification);
 

@@ -56,9 +56,7 @@ public class ActiviteController{
         activite.addParticipant(client, robotValides);
         client.addActivite(activite);
 
-        Notification notification = new Notification();
-        notification.setFrom("Menu Activite");
-        notification.setMessage("Vous etes maintenant inscrit à " + activite.getName());
+        Notification notification = new Notification("Menu Activite", "Vous etes maintenant inscrit à " + activite.getName());
 
         client.addNotification(notification);
 
@@ -105,9 +103,8 @@ public class ActiviteController{
                 activite.getRobotsInclus().remove(robot.getNom());
         }
 
-        Notification notification = new Notification();
-        notification.setFrom("Menu Activite");
-        notification.setMessage("Vous etes maintenant désinscrit de " + activite.getName());
+        Notification notification = new Notification("Menu Activite", "Vous etes maintenant désinscrit de " + activite.getName());
+
 
         client.addNotification(notification);
 

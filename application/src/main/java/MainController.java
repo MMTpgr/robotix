@@ -18,14 +18,14 @@ public class MainController {
     private final ComposanteRepository composanteRepository = composanteController.getRepository();
     private FlotteController flotteController;
     private final MenuConnexion menu = MenuConnexion.getInstance();
-    private final MenuClient menuClient = MenuClient.getInstance();
+    protected final MenuClient menuClient = MenuClient.getInstance();
     //MenuFournisseur
     //private final MenuFournisseur menuFournisseur = MenuFournisseur.getInstance();
     MenuFournisseur menuFournisseur = MenuFournisseur.getInstance();
 
     // -------------------------- START --------------------------
 
-    private Utilisateur currentUser = null;
+    protected Utilisateur currentUser = null;
 
     public void start(){
 
