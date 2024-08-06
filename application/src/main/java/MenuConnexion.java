@@ -22,8 +22,8 @@ public class MenuConnexion {
         System.out.println(
                 "######### ROBOTIX Inc #########\n\n" + "--------------------\n" +
                         "\t*CLIENT*\n1- Connexion\n" + "2- Inscription\n---------------\n\n" +
-                        "\t*FOURNISSEUR*\n3- Connexion compte professionnel\n4- Créer un compte\n" +
-                        "------------------"
+                        "\t*FOURNISSEUR*\n3- Connexion compte professionnel\n4- Créer un compte\n\n" +
+                        "(entrez '0' pour quitter)\n------------------"
         );
         Scanner keyb = new Scanner(System.in);
 
@@ -32,7 +32,7 @@ public class MenuConnexion {
             try {
                 String option = keyb.nextLine();
                 int optionInt = Integer.parseInt(option);
-                if (optionInt <= 0 || optionInt >= 5) {
+                if (optionInt < 0 || optionInt >= 5) {
                     throw new Exception();
                 } else return optionInt;
             } catch (Exception e) {

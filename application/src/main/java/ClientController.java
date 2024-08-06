@@ -15,7 +15,9 @@ public class ClientController extends ClientRepository {
     private ClientController(){
 
     }
-
+    public static ClientRepository getRepository(){
+        return ClientRepository.getInstance();
+    }
 
 
     public boolean createAccount(ArrayList<String> infos){

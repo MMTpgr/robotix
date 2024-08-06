@@ -92,12 +92,10 @@ public class ActiviteRepository {
 
     /**
      * Écriture de l'attribut 'activites' dans le fichier "Activites.json".
-     *
      * * Utilisé uniquement lorsque l'application est arreté.
      *
-     * @param activites ArrayList d'activités à écrire.
      */
-    public void writeActivites(ArrayList<Activite> activites){
+    public void writeActivites(){
         try {
             FileWriter file = new FileWriter(this.dataFile);
             Gson gson = new Gson().newBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).create();

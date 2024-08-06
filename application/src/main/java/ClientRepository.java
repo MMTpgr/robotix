@@ -1,9 +1,17 @@
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 
-public abstract class ClientRepository {
+public class ClientRepository {
 
-    private String dataFile = "Clients.json";
+    private static ClientRepository _instance;
+
+    private String DATAFILE = "Clients.json";
     private ArrayList<Client> clients;
 
     // -------------------------- GETTER SETTER --------------------------
@@ -17,6 +25,13 @@ public abstract class ClientRepository {
 
     }
 
+    public static ClientRepository getInstance(){
+        if (_instance == null){
+            _instance = new ClientRepository();
+            _instance.parseClients();
+        }
+        return _instance;
+    }
     public void addClient(Client client){
         return;
     }
@@ -32,21 +47,26 @@ public abstract class ClientRepository {
         return this.clients;
     }
 
-    public ArrayList<Client> parseClients(){
-
-        ArrayList<Client> clients = new ArrayList<>();
-        Client currentClient;
-
-        // JSON PARSING HERE
-
-
-        return clients;
+    /**
+     * Fonction qui initialise les données en les lisant du fichier json. Appelé à l'instanciation.
+     */
+    public void parseClients(){
+        Gson gson = new Gson();
+        try (FileReader reader = new FileReader(DATAFILE)) {
+            clients = gson.fromJson(reader, new TypeToken<ArrayList<Client>>(){}.getType());
+        } catch (IOException e) {
+            e.printStackTrace();
+            clients = new ArrayList<>();
+        }
     }
 
     public void writeClient(){
-
-        // JSON WRITING HERE
-
+        Gson gson = new Gson();
+        try (FileWriter writer = new FileWriter(DATAFILE)) {
+            gson.toJson(clients, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

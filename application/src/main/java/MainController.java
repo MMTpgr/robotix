@@ -11,6 +11,7 @@ public class MainController {
     private final ActiviteController activiteController =  ActiviteController.getInstance();
     private final ActiviteRepository activiteRepository = activiteController.getRepository();
     private final ClientController clientController =  ClientController.getInstance();
+    private final ClientRepository clientRepository = ClientController.getRepository();
     private final FournisseurController fournisseurController = FournisseurController.getInstance();
     private final FournisseurRepository fournisseurRepository = fournisseurController.getRepository();
     private final  ComposanteController composanteController =  ComposanteController.getInstance();
@@ -32,6 +33,12 @@ public class MainController {
         int choixConnexion = menu.displayPageStart();
 
         switch (choixConnexion){
+            case 0:
+                // Sauvegarder les données, puis quitter
+                fournisseurRepository.writeFournisseurs();
+                activiteRepository.writeActivites();
+                clientRepository.writeClient();
+                System.exit(0);
             case 1:
             case 3:
                 connexion();
