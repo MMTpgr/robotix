@@ -455,23 +455,8 @@ public class MenuClient extends MenuUtilisateur{
 
     }
 
-    /**
-     * Affichage avertissement, fond insuffisant pour achat d'une composante.
-     *
-     * @param composante Composante à acheter.
-     * @param client Le client.
-     */
-    public void displayPageAchatFondInsuffisant(Composante composante, Client client){
-
-        System.out.println("-------------------------");
-        System.out.println("!!! Achat Echoué !!!");
-        System.out.println("Fond de l'utilisateur insuffisant:");
-        System.out.println("Prix de la composante: " + composante.getPrix() + "$.");
-    }
-
 
     // -------------------------- UTILISATEURS --------------------------
-
 
     public void displayPageNotifications(){
 

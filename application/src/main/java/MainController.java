@@ -50,29 +50,6 @@ public class MainController {
                 menu.displayPageInscriptionFournisseur();
                 break;
         }
-        // Client
-        Client client = new Client("totoClient", "bobo");
-        // Fournisseur
-        Fournisseur fournisseur = new Fournisseur("totoFournisseur", "bobo");
-
-        ArrayList<Composante> nes = new ArrayList<Composante>();
-
-        Composante c1 = new Bras();
-        Composante c2 = new CPU();
-        Composante c3 = new Camera();
-
-        nes.add(c1);
-        nes.add(c2);
-        nes.add(c3);
-        client.composantes = nes;
-
-        //------
-        //ENLEVER! TESTS! - Stocker dans un fichier permanent plus tard.
-        // Initialisation des composantes
-        fournisseur.ajouterComposante(new Composante("MegaRotor", "HELICE", "Gâtez-vous avec le tout nouveau MegaRotor!", "299.99"));
-        fournisseur.ajouterComposante(new Composante("BigBrain", "CPU", "Maintenant disponible, le processeur BigBrain9 offre les meilleures performances du marché!", "799.99"));
-        fournisseur.ajouterComposante(new Composante("SuperSqueaker", "HAUTPARLEUR", "SuperSqueaker, un classique!", "69.99"));
-        //-----
 
         if (currentUser instanceof Client){
             // Affiche le menu principal du client
@@ -180,6 +157,10 @@ public class MainController {
         client10.getFlotte().addRobot( new Robot(infos20, 76, false,
                 new ArrayList<>(Arrays.asList(new CPU(), new Roue(), new Bras(), new Micro(), new Helice(), new Ecran()))));
 
+        ArrayList<Client> clients = new ArrayList<>(Arrays.asList(client1, client2, client3, client4, client5,
+                                                    client6, client7, client8, client9, client10));
+        clientRepository.addClients(clients);
+
 
 
         // ------------------------- Fournisseur ------------------------
@@ -284,6 +265,11 @@ public class MainController {
         roue.setPrix(81);
         fournisseur5.setComposantes(new ArrayList<>(Arrays.asList(helice3, cpu6, ecran3, bras4, roue)));
 
+
+        ArrayList<Fournisseur> fournisseurs = new ArrayList<>(Arrays.asList(fournisseur1, fournisseur2, fournisseur3,
+                                                                fournisseur4, fournisseur5));
+
+        fournisseurRepository.addFournisseurs(fournisseurs);
 
 
         // ------------------------- Activites ------------------------
@@ -524,6 +510,16 @@ public class MainController {
         activiteController.inscriptionClient(client10, activite5);
 
 
+        ArrayList<Activite> activites = new ArrayList<>(Arrays.asList(activite1, activite2, activite3, activite4, activite5, activite6));
+        activiteRepository.addActivites(activites);
+
+
+        activiteRepository.writeActivites();
+
+
+
+
+
     }
 
 
@@ -533,6 +529,10 @@ public class MainController {
 
     // -------------------------- CONNEXION/SIGN-IN --------------------------
 
+    /**
+     * Connexion a un compte Robotix.
+     * Client ou Fournisseur
+     */
     public void connexion(){
         boolean validUser = false;
         boolean validPassword = false;
@@ -713,7 +713,7 @@ public class MainController {
 
         switch (pick){
             case "+":
-                // Achat Composante here
+            composanteController.achatComposante(this.currentUser, composante);
             case "-":
                 return;
         }
@@ -1062,6 +1062,4 @@ public class MainController {
                 break;
         }
     }
-
-
 }

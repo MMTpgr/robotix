@@ -1,14 +1,5 @@
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -17,8 +8,6 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
 
 public class ActiviteRepository {
 
@@ -38,6 +27,7 @@ public class ActiviteRepository {
     public static ActiviteRepository getInstance(){
         if (_instance == null){
             _instance = new ActiviteRepository();
+            _instance.parseActivites();
         }
         return _instance;
     }
@@ -57,14 +47,11 @@ public class ActiviteRepository {
      * @return Liste d activités dans la base de données
      */
     public ArrayList<Activite> getActivites() {
-        if (this.activites == null){
-            this.parseActivites();
-        }
         return this.activites;
     }
 
-    public void setActivites(ArrayList<Activite> activites) {
-        this.activites = activites;
+    public void addActivites(ArrayList<Activite> activites){
+        this.activites.addAll(activites);
     }
 
 
@@ -86,6 +73,7 @@ public class ActiviteRepository {
 
             this.activites = gson.fromJson(content, foundType);
         } catch (IOException e){
+            this.activites = new ArrayList<>();
             System.out.println(e);
         }
     }

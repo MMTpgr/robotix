@@ -31,18 +31,12 @@ public class FournisseurRepository {
     // -------------------------- UTILS METHODS --------------------------
 
     public ArrayList<Fournisseur> getFournisseurs() {
-        if (this.fournisseurs == null){
-            this.parseFournisseurs();
-        }
         return this.fournisseurs;
     }
 
-    public Fournisseur getFournisseur(String name){
 
-        Fournisseur foundFournisseur = null;
-
-        return foundFournisseur;
-
+    public void addFournisseurs(ArrayList<Fournisseur> fournisseurs){
+        this.fournisseurs.addAll(fournisseurs);
     }
 
     /**

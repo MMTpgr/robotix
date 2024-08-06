@@ -40,10 +40,13 @@ public class ClientRepository {
         return;
     }
 
+    public void addClients(ArrayList<Client> clients){
+
+        this.clients.addAll(clients);
+
+    }
+
     public ArrayList<Client> getClients() {
-        if (this.clients == null){
-            this.parseClients();
-        }
         return this.clients;
     }
 
