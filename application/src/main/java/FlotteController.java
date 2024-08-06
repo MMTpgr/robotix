@@ -59,14 +59,22 @@ public class FlotteController {
         boolean isSuppr = false;
         ArrayList<Robot> listeRobots = _flotte.getRobots();
 
+        Robot theRobot = null;
+
         for (int  i=0; i<listeRobots.size();i++ ){
             if(listeRobots.get(i).getNom().equals(name)){
+                theRobot = listeRobots.get(i);
                 listeRobots.remove(i);
                 isSuppr=true;
             }
         }
 
         if (isSuppr) {
+
+            if (!(theRobot==null)) {
+                Client client = (Client) MainController.getInstance().getCurrentUser();
+                client.getComposantes().addAll(theRobot.getComposantes());
+            }
             _flotte.setRobots(listeRobots);
             AfficherValidationSupprRobot();
         }

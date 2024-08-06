@@ -1,0 +1,272 @@
+[
+  {
+    "rating": 0,
+    "visites": 0,
+    "transactions": 0,
+    "composantes": [
+      {
+        "type": "CPU",
+        "prix": 25.0,
+        "fournisseur": "SKF Group",
+        "nom": "dasdas"
+      },
+      {
+        "type": "ROUE",
+        "actionsPossibles": [
+          "Avancer"
+        ],
+        "prix": 68.0,
+        "fournisseur": "SKF Group",
+        "nom": "dawheel"
+      },
+      {
+        "type": "BRAS",
+        "actionsPossibles": [
+          "Attraper",
+          "Dancer",
+          "Appuyer",
+          "Saluer"
+        ],
+        "prix": 76.0,
+        "fournisseur": "SKF Group",
+        "nom": "chestbras"
+      },
+      {
+        "type": "HAUTPARLEUR",
+        "actionsPossibles": [
+          "Effet sonore"
+        ],
+        "prix": 100.0,
+        "fournisseur": "SKF Group",
+        "nom": "celine"
+      },
+      {
+        "type": "ECRAN",
+        "actionsPossibles": [
+          "Afficher"
+        ],
+        "prix": 200.0,
+        "fournisseur": "SKF Group",
+        "nom": "Samsung"
+      }
+    ],
+    "username": "SKF Group",
+    "password": "sadwf",
+    "notifications": []
+  },
+  {
+    "rating": 0,
+    "visites": 0,
+    "transactions": 0,
+    "composantes": [
+      {
+        "type": "CPU",
+        "prix": 95.0,
+        "fournisseur": "Bosch Rexroth",
+        "nom": "sdadas"
+      },
+      {
+        "type": "HELICE",
+        "actionsPossibles": [
+          "Tourner"
+        ],
+        "prix": 65.0,
+        "fournisseur": "Bosch Rexroth",
+        "nom": "helice1"
+      },
+      {
+        "type": "BRAS",
+        "actionsPossibles": [
+          "Attraper",
+          "Dancer",
+          "Appuyer",
+          "Saluer"
+        ],
+        "prix": 68.0,
+        "fournisseur": "Bosch Rexroth",
+        "nom": "Pipe"
+      },
+      {
+        "type": "MICRO",
+        "actionsPossibles": [
+          "Enregistrer"
+        ],
+        "prix": 54.0,
+        "fournisseur": "Bosch Rexroth",
+        "nom": "crachoire"
+      },
+      {
+        "type": "HAUTPARLEUR",
+        "actionsPossibles": [
+          "Effet sonore"
+        ],
+        "prix": 999.0,
+        "fournisseur": "Bosch Rexroth",
+        "nom": "JohnnyHoliday"
+      }
+    ],
+    "username": "Bosch Rexroth",
+    "password": "gfdyger",
+    "notifications": []
+  },
+  {
+    "rating": 0,
+    "visites": 0,
+    "transactions": 0,
+    "composantes": [
+      {
+        "type": "CPU",
+        "prix": 56.0,
+        "fournisseur": "Nappa",
+        "nom": "capu"
+      },
+      {
+        "type": "CPU",
+        "prix": 560.0,
+        "fournisseur": "Nappa",
+        "nom": "capuplus"
+      },
+      {
+        "type": "ROUE",
+        "actionsPossibles": [
+          "Avancer"
+        ],
+        "prix": 45.0,
+        "fournisseur": "Nappa",
+        "nom": "vroomvroom"
+      },
+      {
+        "type": "ROUE",
+        "actionsPossibles": [
+          "Avancer"
+        ],
+        "prix": 87.0,
+        "fournisseur": "Nappa",
+        "nom": "vroooom"
+      },
+      {
+        "type": "HELICE",
+        "actionsPossibles": [
+          "Tourner"
+        ],
+        "prix": 100.0,
+        "fournisseur": "Nappa",
+        "nom": "helicopterius"
+      }
+    ],
+    "username": "Nappa",
+    "password": "fsdfsefe",
+    "notifications": []
+  },
+  {
+    "rating": 0,
+    "visites": 0,
+    "transactions": 0,
+    "composantes": [
+      {
+        "type": "BRAS",
+        "actionsPossibles": [
+          "Attraper",
+          "Dancer",
+          "Appuyer",
+          "Saluer"
+        ],
+        "prix": 72.0,
+        "fournisseur": "KIA",
+        "nom": "Manchoke"
+      },
+      {
+        "type": "ECRAN",
+        "actionsPossibles": [
+          "Afficher"
+        ],
+        "prix": 75.0,
+        "fournisseur": "KIA",
+        "nom": "Roku"
+      },
+      {
+        "type": "CAMERA",
+        "actionsPossibles": [
+          "Filmer",
+          "Prendre une photo"
+        ],
+        "prix": 500.0,
+        "fournisseur": "KIA",
+        "nom": "Sony"
+      },
+      {
+        "type": "HAUTPARLEUR",
+        "actionsPossibles": [
+          "Effet sonore"
+        ],
+        "prix": 45.0,
+        "fournisseur": "KIA",
+        "nom": "blabla"
+      },
+      {
+        "type": "CPU",
+        "prix": 30.0,
+        "fournisseur": "KIA",
+        "nom": "dsdds"
+      }
+    ],
+    "username": "KIA",
+    "password": "grthgerge",
+    "notifications": []
+  },
+  {
+    "rating": 0,
+    "visites": 0,
+    "transactions": 0,
+    "composantes": [
+      {
+        "type": "HELICE",
+        "actionsPossibles": [
+          "Tourner"
+        ],
+        "prix": 65.0,
+        "fournisseur": "FORD",
+        "nom": "windy"
+      },
+      {
+        "type": "CPU",
+        "prix": 82.0,
+        "fournisseur": "FORD",
+        "nom": "wewdw"
+      },
+      {
+        "type": "ECRAN",
+        "actionsPossibles": [
+          "Afficher"
+        ],
+        "prix": 65.0,
+        "fournisseur": "FORD",
+        "nom": "Toshiba"
+      },
+      {
+        "type": "BRAS",
+        "actionsPossibles": [
+          "Attraper",
+          "Dancer",
+          "Appuyer",
+          "Saluer"
+        ],
+        "prix": 62.0,
+        "fournisseur": "FORD",
+        "nom": "Tchad"
+      },
+      {
+        "type": "ROUE",
+        "actionsPossibles": [
+          "Avancer"
+        ],
+        "prix": 81.0,
+        "fournisseur": "FORD",
+        "nom": "wheelo"
+      }
+    ],
+    "username": "FORD",
+    "password": "hty4ujerth",
+    "notifications": []
+  }
+]

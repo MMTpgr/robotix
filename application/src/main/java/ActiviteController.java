@@ -4,7 +4,6 @@ public class ActiviteController{
 
     private static ActiviteController _instance;
 
-    private ActiviteRepository repository;
 
     // -------------------------- GETTER SETTER --------------------------
 
@@ -46,7 +45,6 @@ public class ActiviteController{
      */
     public boolean inscriptionClient(Client client, Activite activite){
 
-
         ArrayList<Robot> robotValides = clientValidesRobotsForActivite(client, activite);
 
         if (robotValides.isEmpty()){
@@ -54,7 +52,7 @@ public class ActiviteController{
         }
 
         activite.addParticipant(client, robotValides);
-        client.addActivite(activite);
+        client.addActivite(activite.getName());
 
         Notification notification = new Notification();
         notification.setFrom("Menu Activite");
@@ -99,7 +97,7 @@ public class ActiviteController{
     public void desinscriptionClient(Client client, Activite activite){
 
         activite.getParticipants().remove(client);
-        client.getActivites().remove(activite);
+        client.getActivites().remove(activite.getName());
 
         for (Robot robot : client.getFlotte().getRobots()){
                 activite.getRobotsInclus().remove(robot.getNom());
@@ -110,6 +108,23 @@ public class ActiviteController{
         notification.setMessage("Vous etes maintenant désinscrit de " + activite.getName());
 
         client.addNotification(notification);
+
+    }
+
+
+    public ArrayList<Activite> activitesNametoList(ArrayList<String> names){
+
+        ArrayList<Activite> activites = new ArrayList<>();
+
+        for (Activite activite : getRepository().getActivites()){
+
+            if (names.contains(activite.getName())){
+                activites.add(activite);
+            }
+
+        }
+
+        return activites;
 
     }
 

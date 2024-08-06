@@ -80,7 +80,7 @@ public class ActiviteControllerTest {
 
         activiteController.inscriptionClient(this.baseClient, this.baseActivite);
         // Activite is link to client
-        Assert.assertEquals(this.baseClient.getActivites().get(0).getName(), this.baseActivite.getName());
+        Assert.assertEquals(this.baseClient.getActivites().get(0), this.baseActivite.getName());
         // Client is link to activite
         Assert.assertEquals(this.baseActivite.getParticipants().get(0).getUsername(), this.baseClient.getUsername());
     }

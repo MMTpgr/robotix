@@ -6,6 +6,22 @@ import java.util.Scanner;
 
 public class MainController {
 
+
+    // Singleton
+    private static MainController _instance;
+
+    public static MainController getInstance(){
+        if (_instance == null){
+            _instance = new MainController();
+        }
+        return _instance;
+    }
+
+    private MainController(){
+
+    }
+
+
     // -------------------------- Controller and Repositories --------------------------
 
     private final ActiviteController activiteController =  ActiviteController.getInstance();
@@ -20,14 +36,19 @@ public class MainController {
     private final MenuConnexion menu = MenuConnexion.getInstance();
     private final MenuClient menuClient = MenuClient.getInstance();
     //MenuFournisseur
-    //private final MenuFournisseur menuFournisseur = MenuFournisseur.getInstance();
     MenuFournisseur menuFournisseur = MenuFournisseur.getInstance();
 
     // -------------------------- START --------------------------
 
     private Utilisateur currentUser = null;
 
+    public Utilisateur getCurrentUser(){
+        return this.currentUser;
+    }
+
     public void start(){
+
+        System.out.println(activiteRepository.getActivites().size());
 
         // Connexion or login here
         int choixConnexion = menu.displayPageStart();
@@ -184,7 +205,11 @@ public class MainController {
         Ecran ecran1 = new Ecran();
         ecran1.setNom("Samsung");
         ecran1.setPrix(200);
-        fournisseur1.setComposantes(new ArrayList<>(Arrays.asList(cpu1, roue1, bras1, hautParleur1, ecran1)));
+        composanteController.enregistrerComposante(fournisseur1, cpu1);
+        composanteController.enregistrerComposante(fournisseur1, roue1);
+        composanteController.enregistrerComposante(fournisseur1, bras1);
+        composanteController.enregistrerComposante(fournisseur1, hautParleur1);
+        composanteController.enregistrerComposante(fournisseur1, ecran1);
 
         // --- Fournisseur2 ---
 
@@ -204,7 +229,12 @@ public class MainController {
         HautParleur hautParleur2 = new HautParleur();
         hautParleur2.setNom("JohnnyHoliday");
         hautParleur2.setPrix(999);
-        fournisseur2.setComposantes(new ArrayList<>(Arrays.asList(cpu2, helice1, bras2, micro1, hautParleur2)));
+        composanteController.enregistrerComposante(fournisseur2, cpu2);
+        composanteController.enregistrerComposante(fournisseur2, helice1);
+        composanteController.enregistrerComposante(fournisseur2, bras2);
+        composanteController.enregistrerComposante(fournisseur2, micro1);
+        composanteController.enregistrerComposante(fournisseur2, hautParleur2);
+
 
         // --- Fournisseur3 ---
 
@@ -224,7 +254,11 @@ public class MainController {
         Helice helice2 = new Helice();
         helice2.setNom("helicopterius");
         helice2.setPrix(100);
-        fournisseur3.setComposantes(new ArrayList<>(Arrays.asList(cpu3, cpu4, roue2, roue3, helice2)));
+        composanteController.enregistrerComposante(fournisseur3, cpu3);
+        composanteController.enregistrerComposante(fournisseur3, cpu4);
+        composanteController.enregistrerComposante(fournisseur3, roue2);
+        composanteController.enregistrerComposante(fournisseur3, roue3);
+        composanteController.enregistrerComposante(fournisseur3, helice2);
 
         // --- Fournisseur4 ---
         Fournisseur fournisseur4 = new Fournisseur("KIA", "grthgerge");
@@ -243,7 +277,11 @@ public class MainController {
         CPU cpu5 = new CPU();
         cpu5.setNom("dsdds");
         cpu5.setPrix(30);
-        fournisseur4.setComposantes(new ArrayList<>(Arrays.asList(bras3, ecran2, camera1, hautParleur3, cpu5)));
+        composanteController.enregistrerComposante(fournisseur4, bras3);
+        composanteController.enregistrerComposante(fournisseur4, ecran2);
+        composanteController.enregistrerComposante(fournisseur4, camera1);
+        composanteController.enregistrerComposante(fournisseur4, hautParleur3);
+        composanteController.enregistrerComposante(fournisseur4, cpu5);
 
 
         // --- Fournisseur5 ---
@@ -263,7 +301,11 @@ public class MainController {
         Roue roue = new Roue();
         roue.setNom("wheelo");
         roue.setPrix(81);
-        fournisseur5.setComposantes(new ArrayList<>(Arrays.asList(helice3, cpu6, ecran3, bras4, roue)));
+        composanteController.enregistrerComposante(fournisseur5, helice3);
+        composanteController.enregistrerComposante(fournisseur5, cpu6);
+        composanteController.enregistrerComposante(fournisseur5, ecran3);
+        composanteController.enregistrerComposante(fournisseur5, bras4);
+        composanteController.enregistrerComposante(fournisseur5, roue);
 
 
         ArrayList<Fournisseur> fournisseurs = new ArrayList<>(Arrays.asList(fournisseur1, fournisseur2, fournisseur3,
@@ -514,9 +556,11 @@ public class MainController {
         activiteRepository.addActivites(activites);
 
 
+
+
+        clientRepository.writeClient();
         activiteRepository.writeActivites();
-
-
+        fournisseurRepository.writeFournisseurs();
 
 
 
@@ -552,7 +596,7 @@ public class MainController {
             }
 
             // Chercher à travers les users
-            for (Client client : clientController.getClients()){
+            for (Client client : clientRepository.getClients()){
                 if (client.getUsername().equals(username)){
                     validUser = true;
                     currentUser = client;
@@ -560,7 +604,7 @@ public class MainController {
             }
 
             // Chercher à travers les fournisseurs
-            for (Fournisseur fourn : fournisseurController.getRepository().getFournisseurs()){
+            for (Fournisseur fourn : fournisseurRepository.getFournisseurs()){
                 if (fourn.getUsername().equals(username)){
                     validUser = true;
                     currentUser = fourn;
@@ -581,16 +625,6 @@ public class MainController {
                 System.out.print("\nMot de passe erroné.");
             } else {validPassword = true;}
         }
-
-        // Get User from ClientRepository or FournisseurRepository
-
-        // If it exists, validate password.
-
-        // if Client -> this.connexionClient()
-        // else -> this.connexionFournisseur()
-        // this.currentUser = foundUser;
-        // if
-        // flotteController = flotteController.getInstance(this.currentUser);
 
     }
 
@@ -678,7 +712,7 @@ public class MainController {
                 Composante.filterComposantes(composantes, ComposanteFilter.FOURNISSEUR);
                 this.menuRechercheComposante(client, composantes);
             case "-":
-                return;
+                this.menuMarketPlacePrincipal(client);
             default:
                 Composante choosenComposante = composantes.get(Integer.parseInt(pick)-1);
 
@@ -688,7 +722,7 @@ public class MainController {
                 } else {
                     this.menuFicheAchatComposante(choosenComposante);
                 }
-                menuRechercheComposante(client, composantes);
+                menuRechercheComposante(client, composanteRepository.getComposantes());
         }
 
     }
@@ -713,7 +747,7 @@ public class MainController {
 
         switch (pick){
             case "+":
-            composanteController.achatComposante(this.currentUser, composante);
+            //composanteController.achatComposante(this.currentUser, composante);
             case "-":
                 return;
         }
@@ -740,7 +774,7 @@ public class MainController {
                 Fournisseur.filterFournisseurs(fournisseurs, FournisseurFilter.TYPECOMPOSANTES);
                 menuRechercheFournisseurs(client, fournisseurs);
             case "-":
-                return;
+                this.menuMarketPlacePrincipal(client);
             default:
                 Fournisseur choosenFournisseur = fournisseurs.get(Integer.parseInt(pick));
                 this.menuFicheFournisseur(client, choosenFournisseur);
@@ -786,7 +820,7 @@ public class MainController {
 
             // ---------------- Mes Activites ----------------
             case "1":
-                this.menuRechercheActivites(client, client.getActivites());
+                this.menuRechercheActivites(client, activiteController.activitesNametoList(client.getActivites()));
             // ---------------- Toutes Activites ----------------
             case "2":
                 this.menuRechercheActivites(client,
@@ -829,7 +863,7 @@ public class MainController {
                 Activite choosenActivite = activites.get(Integer.parseInt(pick)-1);
 
                 boolean alreadySubscribed = false;
-                for(Activite act : client.getActivites()){
+                for(Activite act : activiteController.activitesNametoList(client.getActivites())){
                     if (act.equals(choosenActivite)){
                         alreadySubscribed = true;
                         break;
@@ -890,7 +924,9 @@ public class MainController {
         switch (pick){
             case "1" :
                 Robot robot = flotteController.createRobot(client.getComposantes());
-                flotteController.enregistrerRobot(robot);
+                if (!(robot==null)) {
+                    flotteController.enregistrerRobot(robot);
+                }
 
                 MenuFlotte(client);
                 break;
@@ -922,8 +958,8 @@ public class MainController {
                 }
                 MenuFlotte(client);
 
-            case "4":
-                menuClient.displayPagePrincipal(client);
+            case "-":
+                menuPrincipalClient(client);
         }
     }
 
@@ -938,20 +974,18 @@ public class MainController {
 
         String pick = menuFournisseur.displayPagePrincipal(fournisseur);
 
-        switch (Integer.parseInt(pick)) {
-            case 1:
+        switch (pick) {
+            case "1":
                 menuProfil(fournisseur);
                 break;
-            case 2:
+            case "2":
                 menuGestionComposantes(fournisseur);
-                //voir ses composantes (de base)
-                //supprimer une composante
-                //modifier ses composantes
                 break;
-            case 3:
+            case "3":
                 menuEnregisterComposante(fournisseur);
                 break;
-
+            case "-":
+                this.start();
         }
 
     }
@@ -978,9 +1012,9 @@ public class MainController {
                 //nouveau courriel
                 break;
 
-            case "4":
+            case "-":
                 //retour aux menus
-                menuFournisseur.displayPagePrincipal(fournisseur);
+                menuPrincipalFournisseur(fournisseur);
                 break;
         }
     }
@@ -1000,7 +1034,7 @@ public class MainController {
                 for (Composante comp : fournisseur.getComposantes()) {
                     System.out.println(comp);
                 }
-                break;
+                menuGestionComposantes(fournisseur);
             case "2":
                 // Supprime une composante au choix
                 Scanner scan = new Scanner(System.in);
@@ -1008,12 +1042,30 @@ public class MainController {
                 String nomASupprimer = scan.nextLine();
                 fournisseur.supprimerComposante(nomASupprimer);
                 System.out.println("Composante supprimée avec succès!");
-                break;
+                menuGestionComposantes(fournisseur);
             case "3":
                 // Modifier une composante
                 Scanner scan2 = new Scanner(System.in);
+
+                for (Composante comp : fournisseur.getComposantes()) {
+                    System.out.println(comp);
+                }
+                System.out.println();
                 System.out.print("Entrez le nom de la composante à modifier: ");
                 String nomAModifier = scan2.nextLine();
+
+                ArrayList<String> composanteNames = new ArrayList<>();
+
+
+                for(Composante composante : fournisseur.getComposantes()){
+                    composanteNames.add(composante.getNom());
+                }
+
+                if(!composanteNames.contains(nomAModifier)){
+                    System.out.println("Composante non existante!");
+                    menuGestionComposantes(fournisseur);
+                }
+
                 fournisseur.supprimerComposante(nomAModifier);
                 System.out.print("Entrez le nouveau nom de la composante: ");
                 String nouveauNom = scan2.nextLine();
@@ -1021,14 +1073,25 @@ public class MainController {
                 String nouveauType = scan2.nextLine();
                 System.out.print("Entrez la nouvelle description de la composante: ");
                 String nouvelleDescription = scan2.nextLine();
-                System.out.print("Entrez le nouveau prix de la composante: ");
-                String nouveauPrix = scan2.nextLine();
+                String nouveauPrix = "";
+
+                while (true) {
+                    System.out.print("Entrez le nouveau prix de la composante: (Integer)");
+                    nouveauPrix = scan2.nextLine();
+
+                    try {
+                        int number = Integer.parseInt(nouveauPrix);
+                        break; // Exit the loop if the input is a valid integer
+                    } catch (NumberFormatException e) {
+                        System.out.println("That's not a valid integer. Please try again.");
+                    }
+                }
+
                 fournisseur.ajouterComposante(new Composante(nouveauNom, nouveauType, nouvelleDescription, nouveauPrix));
                 System.out.println("Composante modifiée avec succès!");
-                break;
-            case "4":
-                menuFournisseur.displayPagePrincipal(fournisseur);
-                break;
+                menuGestionComposantes(fournisseur);
+            case "-":
+                menuPrincipalFournisseur(fournisseur);
         }
     }
 
@@ -1052,13 +1115,25 @@ public class MainController {
                 String type = scan.nextLine();
                 System.out.print("Entrez la description de la composante: ");
                 String description = scan.nextLine();
-                System.out.print("Entrez le prix de la composante: ");
-                String prix = scan.nextLine();
-                fournisseur.ajouterComposante(new Composante(nom, type, description, prix));
+                String prix = "";
+
+                while (true) {
+                    System.out.print("Entrez le prix de la composante: (Integer)");
+                    prix = scan.nextLine();
+
+                    try {
+                        int number = Integer.parseInt(prix);
+                        break; // Exit the loop if the input is a valid integer
+                    } catch (NumberFormatException e) {
+                        System.out.println("That's not a valid integer. Please try again.");
+                    }
+                }
+
+                composanteController.enregistrerComposante(fournisseur, new Composante(nom, type, description, prix));
                 System.out.println("Composante ajoutée avec succès!");
-                break;
-            case "2":
-                menuFournisseur.displayPagePrincipal(fournisseur);
+                menuEnregisterComposante(fournisseur);
+            case "-":
+                menuPrincipalFournisseur(fournisseur);
                 break;
         }
     }

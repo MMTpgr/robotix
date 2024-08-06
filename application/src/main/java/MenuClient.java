@@ -69,7 +69,7 @@ public class MenuClient extends MenuUtilisateur{
         System.out.println("1 : Ajouter un robot à la flotte");
         System.out.println("2 : Supprimer un robot à la flotte");
         System.out.println("3 : Afficher l'état des robot");
-        System.out.println("4 : Revenir au menu principal");
+        System.out.println("- : Quitter");
 
         ArrayList<String> validStrings = new ArrayList<>(Arrays.asList("-"));
 
@@ -441,7 +441,7 @@ public class MenuClient extends MenuUtilisateur{
         System.out.println("Nom: " + composante.getNom());
         System.out.println("Type: " + composante.getType());
         System.out.println("Prix: " + composante.getPrix());
-        System.out.println("Fournisseur: " + composante.getFournisseur().getUsername());
+        System.out.println("Fournisseur: " + composante.getFournisseur());
 
         pick = scan.nextLine();
         ArrayList<String> validStrings = new ArrayList<>(Arrays.asList("-", "+"));

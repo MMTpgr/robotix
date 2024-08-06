@@ -4,6 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -20,6 +21,9 @@ public class FournisseurRepository {
         if (_instance == null){
             _instance = new FournisseurRepository();
             _instance.parseFournisseurs();
+            if (_instance.fournisseurs == null){
+                _instance.fournisseurs = new ArrayList<>();
+            }
         }
         return _instance;
     }
@@ -43,12 +47,11 @@ public class FournisseurRepository {
      * Fonction qui initialise les données en les lisant du fichier json. Appelé à l'instanciation.
      */
     public void parseFournisseurs(){
-        Gson gson = new Gson();
+        Gson gson = new Gson().newBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).create();
         try (FileReader reader = new FileReader(DATAFILE)) {
             fournisseurs = gson.fromJson(reader, new TypeToken<ArrayList<Fournisseur>>(){}.getType());
         } catch (IOException e) {
             e.printStackTrace();
-            fournisseurs = new ArrayList<>();
         }
     }
 
@@ -56,12 +59,28 @@ public class FournisseurRepository {
      * Appeler cette fonction en fin de programme pour stocker les nouvelles données de Fournisseurs
      */
     public void writeFournisseurs(){
-        Gson gson = new Gson();
+        Gson gson = new Gson().newBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).create();
         try (FileWriter writer = new FileWriter(DATAFILE)) {
             gson.toJson(fournisseurs, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+
+    public Fournisseur getFournisseurByName(String name){
+
+        Fournisseur fournisseur = null;
+
+        for(Fournisseur f : getFournisseurs()){
+            if (fournisseur.getUsername().equals(name)){
+                fournisseur = f;
+                break;
+            }
+        }
+
+        return fournisseur;
 
     }
 

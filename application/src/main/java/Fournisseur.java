@@ -63,6 +63,10 @@ public class Fournisseur extends Utilisateur {
         return composantes;
     }
 
+    public void setComposantes(ArrayList<Composante> composantes) {
+        this.composantes = composantes;
+    }
+
     // -------------------------- UTILS METHODS --------------------------
 
     public void ajouterComposante(Composante composante) {

@@ -4,6 +4,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.*;
 
 
@@ -29,6 +33,10 @@ public class ClientRepository {
         if (_instance == null){
             _instance = new ClientRepository();
             _instance.parseClients();
+            if (_instance.clients == null){
+                _instance.clients = new ArrayList<>();
+            }
+
         }
         return _instance;
     }
@@ -54,17 +62,18 @@ public class ClientRepository {
      * Fonction qui initialise les données en les lisant du fichier json. Appelé à l'instanciation.
      */
     public void parseClients(){
-        Gson gson = new Gson();
-        try (FileReader reader = new FileReader(DATAFILE)) {
-            clients = gson.fromJson(reader, new TypeToken<ArrayList<Client>>(){}.getType());
+        Gson gson = new Gson().newBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).create();
+        try {
+            String content = Files.readString(Paths.get(this.DATAFILE));
+            Type foundType = new TypeToken<ArrayList<Client>>(){}.getType();
+            this.clients = gson.fromJson(content, foundType);
         } catch (IOException e) {
             e.printStackTrace();
-            clients = new ArrayList<>();
         }
     }
 
     public void writeClient(){
-        Gson gson = new Gson();
+        Gson gson = new Gson().newBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).create();
         try (FileWriter writer = new FileWriter(DATAFILE)) {
             gson.toJson(clients, writer);
         } catch (IOException e) {

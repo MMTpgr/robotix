@@ -6,7 +6,6 @@ public class ComposanteRepository {
 
     private static ComposanteRepository _instance;
 
-    private ArrayList<Composante> composantes;
 
     // -------------------------- GETTER SETTER --------------------------
 
@@ -26,27 +25,18 @@ public class ComposanteRepository {
     // -------------------------- UTILS METHODS --------------------------
 
     public ArrayList<Composante> getComposantes() {
-        if (this.composantes == null){
-            FournisseurRepository fournisseurRepository = FournisseurRepository.getInstance();
 
-            for (Fournisseur fournisseur : fournisseurRepository.getFournisseurs()){
-                this.composantes.addAll(fournisseur.getComposantes());
-            }
+        ArrayList<Composante> composantes = new ArrayList<>();
 
+        FournisseurRepository fournisseurRepository = FournisseurRepository.getInstance();
+
+        for (Fournisseur fournisseur : fournisseurRepository.getFournisseurs()){
+            composantes.addAll(fournisseur.getComposantes());
         }
-        return this.composantes;
 
+
+        return composantes;
     }
-
-
-    public void addComposante(Composante composante){
-        this.composantes.add(composante);
-    }
-
-    public void removeComposante(Composante composante){
-        this.composantes.remove(composante);
-    }
-
 
 }
 

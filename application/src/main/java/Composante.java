@@ -18,7 +18,7 @@ public class Composante {
     protected String[] actionsPossibles;
     private float prix;
     protected String id;
-    protected Fournisseur fournisseur;
+    protected String fournisseur;
     protected String nom;
     protected String description; // Ajout de l'attribut description
 
@@ -60,11 +60,11 @@ public class Composante {
         this.id = id;
     }
 
-    public Fournisseur getFournisseur() {
+    public String getFournisseur() {
         return fournisseur;
     }
 
-    public void setFournisseur(Fournisseur fournisseur) {
+    public void setFournisseur(String fournisseur) {
         this.fournisseur = fournisseur;
     }
 
@@ -157,6 +157,6 @@ class FournisseurComparator implements Comparator<Composante> {
      */
     @Override
     public int compare(Composante c1, Composante c2) {
-        return c1.getFournisseur().getUsername().compareTo(c2.getFournisseur().getUsername());
+        return c1.getFournisseur().compareTo(c2.getFournisseur());
     }
 }

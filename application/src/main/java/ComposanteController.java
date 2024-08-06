@@ -34,10 +34,9 @@ public class ComposanteController {
 
         client.getComposantes().add(composante);
 
-        ComposanteRepository composanteRepository = ComposanteRepository.getInstance();
-        composanteRepository.removeComposante(composante);
-
-        Fournisseur fournisseur = composante.getFournisseur();
+        String fournisseurName = composante.getFournisseur();
+        FournisseurRepository fournisseurRepository = FournisseurRepository.getInstance();
+        Fournisseur fournisseur = fournisseurRepository.getFournisseurByName(fournisseurName);
         fournisseur.getComposantes().remove(composante);
 
         composante.setPrix(0);
@@ -48,6 +47,20 @@ public class ComposanteController {
 
         client.addNotification(notification);
 
+    }
+
+    /**
+     * Enregistrement d'une composante
+     * Assigne une composante a un fournisseur et assigne le fournisseur a
+     * la composante.
+     *
+     * @param fournisseur Le fournisseur.
+     * @param composante La Composante.
+     */
+    public void enregistrerComposante(Fournisseur fournisseur, Composante composante){
+
+        fournisseur.ajouterComposante(composante);
+        composante.setFournisseur(fournisseur.getUsername());
     }
 
 

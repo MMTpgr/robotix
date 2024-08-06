@@ -28,6 +28,9 @@ public class ActiviteRepository {
         if (_instance == null){
             _instance = new ActiviteRepository();
             _instance.parseActivites();
+            if (_instance.activites == null){
+                _instance.activites = new ArrayList<>();
+            }
         }
         return _instance;
     }
@@ -70,10 +73,8 @@ public class ActiviteRepository {
             String content = Files.readString(Paths.get(this.dataFile));
 
             Type foundType = new TypeToken<ArrayList<Activite>>(){}.getType();
-
             this.activites = gson.fromJson(content, foundType);
         } catch (IOException e){
-            this.activites = new ArrayList<>();
             System.out.println(e);
         }
     }
