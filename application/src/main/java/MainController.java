@@ -34,21 +34,19 @@ public class MainController {
     private final ComposanteRepository composanteRepository = composanteController.getRepository();
     private FlotteController flotteController;
     private final MenuConnexion menu = MenuConnexion.getInstance();
-    private final MenuClient menuClient = MenuClient.getInstance();
+    protected final MenuClient menuClient = MenuClient.getInstance();
     //MenuFournisseur
     MenuFournisseur menuFournisseur = MenuFournisseur.getInstance();
 
     // -------------------------- START --------------------------
 
-    private Utilisateur currentUser = null;
+    protected Utilisateur currentUser = null;
 
     public Utilisateur getCurrentUser(){
         return this.currentUser;
     }
 
     public void start(){
-
-        System.out.println(activiteRepository.getActivites().size());
 
         // Connexion or login here
         int choixConnexion = menu.displayPageStart();
@@ -65,10 +63,10 @@ public class MainController {
                 connexion();
                 break;
             case 2:
-                menu.displayPageInscriptionClient();
+                currentUser = menu.displayPageInscription(false);
                 break;
             default:
-                menu.displayPageInscriptionFournisseur();
+                currentUser = menu.displayPageInscription(true);
                 break;
         }
 
@@ -650,8 +648,15 @@ public class MainController {
                 break;
             case "3":
                 menuMarketPlacePrincipal(client);
+                break;
             case "4":
-
+                menuClient.displayPageNotifications(client);
+                break;
+            case "5":
+                menuClient.displayPageModifierSonProfil(client, "username");
+                break;
+            case "6":
+                menuClient.displayPageModifierSonProfil(client, "password");
             case "-":
                 this.start();
 
@@ -747,7 +752,7 @@ public class MainController {
 
         switch (pick){
             case "+":
-            //composanteController.achatComposante(this.currentUser, composante);
+            composanteController.achatComposante((Client) this.currentUser, composante);
             case "-":
                 return;
         }
@@ -1001,18 +1006,14 @@ public class MainController {
 
         switch (pick){
             case "1" :
-                //nouveau nom d'utilisateur
+                menuFournisseur.displayPageModifierSonProfil(fournisseur, "username");
                 break;
 
             case "2" :
-                //nouveau mot de passe
+                menuFournisseur.displayPageModifierSonProfil(fournisseur, "password");
                 break;
 
-            case "3" :
-                //nouveau courriel
-                break;
-
-            case "-":
+            case "3":
                 //retour aux menus
                 menuPrincipalFournisseur(fournisseur);
                 break;

@@ -38,12 +38,14 @@ public class MenuClient extends MenuUtilisateur{
         System.out.println("2 : Activités");
         System.out.println("3 : MarketPlace");
         System.out.println("4 : Voir Notifications");
+        System.out.println("5 : Modifier mon nom d'utilisateur");
+        System.out.println("6 : Modifier mon mot de passe");
         System.out.println("- : Quitter");
 
         ArrayList<String> validStrings = new ArrayList<>(Arrays.asList("-"));
 
         pick = scan.nextLine();
-        while (!_pickIsValid(pick, validStrings, 4)) {
+        while (!_pickIsValid(pick, validStrings, 6)) {
             System.out.print("Veuillez entrer un choix valide: ");
             pick = scan.nextLine();
         }
@@ -458,8 +460,11 @@ public class MenuClient extends MenuUtilisateur{
 
     // -------------------------- UTILISATEURS --------------------------
 
-    public void displayPageNotifications(){
-
+    public void displayPageNotifications(Utilisateur user){
+        System.out.println("-- VOS NOTIFICATIONS --");
+        for (Notification notif : user.notifications){
+            System.out.println(notif);
+        }
     }
 
     /**
