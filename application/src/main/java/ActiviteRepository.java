@@ -13,7 +13,7 @@ public class ActiviteRepository {
 
     private static ActiviteRepository _instance;
 
-    private String dataFile = "Activites.json";
+    private String dataFile = "application/src/main/resources/Activites.json";
 
     private ArrayList<Activite> activites;
 

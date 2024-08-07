@@ -15,7 +15,7 @@ public class ClientRepository {
 
     private static ClientRepository _instance;
 
-    private String DATAFILE = "Clients.json";
+    private String DATAFILE = "application/src/main/resources/Clients.json";
     private ArrayList<Client> clients;
 
     // -------------------------- GETTER SETTER --------------------------

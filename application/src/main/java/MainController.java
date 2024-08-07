@@ -46,6 +46,10 @@ public class MainController {
         return this.currentUser;
     }
 
+    public void setCurrentUser(Utilisateur user){
+        this.currentUser = user;
+    }
+
     public void start(){
 
         // Connexion or login here

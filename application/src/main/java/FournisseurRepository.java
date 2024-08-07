@@ -11,7 +11,7 @@ import java.util.Comparator;
 public class FournisseurRepository {
 
     private static FournisseurRepository _instance;
-    private final String DATAFILE = "Fournisseurs.json";
+    private final String DATAFILE = "application/src/main/resources/Fournisseurs.json";
     private ArrayList<Fournisseur> fournisseurs;
 
     // -------------------------- GETTER SETTER --------------------------

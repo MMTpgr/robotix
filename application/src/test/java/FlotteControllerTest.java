@@ -41,7 +41,8 @@ public class FlotteControllerTest {
 
     @Test
     public void removeRobotTest() {
-
+        MainController mainController = MainController.getInstance();
+        mainController.setCurrentUser(baseClient);
         flotteController.removeRobot("Bender");
         assertEquals(baseClient.getFlotte().getRobots().size(),2);
     }
