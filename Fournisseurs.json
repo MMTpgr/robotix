@@ -3,13 +3,6 @@
     "rating": 0,
     "visites": 0,
     "transactions": 0,
-    "typesComposantes": [
-      "CPU",
-      "ROUE",
-      "BRAS",
-      "HAUTPARLEUR",
-      "ECRAN"
-    ],
     "composantes": [
       {
         "type": "CPU",
@@ -65,13 +58,6 @@
     "rating": 0,
     "visites": 0,
     "transactions": 0,
-    "typesComposantes": [
-      "CPU",
-      "HELICE",
-      "BRAS",
-      "MICRO",
-      "HAUTPARLEUR"
-    ],
     "composantes": [
       {
         "type": "CPU",
@@ -127,12 +113,13 @@
     "rating": 0,
     "visites": 0,
     "transactions": 0,
-    "typesComposantes": [
-      "CPU",
-      "ROUE",
-      "HELICE"
-    ],
     "composantes": [
+      {
+        "type": "CPU",
+        "prix": 56.0,
+        "fournisseur": "Nappa",
+        "nom": "capu"
+      },
       {
         "type": "CPU",
         "prix": 560.0,
@@ -175,12 +162,6 @@
     "rating": 0,
     "visites": 0,
     "transactions": 0,
-    "typesComposantes": [
-      "BRAS",
-      "ECRAN",
-      "HAUTPARLEUR",
-      "CPU"
-    ],
     "composantes": [
       {
         "type": "BRAS",
@@ -202,6 +183,16 @@
         "prix": 75.0,
         "fournisseur": "KIA",
         "nom": "Roku"
+      },
+      {
+        "type": "CAMERA",
+        "actionsPossibles": [
+          "Filmer",
+          "Prendre une photo"
+        ],
+        "prix": 500.0,
+        "fournisseur": "KIA",
+        "nom": "Sony"
       },
       {
         "type": "HAUTPARLEUR",
@@ -227,13 +218,6 @@
     "rating": 0,
     "visites": 0,
     "transactions": 0,
-    "typesComposantes": [
-      "HELICE",
-      "CPU",
-      "ECRAN",
-      "BRAS",
-      "ROUE"
-    ],
     "composantes": [
       {
         "type": "HELICE",
@@ -270,41 +254,19 @@
         "prix": 62.0,
         "fournisseur": "FORD",
         "nom": "Tchad"
+      },
+      {
+        "type": "ROUE",
+        "actionsPossibles": [
+          "Avancer"
+        ],
+        "prix": 81.0,
+        "fournisseur": "FORD",
+        "nom": "wheelo"
       }
     ],
     "username": "FORD",
     "password": "hty4ujerth",
-    "notifications": []
-  },
-  {
-    "rating": 0,
-    "visites": 0,
-    "transactions": 0,
-    "typesComposantes": [
-      "CPU"
-    ],
-    "composantes": [
-      {
-        "type": "CPU",
-        "prix": 85.0,
-        "nom": "grossetorche",
-        "description": "grossecriss"
-      }
-    ],
-    "username": "udem",
-    "password": "udem",
-    "notifications": []
-  },
-  {
-    "rating": 0,
-    "visites": 0,
-    "transactions": 0,
-    "typesComposantes": [
-      "CPU"
-    ],
-    "composantes": [],
-    "username": "0",
-    "password": "0",
     "notifications": []
   }
 ]

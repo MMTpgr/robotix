@@ -6673,34 +6673,6 @@
             "prix": 0.0
           }
         ]
-      },
-      {
-        "nom": "jordatron",
-        "type": "gegs",
-        "numSerie": "gerqgerg",
-        "batterie": 100,
-        "brise": false,
-        "cpustable": true,
-        "consommationCPU": 0.0,
-        "vitesse": 0.0,
-        "composantes": [
-          {
-            "type": "CPU",
-            "prix": 0.0,
-            "fournisseur": "Nappa",
-            "nom": "capu"
-          },
-          {
-            "type": "CAMERA",
-            "actionsPossibles": [
-              "Filmer",
-              "Prendre une photo"
-            ],
-            "prix": 0.0,
-            "fournisseur": "KIA",
-            "nom": "Sony"
-          }
-        ]
       }
     ],
     "interetsConcernes": [],
