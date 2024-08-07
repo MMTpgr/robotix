@@ -90,7 +90,6 @@ public class FlotteController {
      */
     public void enregistrerRobot(Robot robot){
         _flotte.addRobot(robot);
-        System.out.println("robot enregistré avec succès!");
     }
 
     /**
@@ -150,14 +149,32 @@ public class FlotteController {
 
 
             while (true) {
+                System.out.println("----------------");
+                System.out.println("+ : Confirmer creation du robot");
+                System.out.println("- : Confirmer creation du robot");
+                System.out.println();
+                System.out.println("'Nom de la composante' : Ajout d'une composante");
+                System.out.println();
+
                 for (int i = 0; i < _composantes.size(); i++) {
                     System.out.println((i + 1) + ". " + _composantes.get(i).getNom());
                 }
 
-                System.out.println("- Créer le robot");
-
                 pick = scan.nextLine();
-                while (pick != "-") {
+                if (pick.equals("-"))
+                {
+                    return null;
+                }
+                while (pick != "+") {
+
+                    System.out.println("----------------");
+                    System.out.println("+ : Confirmer creation du robot");
+                    System.out.println("- : Confirmer creation du robot");
+                    System.out.println();
+                    System.out.println("'Nom de la composante' : Ajout d'une composante");
+                    System.out.println();
+
+                    System.out.println();
 
                     if (isInList(_composantes, pick)) {
                         Composante compo = removeComp(_composantes, pick);
@@ -165,16 +182,18 @@ public class FlotteController {
                         for (int i = 0; i < _composantes.size(); i++) {
                             System.out.println((i + 1) + ". " + _composantes.get(i).getNom());
                         }
-                        System.out.println("- Créer le robot");
                     } else {
-                        if (pick.equals("-")) {
+                        if (pick.equals("+")) {
                             break;
                         } else {
                             System.out.println("Entrez un choix valide");
                         }
                     }
                     pick = scan.nextLine();
-
+                    if (pick.equals("-"))
+                    {
+                        return null;
+                    }
                 }
                 boolean presenceCPU = false;
                 boolean presenceComp = false;
@@ -182,10 +201,10 @@ public class FlotteController {
 
                 for (Composante comp : composantesChoisies) {
 
-                    if (comp.getNom().equals("CPU")) {
+                    if (comp.getType().name().equals("CPU")) {
                         presenceCPU = true;
                     }
-                    if (!comp.getNom().equals("CPU")) {
+                    if (!comp.getType().name().equals("CPU")) {
                         presenceComp = true;
                     }
                 }
@@ -195,7 +214,6 @@ public class FlotteController {
                 if (composantesChoisies.size() >= 2 && presenceCPU && presenceComp) {
                     String[] infosRobot = {nom, type, numSerie};
                     Robot robot = new Robot(infosRobot, 100, false, composantesChoisies);
-                    _flotte.addRobot(robot);
                     AfficherValidationCreationRobot();
                     return robot;
 

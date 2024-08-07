@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class ClientTest {
 
     private Client client;
-    private MainController mainController = new MainController();
 
     @BeforeEach
     public void setUp() {
@@ -45,10 +44,7 @@ public class ClientTest {
      */
     @Test
     public void testAjouterPlusieursComposantes() {
-        String[] infos3= {"hajaaj", "pipi", "lehauler"};
-        client.setNotifications(null);
-        testAjouterNotification();
-        mainController.currentUser = client;
+        client.addNotification(new Notification("Denis", "Robot pile à plat"));
         // Creer un ByteArrayOutputStream pour capturer l'output
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
@@ -58,10 +54,11 @@ public class ClientTest {
             System.setOut(new PrintStream(outContent));
 
             // methode a tester
-            mainController.menuClient.displayPageNotifications(client);
+            MenuClient menuClient = MenuClient.getInstance();
+            menuClient.displayPageNotifications(client);
 
             // test
-            String expectedstr = "-- VOS NOTIFICATIONS --\nDenis: Robot pile à plat";
+            String expectedstr = "-- VOS NOTIFICATIONS --\r\nDenis: Robot pile à plat\r\n";
             Assert.assertEquals(expectedstr, outContent.toString());
 
         } finally {

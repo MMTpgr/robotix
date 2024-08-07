@@ -29,6 +29,11 @@ public class ClientRepository {
 
     }
 
+    /**
+     * Singleton instance
+     *
+     * @return
+     */
     public static ClientRepository getInstance(){
         if (_instance == null){
             _instance = new ClientRepository();
@@ -48,6 +53,11 @@ public class ClientRepository {
         return;
     }
 
+    /**
+     * Add a single client to repository
+     *
+     * @param clients
+     */
     public void addClients(ArrayList<Client> clients){
 
         this.clients.addAll(clients);
@@ -59,7 +69,10 @@ public class ClientRepository {
     }
 
     /**
-     * Fonction qui initialise les données en les lisant du fichier json. Appelé à l'instanciation.
+     * Lit/Parse le fichier "Client.json".
+     * Les activités sont ajouter à l'attribut 'client'.
+     *
+     * Utilisé uniquement lorsque l'application est lancer.
      */
     public void parseClients(){
         Gson gson = new Gson().newBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).create();
@@ -72,6 +85,11 @@ public class ClientRepository {
         }
     }
 
+    /**
+     * Écriture de l'attribut 'clients' dans le fichier "Client.json".
+     * * Utilisé uniquement lorsque l'application est arreté.
+     *
+     */
     public void writeClient(){
         Gson gson = new Gson().newBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).create();
         try (FileWriter writer = new FileWriter(DATAFILE)) {

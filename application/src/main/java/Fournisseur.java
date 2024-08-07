@@ -77,10 +77,32 @@ public class Fournisseur extends Utilisateur {
         composantes.removeIf(comp -> comp.getNom().equalsIgnoreCase(nom));
     }
 
-    public void acheterComposante(Composante c) {
-        this.composantes.remove(c);
+    /**
+     * Returns composante from fournisseur composantes.
+     *
+     * @param name Nom de la composante.
+     */
+    public Composante getComposanteByName(String name){
+
+        Composante composante = null;
+
+        for (Composante c : this.composantes){
+            if (c.getNom().equals(name)){
+                composante = c;
+                break;
+            }
+        }
+
+        return composante;
+
     }
 
+    /**
+     * Filtrage de Fournisseur base sur un filtre fournis.
+     *
+     * @param toSort Liste de Fournisseurs.
+     * @param filter Type de filtre.
+     */
     public static void filterFournisseurs(ArrayList<Fournisseur> toSort, FournisseurFilter filter) {
         // Filtering with Treeset or sort function.
         if (filter.equals(FournisseurFilter.NOM)) {

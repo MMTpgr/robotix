@@ -15,50 +15,9 @@ public class ClientController extends ClientRepository {
     private ClientController(){
 
     }
+
     public static ClientRepository getRepository(){
         return ClientRepository.getInstance();
-    }
-
-
-    public boolean createAccount(ArrayList<String> infos){
-
-        boolean succes = true;
-
-
-        return succes;
-    }
-
-
-    public void notifierUtilisateur(Client client, Notification notification){
-
-        client.addNotification(notification);
-
-    }
-
-    public void emailConfirmation(String email, String message){
-
-        // Do Something
-    }
-
-
-    public void modifierSonProfil(ArrayList<String> infos){
-
-        // Do Something
-    }
-
-
-    public void gererFollowers(ArrayList<String> infos){
-
-        // Do Something
-    }
-
-
-    public void followUtilisateur(Utilisateur utilisateur){
-        // Do Something
-    }
-
-    public void showNotifications(Utilisateur utilisateur){
-        // Do Something
     }
 
 

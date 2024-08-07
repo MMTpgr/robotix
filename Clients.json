@@ -219,6 +219,34 @@
               "prix": 0.0
             }
           ]
+        },
+        {
+          "nom": "rerter",
+          "type": "grgrw",
+          "numSerie": "ggrtgrt",
+          "batterie": 100,
+          "brise": false,
+          "cpustable": true,
+          "consommationCPU": 0.0,
+          "vitesse": 0.0,
+          "composantes": [
+            {
+              "type": "CPU",
+              "prix": 0.0,
+              "fournisseur": "0",
+              "nom": "baba",
+              "description": "faswfas"
+            },
+            {
+              "type": "ROUE",
+              "actionsPossibles": [
+                "Avancer"
+              ],
+              "prix": 0.0,
+              "fournisseur": "FORD",
+              "nom": "wheelo"
+            }
+          ]
         }
       ],
       "metriques": []
@@ -246,6 +274,14 @@
       {
         "from": "Menu Activite",
         "message": "Vous etes maintenant inscrit à Ateliers mecanique"
+      },
+      {
+        "from": "MarketPlace",
+        "message": "Achat de la composante baba"
+      },
+      {
+        "from": "MarketPlace",
+        "message": "Achat de la composante wheelo"
       }
     ]
   },
@@ -1295,6 +1331,64 @@
       {
         "from": "Menu Activite",
         "message": "Vous etes maintenant inscrit à Course Robots"
+      }
+    ]
+  },
+  {
+    "composantesU": [],
+    "activites": [],
+    "flotte": {
+      "robots": [
+        {
+          "nom": "jordatron",
+          "type": "gegs",
+          "numSerie": "gerqgerg",
+          "batterie": 100,
+          "brise": false,
+          "cpustable": true,
+          "consommationCPU": 0.0,
+          "vitesse": 0.0,
+          "composantes": [
+            {
+              "type": "CPU",
+              "prix": 0.0,
+              "fournisseur": "Nappa",
+              "nom": "capu"
+            },
+            {
+              "type": "CAMERA",
+              "actionsPossibles": [
+                "Filmer",
+                "Prendre une photo"
+              ],
+              "prix": 0.0,
+              "fournisseur": "KIA",
+              "nom": "Sony"
+            }
+          ]
+        }
+      ],
+      "metriques": []
+    },
+    "points": 0,
+    "username": "jordinateur",
+    "password": "jojo",
+    "notifications": [
+      {
+        "from": "MarketPlace",
+        "message": "Achat de la composante capu"
+      },
+      {
+        "from": "MarketPlace",
+        "message": "Achat de la composante Sony"
+      },
+      {
+        "from": "Menu Activite",
+        "message": "Vous etes maintenant inscrit à Captation Ultimate Frisbee"
+      },
+      {
+        "from": "Menu Activite",
+        "message": "Vous etes maintenant désinscrit de Captation Ultimate Frisbee"
       }
     ]
   }

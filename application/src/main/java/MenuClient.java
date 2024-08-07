@@ -130,8 +130,6 @@ public class MenuClient extends MenuUtilisateur{
      */
     public String displayPageRechercheActivite(ArrayList<Activite> activites){
 
-        System.out.println(activites.get(0));
-
         int activiteIndex = 0;
 
         System.out.println("-------------------------");
@@ -293,7 +291,6 @@ public class MenuClient extends MenuUtilisateur{
         System.out.println("- : Quitter");
         System.out.println();
         System.out.println("Nom: " + fournisseur.getUsername());
-        System.out.println("Visites: " + fournisseur.getVisites());
         System.out.println("Types de Composantes: " + typeComposante);
 
         ArrayList<String> validStrings = new ArrayList<>(Arrays.asList("-", "+"));
@@ -460,6 +457,11 @@ public class MenuClient extends MenuUtilisateur{
 
     // -------------------------- UTILISATEURS --------------------------
 
+    /**
+     * Affichage Page des notifications
+     *
+     * @param user Le client.
+     */
     public void displayPageNotifications(Utilisateur user){
         System.out.println("-- VOS NOTIFICATIONS --");
         for (Notification notif : user.notifications){

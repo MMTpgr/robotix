@@ -108,7 +108,12 @@ public class ActiviteController{
 
     }
 
-
+    /**
+     * Return list of activite names has a list of activites
+     *
+     * @param names list of names
+     * @return list des activites.
+     */
     public ArrayList<Activite> activitesNametoList(ArrayList<String> names){
 
         ArrayList<Activite> activites = new ArrayList<>();

@@ -18,6 +18,11 @@ public class MenuConnexion {
 
     // -------------------------- MAIN MENU --------------------------
 
+    /**
+     * Affichage Page start
+     *
+     * @return int
+     */
     public int displayPageStart(){
         System.out.println(
                 "######### ROBOTIX Inc #########\n\n" + "--------------------\n" +
@@ -41,11 +46,22 @@ public class MenuConnexion {
         }
     }
 
+    /**
+     * Affichage page de connexion
+     *
+     */
     public void displayPageConnexion(){
         System.out.print("CONNEXION\n\nÀ tout moment, entrer \"0\" pour " +
                 "retourner au menu principal.\nEntrez votre nom d'utilisateur: ");
     }
 
+
+    /**
+     * Affichage page inscription
+     *
+     * @param fourn fournisseur
+     * @return Utilisateur
+     */
     public Utilisateur displayPageInscription(boolean fourn){
         System.out.print("Choisissez un nom d'utilisateur: ");
         Scanner keyb = new Scanner(System.in);

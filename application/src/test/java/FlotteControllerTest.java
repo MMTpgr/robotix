@@ -67,7 +67,6 @@ public class FlotteControllerTest {
 
     @Test
     public void vueGeneraleTest() {
-        String[] infos3= {"hajaaj", "pipi", "lehauler"};
         // Creer un ByteArrayOutputStream pour capturer l'output
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;

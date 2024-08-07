@@ -64,9 +64,11 @@ public class MainController {
                 break;
             case 2:
                 currentUser = menu.displayPageInscription(false);
+                clientRepository.getClients().add((Client) currentUser);
                 break;
             default:
                 currentUser = menu.displayPageInscription(true);
+                fournisseurRepository.getFournisseurs().add((Fournisseur) currentUser);
                 break;
         }
 
@@ -651,12 +653,15 @@ public class MainController {
                 break;
             case "4":
                 menuClient.displayPageNotifications(client);
+                menuPrincipalClient(client);
                 break;
             case "5":
                 menuClient.displayPageModifierSonProfil(client, "username");
+                menuPrincipalClient(client);
                 break;
             case "6":
                 menuClient.displayPageModifierSonProfil(client, "password");
+                menuPrincipalClient(client);
             case "-":
                 this.start();
 
@@ -683,7 +688,7 @@ public class MainController {
         switch (pick){
             case "1":
                 composantes = composanteRepository.getComposantes();
-                this.menuRechercheComposante(client, composantes);
+                this.menuRechercheComposante(client, composantes, null);
             case "2":
                 fournisseurs = fournisseurRepository.getFournisseurs();
                 this.menuRechercheFournisseurs(client, fournisseurs);
@@ -700,7 +705,7 @@ public class MainController {
      * @param client Le client
      * @param composantes Liste de Composante à afficher/filtrer.
      */
-    public void menuRechercheComposante(Client client, ArrayList<Composante> composantes){
+    public void menuRechercheComposante(Client client, ArrayList<Composante> composantes, Fournisseur fournisseur){
 
         String pick = menuClient.displayPageRechercheComposante(composantes);
 
@@ -709,13 +714,13 @@ public class MainController {
 
             case "!":
                 Composante.filterComposantes(composantes, ComposanteFilter.NAME);
-                this.menuRechercheComposante(client, composantes);
+                this.menuRechercheComposante(client, composantes, fournisseur);
             case "#":
                 Composante.filterComposantes(composantes, ComposanteFilter.TYPE);
-                this.menuRechercheComposante(client, composantes);
+                this.menuRechercheComposante(client, composantes, fournisseur);
             case "*":
                 Composante.filterComposantes(composantes, ComposanteFilter.FOURNISSEUR);
-                this.menuRechercheComposante(client, composantes);
+                this.menuRechercheComposante(client, composantes, fournisseur);
             case "-":
                 this.menuMarketPlacePrincipal(client);
             default:
@@ -727,7 +732,11 @@ public class MainController {
                 } else {
                     this.menuFicheAchatComposante(choosenComposante);
                 }
-                menuRechercheComposante(client, composanteRepository.getComposantes());
+                if (fournisseur != null){
+                    menuRechercheComposante(client, fournisseur.getComposantes(), fournisseur);
+                } else {
+                    menuRechercheComposante(client, composanteRepository.getComposantes(), fournisseur);
+                }
         }
 
     }
@@ -781,7 +790,7 @@ public class MainController {
             case "-":
                 this.menuMarketPlacePrincipal(client);
             default:
-                Fournisseur choosenFournisseur = fournisseurs.get(Integer.parseInt(pick));
+                Fournisseur choosenFournisseur = fournisseurs.get(Integer.parseInt(pick)-1);
                 this.menuFicheFournisseur(client, choosenFournisseur);
                 menuRechercheFournisseurs(client,  fournisseurs);
         }
@@ -801,7 +810,7 @@ public class MainController {
 
         switch (pick) {
             case "+":
-                this.menuRechercheComposante(client, fournisseur.getComposantes());
+                this.menuRechercheComposante(client, fournisseur.getComposantes(), fournisseur);
                 this.menuFicheFournisseur(client, fournisseur);
             case "-":
         }
@@ -825,11 +834,11 @@ public class MainController {
 
             // ---------------- Mes Activites ----------------
             case "1":
-                this.menuRechercheActivites(client, activiteController.activitesNametoList(client.getActivites()));
+                this.menuRechercheActivites(client, activiteController.activitesNametoList(client.getActivites()), true);
             // ---------------- Toutes Activites ----------------
             case "2":
                 this.menuRechercheActivites(client,
-                        activiteRepository.getActivites());
+                        activiteRepository.getActivites(), false);
             case "-":
                 this.menuPrincipalClient(client);
         }
@@ -843,7 +852,7 @@ public class MainController {
      * @param client
      * @param activites
      */
-    public void menuRechercheActivites(Client client, ArrayList<Activite> activites){
+    public void menuRechercheActivites(Client client, ArrayList<Activite> activites, boolean clientActivite){
 
         String pick;
 
@@ -853,13 +862,13 @@ public class MainController {
             // ---- FILTERS ----
             case "!":
                 Activite.sortActivites(activites, ActiviteFilter.NOM);
-                this.menuRechercheActivites(client, activites);
+                this.menuRechercheActivites(client, activites, clientActivite);
             case "#":
                 Activite.sortActivites(activites, ActiviteFilter.DATE);
-                this.menuRechercheActivites(client, activites);
+                this.menuRechercheActivites(client, activites, clientActivite);
             case "*":
                 Activite.sortActivites(activites, ActiviteFilter.POPULARITE);
-                this.menuRechercheActivites(client, activites);
+                this.menuRechercheActivites(client, activites, clientActivite);
             // ---- QUITTER ----
             case "-":
                 this.menuActivitesPrincipal(client);
@@ -876,7 +885,12 @@ public class MainController {
                 }
 
                 this.MenuFicheActivite(client, choosenActivite, alreadySubscribed);
-                this.menuRechercheActivites(client, activites);
+
+                if (clientActivite){
+                    activites = activiteController.activitesNametoList(client.getActivites());
+                }
+
+                this.menuRechercheActivites(client, activites, clientActivite);
         }
 
     }
@@ -1007,13 +1021,15 @@ public class MainController {
         switch (pick){
             case "1" :
                 menuFournisseur.displayPageModifierSonProfil(fournisseur, "username");
+                menuProfil(fournisseur);
                 break;
 
             case "2" :
                 menuFournisseur.displayPageModifierSonProfil(fournisseur, "password");
+                menuProfil(fournisseur);
                 break;
 
-            case "3":
+            case "-":
                 //retour aux menus
                 menuPrincipalFournisseur(fournisseur);
                 break;
@@ -1067,11 +1083,12 @@ public class MainController {
                     menuGestionComposantes(fournisseur);
                 }
 
+                Composante composante = fournisseur.getComposanteByName(nomAModifier);
+                String oldType = composante.getType().name();
+
                 fournisseur.supprimerComposante(nomAModifier);
                 System.out.print("Entrez le nouveau nom de la composante: ");
                 String nouveauNom = scan2.nextLine();
-                System.out.print("Entrez le nouveau type de la composante: ");
-                String nouveauType = scan2.nextLine();
                 System.out.print("Entrez la nouvelle description de la composante: ");
                 String nouvelleDescription = scan2.nextLine();
                 String nouveauPrix = "";
@@ -1088,7 +1105,7 @@ public class MainController {
                     }
                 }
 
-                fournisseur.ajouterComposante(new Composante(nouveauNom, nouveauType, nouvelleDescription, nouveauPrix));
+                composanteController.enregistrerComposante(fournisseur, new Composante(nouveauNom, oldType, nouvelleDescription, nouveauPrix));
                 System.out.println("Composante modifiée avec succès!");
                 menuGestionComposantes(fournisseur);
             case "-":
@@ -1112,8 +1129,24 @@ public class MainController {
                 Scanner scan = new Scanner(System.in);
                 System.out.print("Entrez le nom de la composante: ");
                 String nom = scan.nextLine();
-                System.out.print("Entrez le type de la composante: ");
-                String type = scan.nextLine();
+
+                ArrayList<String> typesValides = new ArrayList<>();
+                String type = "";
+                for (ComposanteType composanteType : ComposanteType.values()){
+                    typesValides.add(composanteType.name());
+                }
+
+                while (true) {
+                    System.out.print("Entrez le type de la composante: ");
+                    System.out.print("(CPU, ROUE, MICRO, ECRAN, HELICE, BRAS, CAMERA, HAUTPARLEUR) ");
+                    type = scan.nextLine();
+
+                    if (typesValides.contains(type)){
+                        break;
+                    }
+
+                }
+
                 System.out.print("Entrez la description de la composante: ");
                 String description = scan.nextLine();
                 String prix = "";

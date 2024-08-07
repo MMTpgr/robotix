@@ -39,9 +39,6 @@ public class ActiviteRepository {
 
     }
 
-    public String getDataFile() {
-        return dataFile;
-    }
 
     /**
      * Retourne les activité de la base de données.

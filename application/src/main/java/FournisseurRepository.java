@@ -38,7 +38,11 @@ public class FournisseurRepository {
         return this.fournisseurs;
     }
 
-
+    /**
+     * Ajoute des Fournisseurs au repo
+     *
+     * @param fournisseurs Les ournisseurs
+     */
     public void addFournisseurs(ArrayList<Fournisseur> fournisseurs){
         this.fournisseurs.addAll(fournisseurs);
     }
@@ -74,7 +78,7 @@ public class FournisseurRepository {
         Fournisseur fournisseur = null;
 
         for(Fournisseur f : getFournisseurs()){
-            if (fournisseur.getUsername().equals(name)){
+            if (f.getUsername().equals(name)){
                 fournisseur = f;
                 break;
             }

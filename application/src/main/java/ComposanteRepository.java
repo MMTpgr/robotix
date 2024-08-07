@@ -24,6 +24,11 @@ public class ComposanteRepository {
 
     // -------------------------- UTILS METHODS --------------------------
 
+    /**
+     * Retourne toutes les composantes de tout les Fournisseurs
+     *
+     * @return
+     */
     public ArrayList<Composante> getComposantes() {
 
         ArrayList<Composante> composantes = new ArrayList<>();
