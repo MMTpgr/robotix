@@ -1297,5 +1297,17 @@
         "message": "Vous etes maintenant inscrit à Course Robots"
       }
     ]
+  },
+  {
+    "composantesU": [],
+    "activites": [],
+    "flotte": {
+      "robots": [],
+      "metriques": []
+    },
+    "points": 0,
+    "username": "jordan",
+    "password": "boulais",
+    "notifications": []
   }
 ]
